@@ -21,7 +21,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kyqiw")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -32,7 +32,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dewec")
 }],
-"loop": false,
+"loop": 0,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -40,7 +40,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
 size = Vector2(15, 26)
 
-[node name="Node2D" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("sprite_2d")]
+[node name="Player" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("sprite_2d")]
 motion_mode = 1
 script = ExtResource("1_kyqiw")
 sprite_2d = NodePath("Sprite2D")
