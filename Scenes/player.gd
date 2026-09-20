@@ -6,10 +6,9 @@ const JUMP_VELOCITY = -400.0
 @export var sprite_2d: AnimatedSprite2D
 
 
-
 func _physics_process(delta: float) -> void:
 
-	var direction := Input.get_vector("ui_left", "ui_right", "ui_up","ui_down")
+	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	if direction.x < 0:
 		sprite_2d.flip_h = true
@@ -25,6 +24,5 @@ func _physics_process(delta: float) -> void:
 		sprite_2d.play("walk")
 	else:
 		sprite_2d.play("idle")
-		
 
 	move_and_slide()
