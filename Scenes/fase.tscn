@@ -2,14 +2,23 @@
 
 [ext_resource type="Texture2D" uid="uid://bw55gygeuocnb" path="res://icon.svg" id="1_470xx"]
 [ext_resource type="PackedScene" uid="uid://csvn783kla0sj" path="res://Scenes/Player.tscn" id="2_m2uwg"]
+[ext_resource type="Script" uid="uid://cfhpbiacruqw3" path="res://Scenes/point_light_2d.gd" id="3_m2uwg"]
+[ext_resource type="Texture2D" uid="uid://14tn1j8kpxor" path="res://broba_sprite_sheet.png" id="3_tsdaw"]
 
 [node name="Fase" type="Node2D" unique_id=1801651182]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1666606048]
-position = Vector2(203, 118.00001)
+position = Vector2(242, 275)
 scale = Vector2(4.5078125, 4.5078125)
 texture = ExtResource("1_470xx")
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=937483451]
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=679989713]
+position = Vector2(1, -1.4210855e-14)
+scale = Vector2(0.9895833, 1)
+texture = ExtResource("3_tsdaw")
+offset = Vector2(49.515793, -2.3841856e-07)
+script = ExtResource("3_m2uwg")
