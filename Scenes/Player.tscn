@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://csvn783kla0sj"]
 
 [ext_resource type="Script" uid="uid://knhb5ilupbno" path="res://Scenes/player.gd" id="1_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://14tn1j8kpxor" path="res://broba_sprite_sheet.png" id="1_rpqav"]
+[ext_resource type="Texture2D" uid="uid://14tn1j8kpxor" path="res://Sprites/Images/broba_sprite_sheet.png" id="1_rpqav"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("1_rpqav")
@@ -41,6 +41,7 @@ animations = [{
 size = Vector2(15, 26)
 
 [node name="Player" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("sprite_2d")]
+light_mask = 0
 motion_mode = 1
 script = ExtResource("1_kyqiw")
 sprite_2d = NodePath("Sprite2D")

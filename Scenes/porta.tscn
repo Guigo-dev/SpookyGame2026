@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://clhwperjen1rt"]
+
+[ext_resource type="Script" uid="uid://da54iiimw25yo" path="res://Scripts/porta.gd" id="1_5f6wt"]
+[ext_resource type="Texture2D" uid="uid://bnctp2k405726" path="res://Sprites/Images/Porta.png" id="1_5quaa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bspbu"]
+size = Vector2(41, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bspbu"]
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[node name="Porta" type="Area2D" unique_id=2099430038]
+script = ExtResource("1_5f6wt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2131811555]
+texture = ExtResource("1_5quaa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1611305886]
+position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_bspbu")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1150015929]
+occluder = SubResource("OccluderPolygon2D_bspbu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

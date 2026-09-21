@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 150.0
 @export var sprite_2d: AnimatedSprite2D
 
+func _ready() -> void:
+	add_to_group("player")
 
 func _physics_process(delta: float) -> void:
 
