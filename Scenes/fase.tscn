@@ -45,6 +45,9 @@ sources/1 = SubResource("TileSetAtlasSource_4opmr")
 cull_mode = 2
 polygon = PackedVector2Array(-160, -192, -128, -192, -128, 224, -160, 224)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(350.5, 360)
+
 [node name="Fase" type="Node2D" unique_id=1801651182]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=893378175]
@@ -89,3 +92,13 @@ position = Vector2(-144, 144)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1875109980]
 occluder = SubResource("OccluderPolygon2D_bspbu")
+
+[node name="Living_room" type="Area2D" parent="." unique_id=1151135563]
+position = Vector2(-533, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Living_room" unique_id=1247680037]
+position = Vector2(559, 0)
+shape = SubResource("RectangleShape2D_ostoq")
+
+[connection signal="body_entered" from="Living_room" to="Player" method="_on_living_room_body_entered"]
+[connection signal="body_exited" from="Living_room" to="Player" method="_on_living_room_body_exited"]
