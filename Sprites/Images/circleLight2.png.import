@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5w1gmki6jehj"
-path="res://.godot/imported/circleLight.png-07ece793ac4bedfa01ecf892f1f3a429.ctex"
+uid="uid://btb0ou8unnvod"
+path="res://.godot/imported/circleLight2.png-5dd6c587353cb86b804c9c8738bfc118.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Archives/circleLight.png"
-dest_files=["res://.godot/imported/circleLight.png-07ece793ac4bedfa01ecf892f1f3a429.ctex"]
+source_file="res://Sprites/Images/circleLight2.png"
+dest_files=["res://.godot/imported/circleLight2.png-5dd6c587353cb86b804c9c8738bfc118.ctex"]
 
 [params]
 

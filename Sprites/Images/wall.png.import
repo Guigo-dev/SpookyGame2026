@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxd2ajf6pyplr"
-path="res://.godot/imported/Porta.png-942247d64a4e54c9a9889975b2fbeef7.ctex"
+uid="uid://uatgi7xl52a1"
+path="res://.godot/imported/wall.png-2f3892a3298496c16c35e2d10ef1109d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Images/Porta.png"
-dest_files=["res://.godot/imported/Porta.png-942247d64a4e54c9a9889975b2fbeef7.ctex"]
+source_file="res://Sprites/Images/wall.png"
+dest_files=["res://.godot/imported/wall.png-2f3892a3298496c16c35e2d10ef1109d.ctex"]
 
 [params]
 

@@ -38,7 +38,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
-size = Vector2(15, 26)
+size = Vector2(13, 12)
 
 [node name="Player" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("sprite_2d")]
 light_mask = 0
@@ -52,5 +52,5 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=569890656]
-position = Vector2(-0.5, 3)
+position = Vector2(-0.5, 10)
 shape = SubResource("RectangleShape2D_rpqav")
