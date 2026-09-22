@@ -43,6 +43,7 @@ func _physics_process(delta: float) -> void:
 
 		if flashlight_timer >= 10:
 			test_1 = true
+			$"../Living_room/LivingRoomLight".enabled = true
 
 
 func _on_living_room_body_entered(body: Node2D) -> void:
