@@ -2,10 +2,8 @@ extends PointLight2D
 @onready var player: CharacterBody2D = $".."
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	pass # Replace with function body.
 
 
 func _physics_process(delta: float) -> void:

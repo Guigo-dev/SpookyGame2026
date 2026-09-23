@@ -68,6 +68,7 @@ tile_map_data = PackedByteArray("AAD8//3/AAACAAAAAAD8//7/AAACAAAAAAD8////AAACAAA
 tile_set = SubResource("TileSet_bspbu")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1541262574]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
@@ -154,7 +155,8 @@ texture = ExtResource("8_4opmr")
 position = Vector2(0.3414383, -0.20169449)
 shape = SubResource("RectangleShape2D_loq3h")
 
-[node name="Food" type="Area2D" parent="DiningRoom" unique_id=1219707833]
+[node name="Food" type="StaticBody2D" parent="DiningRoom" unique_id=2127330421]
+z_index = -1
 position = Vector2(-541.2219, 56.070274)
 script = ExtResource("9_4iykg")
 

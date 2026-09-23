@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 @onready var flashlight: PointLight2D = $Flashlight
+@onready var interaction_area: Area2D = $InteractionArea
+
+
 var flashlight_timer = 0
 var test_1 = false
 var test_2 = false
@@ -17,6 +20,8 @@ func _ready() -> void:
 func _input(event):
 	if event.is_action_pressed("flashlight"):
 		flashlight.enabled = !flashlight.enabled 
+	if event.is_action_pressed("interact"): 
+		interaction_area.interact()
 
 func _physics_process(delta: float) -> void:
 
