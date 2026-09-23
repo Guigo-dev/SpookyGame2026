@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 @onready var flashlight: PointLight2D = $Flashlight
 @onready var interaction_area: Area2D = $InteractionArea
+@export var collectible: PackedScene
 
-
+var collectible_counter = 0
 var flashlight_timer = 0
 var test_1 = false
 var test_2 = false
@@ -26,6 +27,12 @@ func _input(event):
 		flashlight.enabled = !flashlight.enabled 
 	if event.is_action_pressed("interact"): 
 		interaction_area.interact()
+		
+	
+func spawn_collectible(posicao: Vector2):
+	var item = collectible.instantiate()
+	item.position = posicao
+	$"../Collectibles".add_child(item)
 
 func _physics_process(delta: float) -> void:
 	
@@ -73,6 +80,7 @@ func _physics_process(delta: float) -> void:
 		if flashlight_timer >= 10:
 			test_1 = true
 			$"../Living_room/LivingRoomLight".enabled = true
+			spawn_collectible(Vector2(0, 150))
 			
 	elif inside_room and flashlight.enabled and not test_1:
 		flashlight_timer = 0

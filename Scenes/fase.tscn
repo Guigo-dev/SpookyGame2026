@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://uatgi7xl52a1" path="res://Sprites/Images/wall.png" id="2_a44jk"]
 [ext_resource type="PackedScene" uid="uid://csvn783kla0sj" path="res://Scenes/Player.tscn" id="2_m2uwg"]
 [ext_resource type="Texture2D" uid="uid://cwk3rqlkc0nyw" path="res://Sprites/Images/Flashlight2.png" id="3_1tvu4"]
-[ext_resource type="Script" uid="uid://cfhpbiacruqw3" path="res://Scenes/point_light_2d.gd" id="3_m2uwg"]
+[ext_resource type="Script" uid="uid://cfhpbiacruqw3" path="res://Scripts/point_light_2d.gd" id="3_m2uwg"]
 [ext_resource type="Texture2D" uid="uid://b5w1gmki6jehj" path="res://Sprites/Images/circleLight.png" id="4_mvxks"]
+[ext_resource type="PackedScene" uid="uid://bmgyefpege3an" path="res://Scenes/Collectible.tscn" id="4_qgtny"]
 [ext_resource type="PackedScene" uid="uid://clhwperjen1rt" path="res://Scenes/porta.tscn" id="5_1tvu4"]
 [ext_resource type="Texture2D" uid="uid://xv54n4wkhrpc" path="res://Sprites/Images/Chao.png" id="5_mvxks"]
 [ext_resource type="Texture2D" uid="uid://b1wbiwhjfk3q7" path="res://Sprites/Images/room-light.png" id="8_4opmr"]
@@ -72,6 +73,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
 position = Vector2(497, 38)
+collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=937483451]
@@ -167,6 +169,8 @@ texture = ExtResource("9_e6h3x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DiningRoom/Food" unique_id=1873148864]
 position = Vector2(-4.386902e-05, -4.4703484e-08)
 shape = SubResource("RectangleShape2D_ketxm")
+
+[node name="Collectibles" type="Node2D" parent="." unique_id=1069010613]
 
 [connection signal="body_entered" from="Living_room" to="Player" method="_on_living_room_body_entered"]
 [connection signal="body_exited" from="Living_room" to="Player" method="_on_living_room_body_exited"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://csvn783kla0sj"]
 
-[ext_resource type="Script" uid="uid://knhb5ilupbno" path="res://Scenes/player.gd" id="1_kyqiw"]
+[ext_resource type="Script" uid="uid://knhb5ilupbno" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://14tn1j8kpxor" path="res://Sprites/Images/broba_sprite_sheet.png" id="1_rpqav"]
 [ext_resource type="Script" uid="uid://cdh64a43btaer" path="res://Scripts/interaction_area.gd" id="3_gntrk"]
 
