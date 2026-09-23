@@ -68,7 +68,6 @@ tile_map_data = PackedByteArray("AAD8//3/AAACAAAAAAD8//7/AAACAAAAAAD8////AAACAAA
 tile_set = SubResource("TileSet_bspbu")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1541262574]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
@@ -139,7 +138,7 @@ position = Vector2(-1, -3)
 shape = SubResource("RectangleShape2D_ajtct")
 
 [node name="DiningRoom" type="Area2D" parent="." unique_id=46779004]
-position = Vector2(1921, -255)
+position = Vector2(443, 41)
 scale = Vector2(2.9285583, 4.958064)
 
 [node name="DiningRoomLight" type="PointLight2D" parent="DiningRoom" unique_id=420355369]
@@ -157,7 +156,7 @@ shape = SubResource("RectangleShape2D_loq3h")
 
 [node name="Food" type="StaticBody2D" parent="DiningRoom" unique_id=2127330421]
 z_index = -1
-position = Vector2(-541.2219, 56.070274)
+position = Vector2(-3.7561035, -16.33702)
 script = ExtResource("9_4iykg")
 
 [node name="Sprite2D" type="Sprite2D" parent="DiningRoom/Food" unique_id=1483970955]

@@ -10,6 +10,8 @@ var test_2 = false
 var test_3 = false 
 var inside_room = false
 
+var controls_locked = false
+
 const SPEED = 150.0
 @export var sprite_2d: AnimatedSprite2D
 var direction_looking := Vector2.DOWN
@@ -18,12 +20,20 @@ func _ready() -> void:
 	add_to_group("player")
 	
 func _input(event):
+	if controls_locked:
+		return
 	if event.is_action_pressed("flashlight"):
 		flashlight.enabled = !flashlight.enabled 
 	if event.is_action_pressed("interact"): 
 		interaction_area.interact()
 
 func _physics_process(delta: float) -> void:
+	
+	if controls_locked:
+		velocity = Vector2.ZERO
+		sprite_2d.play("idle")
+		move_and_slide()
+		return
 
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
