@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://csvn783kla0sj"]
 
-[ext_resource type="Script" uid="uid://knhb5ilupbno" path="res://Scenes/player.gd" id="1_kyqiw"]
+[ext_resource type="Script" uid="uid://knhb5ilupbno" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://14tn1j8kpxor" path="res://Sprites/Images/broba_sprite_sheet.png" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://cdh64a43btaer" path="res://Scripts/interaction_area.gd" id="3_gntrk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("1_rpqav")
@@ -40,6 +41,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
 size = Vector2(13, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(13, 12)
+
 [node name="Player" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("sprite_2d")]
 light_mask = 0
 motion_mode = 1
@@ -54,3 +58,12 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=569890656]
 position = Vector2(-0.5, 10)
 shape = SubResource("RectangleShape2D_rpqav")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1549334966]
+position = Vector2(-1, 6)
+script = ExtResource("3_gntrk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea" unique_id=566845921]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_ostoq")
+debug_color = Color(0, 0, 1, 1)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bmgyefpege3an"]
+
+[ext_resource type="Texture2D" uid="uid://bw55gygeuocnb" path="res://icon.svg" id="1_4xoli"]
+[ext_resource type="Script" uid="uid://bd37aj4p4hp0u" path="res://Scripts/collectible.gd" id="1_wqeun"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+
+[node name="Collectible" type="Node2D" unique_id=1096320498]
+
+[node name="Collectible" type="StaticBody2D" parent="." unique_id=394175567]
+z_index = -1
+script = ExtResource("1_wqeun")
+
+[node name="Sprite2D" type="Sprite2D" parent="Collectible" unique_id=737551520]
+scale = Vector2(0.1640625, 0.171875)
+texture = ExtResource("1_4xoli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible" unique_id=405744349]
+shape = SubResource("RectangleShape2D_ostoq")
