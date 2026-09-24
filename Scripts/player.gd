@@ -94,6 +94,8 @@ func _on_living_room_body_entered(body: Node2D) -> void:
 func _on_living_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		inside_room = false
+		$"../Living_room/LivingRoomLight".enabled = false
 		flashlight_timer = 0
-		
-		
+
+func _on_dining_room_body_exited(body: Node2D) -> void:
+	$"../DiningRoom/DiningRoomLight".enabled = false
