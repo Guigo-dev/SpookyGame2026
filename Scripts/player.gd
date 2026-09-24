@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 
 		if flashlight_timer >= 10:
 			test_1 = true
-			$"../Living_room/LivingRoomLight".enabled = true
+			$"../LivingRoom/LivingRoomLight".enabled = true
 			spawn_collectible(Vector2(0, 150))
 			
 	elif inside_room and flashlight.enabled and not test_1:
@@ -94,7 +94,7 @@ func _on_living_room_body_entered(body: Node2D) -> void:
 func _on_living_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		inside_room = false
-		$"../Living_room/LivingRoomLight".enabled = false
+		$"../LivingRoom/LivingRoomLight".enabled = false
 		flashlight_timer = 0
 
 func _on_dining_room_body_exited(body: Node2D) -> void:
