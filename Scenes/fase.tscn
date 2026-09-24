@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b16i0md3rdbpl"]
 
-[ext_resource type="Texture2D" uid="uid://uatgi7xl52a1" path="res://Sprites/Images/wall.png" id="2_a44jk"]
+[ext_resource type="Texture2D" uid="uid://fa1fr5jvwaah" path="res://Sprites/Images/wall.png" id="2_a44jk"]
 [ext_resource type="PackedScene" uid="uid://csvn783kla0sj" path="res://Scenes/Player.tscn" id="2_m2uwg"]
 [ext_resource type="Texture2D" uid="uid://cwk3rqlkc0nyw" path="res://Sprites/Images/Flashlight2.png" id="3_1tvu4"]
 [ext_resource type="Script" uid="uid://cfhpbiacruqw3" path="res://Scenes/point_light_2d.gd" id="3_m2uwg"]
@@ -53,6 +53,7 @@ tile_map_data = PackedByteArray("AAD8//3/AAACAAAAAAD8//7/AAACAAAAAAD8////AAACAAA
 tile_set = SubResource("TileSet_bspbu")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1541262574]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
@@ -64,6 +65,9 @@ limit_left = -160
 limit_top = -192
 limit_right = 704
 limit_bottom = 224
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 editor_draw_limits = true
 
 [node name="Flashlight" type="PointLight2D" parent="Player" unique_id=679989713]
