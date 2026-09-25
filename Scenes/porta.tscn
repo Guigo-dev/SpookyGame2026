@@ -1,26 +1,29 @@
 [gd_scene format=3 uid="uid://clhwperjen1rt"]
 
 [ext_resource type="Script" uid="uid://da54iiimw25yo" path="res://Scripts/porta.gd" id="1_5f6wt"]
-[ext_resource type="Texture2D" uid="uid://dxd2ajf6pyplr" path="res://Sprites/Images/Porta.png" id="1_5quaa"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5quaa"]
+load_path = "res://.godot/imported/Porta.png-942247d64a4e54c9a9889975b2fbeef7.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bspbu"]
-size = Vector2(41, 32)
+size = Vector2(16, 32)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bspbu"]
 cull_mode = 2
 polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
 
-[node name="Porta" type="Area2D" unique_id=2099430038]
+[node name="Porta" type="StaticBody2D" unique_id=2099543272]
+z_index = -1
 script = ExtResource("1_5f6wt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2131811555]
-texture = ExtResource("1_5quaa")
+texture = SubResource("CompressedTexture2D_5quaa")
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1611305886]
-position = Vector2(4.5, 0)
+position = Vector2(8, 16)
 shape = SubResource("RectangleShape2D_bspbu")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1038164814]
+position = Vector2(8, 16)
 occluder = SubResource("OccluderPolygon2D_bspbu")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

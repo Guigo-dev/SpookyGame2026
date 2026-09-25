@@ -9,7 +9,7 @@ var flashlight_timer = 0
 var test_1 = false
 var test_2 = false
 var test_3 = false 
-var inside_room = false
+var actualRoom: String
 
 var controls_locked = false
 
@@ -73,29 +73,20 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-	#lanterna dentro da sala
-	if inside_room and not flashlight.enabled and not test_1:
-		flashlight_timer += delta
-
-		if flashlight_timer >= 10:
-			test_1 = true
-			$"../LivingRoom/LivingRoomLight".enabled = true
-			spawn_collectible(Vector2(0, 150))
-			
-	elif inside_room and flashlight.enabled and not test_1:
-		flashlight_timer = 0
-
-
-func _on_living_room_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		inside_room = true
+	##lanterna dentro da sala
+	#if inside_room and not flashlight.enabled and not test_1:
+		#flashlight_timer += delta
+#
+		#if flashlight_timer >= 10:
+			#test_1 = true
+			#$"../LivingRoom/LivingRoomLight".enabled = true
+			#spawn_collectible(Vector2(0, 150))
+			#
+	#elif inside_room and flashlight.enabled and not test_1:
+		#flashlight_timer = 0
 
 
 func _on_living_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		inside_room = false
 		$"../LivingRoom/LivingRoomLight".enabled = false
 		flashlight_timer = 0
-
-func _on_dining_room_body_exited(body: Node2D) -> void:
-	$"../DiningRoom/DiningRoomLight".enabled = false
