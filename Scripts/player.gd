@@ -24,7 +24,7 @@ func _input(event):
 	if controls_locked:
 		return
 	if event.is_action_pressed("flashlight"):
-		flashlight.enabled = !flashlight.enabled 
+		flashlight.enabled = !flashlight.enabled
 	if event.is_action_pressed("interact"): 
 		interaction_area.interact()
 		

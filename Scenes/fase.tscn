@@ -44,7 +44,8 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_bspbu"]
 tile_size = Vector2i(32, 32)
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 9
+physics_layer_0/collision_mask = 9
 sources/0 = SubResource("TileSetAtlasSource_1tvu4")
 sources/1 = SubResource("TileSetAtlasSource_4opmr")
 
@@ -68,11 +69,18 @@ polygon = PackedVector2Array(-150, -192, 694, -192, 694, 256, -150, 256, -150, 1
 cull_mode = 2
 polygon = PackedVector2Array(-150, 320, -150, 160, -138, 160, -138, 320)
 
-[node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("camera", "LivingRoom", "DiningRoom")]
+[sub_resource type="Curve2D" id="Curve2D_10umt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 648, -108, 0, 0, 0, 0, 678, 32, 0, 0, 0, 0, 617, 211, 0, 0, 0, 0, 6, 184, 0, 0, 0, 0, -92, 36, 0, 0, 0, 0, -60, -114, 0, 0, 0, 0, 648, -108)
+}
+point_count = 7
+
+[node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("camera", "LivingRoom", "DiningRoom", "ghostSpawner")]
 script = ExtResource("1_ft64k")
 camera = NodePath("Player/Camera2D")
 LivingRoom = NodePath("LivingRoom")
 DiningRoom = NodePath("DiningRoom")
+ghostSpawner = NodePath("Path2D/PathFollow2D")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=893378175]
 z_index = -1
@@ -84,7 +92,7 @@ visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
-position = Vector2(497, 38)
+position = Vector2(62, 10)
 collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
 
@@ -104,6 +112,13 @@ shadow_enabled = true
 texture = ExtResource("3_1tvu4")
 offset = Vector2(65, 0)
 script = ExtResource("3_m2uwg")
+
+[node name="Area2D" type="Area2D" parent="Player/Flashlight" unique_id=532379061]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Flashlight/Area2D" unique_id=1621852803]
+polygon = PackedVector2Array(129.00002, -32, 129.00002, 32, 1.5258789e-05, 0)
 
 [node name="CircleLight" type="PointLight2D" parent="Player" unique_id=699591808]
 color = Color(0.58431375, 0.62352943, 0.8666667, 1)
@@ -193,6 +208,17 @@ occluder = SubResource("OccluderPolygon2D_bspbu")
 position = Vector2(0, -192)
 occluder = SubResource("OccluderPolygon2D_ft64k")
 
+[node name="Path2D" type="Path2D" parent="." unique_id=2111880901]
+curve = SubResource("Curve2D_10umt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1290355828]
+position = Vector2(648, -108)
+rotation = 1.359703
+rotates = false
+
+[connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
+[connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="LivingRoom" to="." method="_on_living_room_body_entered"]
 [connection signal="body_exited" from="LivingRoom" to="." method="_on_living_room_body_exited"]
 [connection signal="body_exited" from="LivingRoom" to="Player" method="_on_living_room_body_exited"]

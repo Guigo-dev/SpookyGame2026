@@ -71,6 +71,11 @@ interact={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_3="Fantasma"
+2d_physics/layer_4="Occluder"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
