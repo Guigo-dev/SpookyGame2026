@@ -4,16 +4,17 @@ extends CharacterBody2D
 @onready var interaction_area: Area2D = $InteractionArea
 @export var collectible: PackedScene
 
+
+var fearPercentage = 0.0
 var collectible_counter = 0
 var flashlight_timer = 0
 var test_1 = false
 var test_2 = false
 var test_3 = false 
-var actualRoom: String
 
 var controls_locked = false
 
-const SPEED = 150.0
+const SPEED = 75.0
 @export var sprite_2d: AnimatedSprite2D
 var direction_looking := Vector2.DOWN
 

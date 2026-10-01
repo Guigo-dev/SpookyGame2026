@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b1wbiwhjfk3q7" path="res://Sprites/Images/room-light.png" id="8_4opmr"]
 [ext_resource type="Script" uid="uid://d0gn1w12rlgei" path="res://Scripts/food.gd" id="9_4iykg"]
 [ext_resource type="Texture2D" uid="uid://bw55gygeuocnb" path="res://icon.svg" id="9_e6h3x"]
+[ext_resource type="Texture2D" uid="uid://06kqunc48vys" path="res://Sprites/Images/HeartBeatTexture.png" id="13_10umt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1tvu4"]
 texture = ExtResource("5_mvxks")
@@ -88,7 +89,6 @@ tile_map_data = PackedByteArray("AAD8//3/AAACAAAAAAD8//7/AAACAAAAAAD8////AAACAAA
 tile_set = SubResource("TileSet_bspbu")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1541262574]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
@@ -215,6 +215,19 @@ curve = SubResource("Curve2D_10umt")
 position = Vector2(648, -108)
 rotation = 1.359703
 rotates = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1669754905]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=484415971]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(360, 180)
+texture = ExtResource("13_10umt")
+stretch_mode = 3
 
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
 [connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]
