@@ -3,6 +3,7 @@ extends Node2D
 @onready var heartbeat = $CanvasLayer/TextureRect
 var heartbeat_timer := 0.0
 
+@export var player: CharacterBody2D
 @export var camera : Camera2D
 @export var LivingRoom: Node2D
 @export var DiningRoom: Node2D

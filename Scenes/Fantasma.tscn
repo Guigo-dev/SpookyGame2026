@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bfb6wejps0e4v" path="res://Scripts/fantasma.gd" id="1_knpbk"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ah5am"]
+light_mode = 2
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_knpbk"]
 load_path = "res://.godot/imported/ghost.png-4713458f9c30f3728bae0d623b50468f.ctex"
 
@@ -10,10 +13,12 @@ radius = 11.0
 height = 32.0
 
 [node name="Fantasma" type="Area2D" unique_id=106913001]
+material = SubResource("CanvasItemMaterial_ah5am")
 script = ExtResource("1_knpbk")
 speed = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1884011833]
+use_parent_material = true
 texture = SubResource("CompressedTexture2D_knpbk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1936933309]
