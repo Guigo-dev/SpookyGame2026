@@ -15,16 +15,18 @@ func _physics_process(delta: float) -> void:
 	var target_angle = global_position.angle_to_point(mouse_position)
 	rotation = lerp_angle(rotation, target_angle, rotation_speed * delta)
 	if ghosts.size() > 0 and self.enabled == true:
-		for ghost in ghosts:
-			if !is_instance_valid(ghost):
-				ghosts.erase(ghost)
-				Global.ghostsQtd -= 1
-			elif ghosts[ghost]["isInFlashlight"]:
-				ghosts[ghost]["time"] += delta #calcula o tempo que o fantasma está colidindo com a lanterna
-				if ghosts[ghost]["time"] > 3:
+		for ghost in ghosts.keys():
+			if is_instance_valid(ghost):
+				if ghosts[ghost]["isInFlashlight"]:
+					ghosts[ghost]["time"] += delta #calcula o tempo que o fantasma está colidindo com a lanterna
+				if ghosts[ghost]["time"] >= 3:
 					ghosts.erase(ghost)
 					ghost.queue_free()
 					Global.ghostsQtd -= 1
+			else:
+				ghosts.erase(ghost)
+				Global.ghostsQtd -= 1
+			
 		
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
