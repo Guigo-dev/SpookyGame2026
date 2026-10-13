@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cge3544xtgy2w" path="res://Sprites/Images/wall.png" id="2_a44jk"]
 [ext_resource type="PackedScene" uid="uid://csvn783kla0sj" path="res://Scenes/Player.tscn" id="2_m2uwg"]
 [ext_resource type="Texture2D" uid="uid://cwk3rqlkc0nyw" path="res://Sprites/Images/Flashlight2.png" id="3_1tvu4"]
-[ext_resource type="Script" uid="uid://cfhpbiacruqw3" path="res://Scripts/point_light_2d.gd" id="3_m2uwg"]
+[ext_resource type="Script" uid="uid://cfhpbiacruqw3" path="res://Scripts/flashlight.gd" id="3_m2uwg"]
 [ext_resource type="Texture2D" uid="uid://b5w1gmki6jehj" path="res://Sprites/Images/circleLight.png" id="4_mvxks"]
 [ext_resource type="PackedScene" uid="uid://bmgyefpege3an" path="res://Scenes/Collectible.tscn" id="4_qgtny"]
 [ext_resource type="PackedScene" uid="uid://clhwperjen1rt" path="res://Scenes/porta.tscn" id="5_1tvu4"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b1wbiwhjfk3q7" path="res://Sprites/Images/room-light.png" id="8_4opmr"]
 [ext_resource type="Script" uid="uid://d0gn1w12rlgei" path="res://Scripts/food.gd" id="9_4iykg"]
 [ext_resource type="Texture2D" uid="uid://bw55gygeuocnb" path="res://icon.svg" id="9_e6h3x"]
-[ext_resource type="Texture2D" uid="uid://06kqunc48vys" path="res://Sprites/Images/HeartBeatTexture.png" id="13_10umt"]
+[ext_resource type="Texture2D" uid="uid://dswhhl2pa0x4o" path="res://Sprites/Images/HeartBeatTexture.png" id="13_10umt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1tvu4"]
 texture = ExtResource("5_mvxks")
@@ -90,7 +90,7 @@ tile_map_data = PackedByteArray("AAD8//3/AAACAAAAAAD8//7/AAACAAAAAAD8////AAACAAA
 tile_set = SubResource("TileSet_bspbu")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1541262574]
-color = Color(0.40641972, 0.40641975, 0.4064196, 1)
+color = Color(0.349, 0.349, 0.349, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
 position = Vector2(46, 20)

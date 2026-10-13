@@ -14,3 +14,9 @@ func _process(delta: float) -> void:
 	
 	var direction = global_position.direction_to(target.global_position)
 	global_position += direction * speed * delta
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		body.updateFearAmount(25)
+		queue_free()

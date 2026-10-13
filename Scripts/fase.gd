@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	ghostSpawner.progress += 20 * delta
 	heartbeat_timer += delta
 
-	if heartbeat_timer >= 5.0:
+	if heartbeat_timer >= Global.heartbeatInterval:
 		heartbeat_timer = 0.0
 		heartbeat_pulse()
 

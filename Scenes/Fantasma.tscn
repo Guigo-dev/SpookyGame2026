@@ -23,3 +23,5 @@ texture = SubResource("CompressedTexture2D_knpbk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1936933309]
 shape = SubResource("CapsuleShape2D_bspbu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var collectible: PackedScene
 
 
-var fearPercentage = 0.0
+var fearAmount := 0
 var collectible_counter = 0
 var flashlight_timer = 0
 var test_1 = false
@@ -91,3 +91,22 @@ func _on_living_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		$"../LivingRoom/LivingRoomLight".enabled = false
 		flashlight_timer = 0
+
+func updateFearAmount(amount : int) -> void:
+	fearAmount += amount
+	if fearAmount >= 150:
+		Global.heartbeatInterval = 0.5
+		$"../CanvasModulate".color = Color.BLACK
+	elif fearAmount >= 100:
+		Global.heartbeatInterval = 1.0
+		$"../CanvasModulate".set_color(Color(0.157, 0.157, 0.157))
+	elif fearAmount >= 50:
+		Global.heartbeatInterval = 2.5
+		$"../CanvasModulate".set_color(Color(0.22, 0.22, 0.22))
+	elif fearAmount >= 25:
+		Global.heartbeatInterval = 3.5
+		$"../CanvasModulate".set_color(Color(0.255, 0.255, 0.255))
+	else:
+		$"../CanvasModulate".set_color(Color(0.349, 0.349, 0.349)) 
+		Global.heartbeatInterval = 5.0
+	print(fearAmount)
