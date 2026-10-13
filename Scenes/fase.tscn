@@ -76,8 +76,9 @@ _data = {
 }
 point_count = 7
 
-[node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("player", "camera", "LivingRoom", "DiningRoom", "ghostSpawner")]
+[node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("canvasModulate", "player", "camera", "LivingRoom", "DiningRoom", "ghostSpawner")]
 script = ExtResource("1_ft64k")
+canvasModulate = NodePath("CanvasModulate")
 player = NodePath("Player")
 camera = NodePath("Player/Camera2D")
 LivingRoom = NodePath("LivingRoom")

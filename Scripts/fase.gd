@@ -3,6 +3,7 @@ extends Node2D
 @onready var heartbeat = $CanvasLayer/TextureRect
 var heartbeat_timer := 0.0
 
+@export var canvasModulate: CanvasModulate
 @export var player: CharacterBody2D
 @export var camera : Camera2D
 @export var LivingRoom: Node2D
@@ -21,10 +22,12 @@ func _process(delta: float) -> void:
 	ghostCD += delta
 	ghostSpawner.progress += 20 * delta
 	heartbeat_timer += delta
-
+	if canvasModulate.color != Global.currentCanvasModulateColor:
+		canvasModulate.color = canvasModulate.color.lerp(Global.currentCanvasModulateColor,2.0*delta)
 	if heartbeat_timer >= Global.heartbeatInterval:
 		heartbeat_timer = 0.0
 		heartbeat_pulse()
+	
 
 func spawnGhost() -> void:
 	var ghostInstance = ghostScene.instantiate()
