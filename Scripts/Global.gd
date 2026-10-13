@@ -3,6 +3,7 @@ extends Node2D
 var actualRoom: String
 var ghostsQtd: int
 var heartbeatInterval:= 5.0
+var fearLevel = 1
 
 var mapsCamLimits := {
 	"DiningRoom": [-148,-184,692,256], #Left,Top,Right,Bottom

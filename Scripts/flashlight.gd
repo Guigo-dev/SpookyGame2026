@@ -19,10 +19,10 @@ func _physics_process(delta: float) -> void:
 			if is_instance_valid(ghost):
 				if ghosts[ghost]["isInFlashlight"]:
 					ghosts[ghost]["time"] += delta #calcula o tempo que o fantasma está colidindo com a lanterna
-				if ghosts[ghost]["time"] >= 3:
-					ghosts.erase(ghost)
-					ghost.queue_free()
-					Global.ghostsQtd -= 1
+					if ghosts[ghost]["time"] >= 3:
+						ghosts.erase(ghost)
+						ghost.queue_free()
+						Global.ghostsQtd -= 1
 			else:
 				ghosts.erase(ghost)
 				Global.ghostsQtd -= 1

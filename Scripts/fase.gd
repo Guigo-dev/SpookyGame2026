@@ -15,7 +15,7 @@ func _ready() -> void:
 	randomize()
 
 func _process(delta: float) -> void:
-	if ghostCD >= randi_range(10,30) and Global.ghostsQtd < 6: #spawn dos fantasmas
+	if ghostCD >= randi_range(10,30) and Global.ghostsQtd < 5: #spawn dos fantasmas
 		spawnGhost()
 		ghostCD = 0
 	ghostCD += delta

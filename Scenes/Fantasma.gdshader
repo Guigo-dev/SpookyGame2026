@@ -1,6 +1,6 @@
 
 shader_type canvas_item;
-render_mode unshaded;
+render_mode light_only;
 
 // --- PARÂMETROS ESTÉTICOS ---
 uniform float color_levels : hint_range(2.0, 128.0) = 14.0;
@@ -15,7 +15,7 @@ uniform float black_offset_multiplier : hint_range(0.0, 0.5) = 0.1;
 uniform float color_offset : hint_range(-0.1, 0.1) = 0.005;
 
 // --- ILUMINAÇÃO ---
-uniform float light_influence : hint_range(0.0, 2.0) = 1.0;
+uniform float light_influence : hint_range(0.0, 1.0) = 1.0;
 
 float noise(vec2 uv, float offset) {
     return (
@@ -97,16 +97,13 @@ void fragment() {
 }
 
 void light() {
-    // A cor do sprite é modulada pela iluminação 2D.
-    // A máscara alfa continua sendo respeitada.
-    vec4 tex = texture(TEXTURE, UV);
-
+    // Preserva a cor processada pelo fragment e modula pela luz.
     vec3 illumination = LIGHT_COLOR.rgb * LIGHT_ENERGY;
     vec3 light_factor = mix(
         vec3(1.0),
         illumination,
-        clamp(light_influence, 0.0, 1.0)
+        light_influence
     );
 
-    LIGHT = vec4(light_factor, LIGHT_COLOR.a);
+    LIGHT = vec4(COLOR.rgb * light_factor, COLOR.a * LIGHT_COLOR.a);
 }

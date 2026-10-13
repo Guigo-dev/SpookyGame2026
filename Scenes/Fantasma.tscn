@@ -3,19 +3,31 @@
 [ext_resource type="Script" uid="uid://bfb6wejps0e4v" path="res://Scripts/fantasma.gd" id="1_knpbk"]
 [ext_resource type="Shader" uid="uid://ftmf85yn5wtn" path="res://Scenes/Fantasma.gdshader" id="2_o8er2"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o8er2"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fgvhg"]
 light_mode = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx08h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8er2"]
 shader = ExtResource("2_o8er2")
-shader_parameter/color_levels = 14.0
-shader_parameter/chromatic_aberration = 0.008
-shader_parameter/blur_amount = 1.0
+shader_parameter/color_levels = 69.478003205205
+shader_parameter/chromatic_aberration = 0.1230000058425
+shader_parameter/blur_amount = 1.0450000496375
 shader_parameter/brightness = 1.2
 shader_parameter/saturation = 1.0
-shader_parameter/color_offset_multiplier = 0.004
+shader_parameter/color_offset_multiplier = 0.0730000034675
 shader_parameter/black_offset_multiplier = 0.1
 shader_parameter/color_offset = 0.005
+shader_parameter/light_influence = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fgvhg"]
+shader = ExtResource("2_o8er2")
+shader_parameter/color_levels = 14.0
+shader_parameter/chromatic_aberration = 0.0
+shader_parameter/blur_amount = 0.0
+shader_parameter/brightness = 1.16400003154
+shader_parameter/saturation = 3.66400017404
+shader_parameter/color_offset_multiplier = 0.20000000298023
+shader_parameter/black_offset_multiplier = 0.246000011685
+shader_parameter/color_offset = 0.10000000149012
 shader_parameter/light_influence = 1.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_knpbk"]
@@ -26,13 +38,13 @@ radius = 11.0
 height = 32.0
 
 [node name="Fantasma" type="Area2D" unique_id=106913001]
-material = SubResource("CanvasItemMaterial_o8er2")
 script = ExtResource("1_knpbk")
 speed = 20.0
+invMaterial = SubResource("CanvasItemMaterial_fgvhg")
+strangeMaterial = SubResource("ShaderMaterial_o8er2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1884011833]
-material = SubResource("ShaderMaterial_tx08h")
-use_parent_material = true
+material = SubResource("ShaderMaterial_fgvhg")
 texture = SubResource("CompressedTexture2D_knpbk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1936933309]

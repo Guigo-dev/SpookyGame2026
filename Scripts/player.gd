@@ -98,9 +98,11 @@ func updateFearAmount(amount : int) -> void:
 		Global.heartbeatInterval = 0.5
 		$"../CanvasModulate".color = Color.BLACK
 	elif fearAmount >= 100:
+		Global.fearLevel = 3
 		Global.heartbeatInterval = 1.0
 		$"../CanvasModulate".set_color(Color(0.157, 0.157, 0.157))
 	elif fearAmount >= 50:
+		Global.fearLevel = 2
 		Global.heartbeatInterval = 2.5
 		$"../CanvasModulate".set_color(Color(0.22, 0.22, 0.22))
 	elif fearAmount >= 25:
@@ -109,4 +111,5 @@ func updateFearAmount(amount : int) -> void:
 	else:
 		$"../CanvasModulate".set_color(Color(0.349, 0.349, 0.349)) 
 		Global.heartbeatInterval = 5.0
+		Global.fearLevel = 1
 	print(fearAmount)
