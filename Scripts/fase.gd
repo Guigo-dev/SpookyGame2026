@@ -8,6 +8,7 @@ var heartbeat_timer := 0.0
 @export var camera : Camera2D
 @export var LivingRoom: Node2D
 @export var DiningRoom: Node2D
+@export var Kitchen: Node2D
 @export var ghostSpawner: PathFollow2D
 var ghostCD: float
 var ghostScene = preload("res://Scenes/Fantasma.tscn")
@@ -74,12 +75,25 @@ func _on_dining_room_body_entered(body: Node2D) -> void:
 		if Global.mapsLightStatus[Global.actualRoom] == true:
 			DiningRoom.get_node("DiningRoomLight").enabled = true
 
+func _on_kitchen_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		Global.actualRoom = "Kitchen"
+		camera.limit_left = Global.mapsCamLimits["Kitchen"][0]
+		camera.limit_top = Global.mapsCamLimits["Kitchen"][1]
+		camera.limit_right = Global.mapsCamLimits["Kitchen"][2]
+		camera.limit_bottom = Global.mapsCamLimits["Kitchen"][3]
+		if Global.mapsLightStatus[Global.actualRoom] == true:
+			Kitchen.get_node("KitchenLight").enabled = true
+
 
 func _on_living_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		LivingRoom.get_node("LivingRoomLight").enabled = false
 
-
 func _on_dining_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		DiningRoom.get_node("DiningRoomLight").enabled = false
+
+func _on_kitchen_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		Kitchen.get_node("KitchenLight").enabled = false

@@ -7,11 +7,13 @@ var fearLevel = 1
 var currentCanvasModulateColor = Color(0.349, 0.349, 0.349)
 
 var mapsCamLimits := {
-	"DiningRoom": [-148,-184,692,256], #Left,Top,Right,Bottom
-	"LivingRoom": [-1012,-512,-140,512]
+	"DiningRoom": [-140,-186,704,256], #Left,Top,Right,Bottom
+	"LivingRoom": [-992,6,-128,512],
+	"Kitchen": [-992,-538,-128,18]
 }
 
 var mapsLightStatus := {
 	"DiningRoom": false,
-	"LivingRoom": false
+	"LivingRoom": false,
+	"Kitchen": false
 }
