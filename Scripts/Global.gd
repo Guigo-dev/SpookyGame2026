@@ -9,11 +9,13 @@ var currentCanvasModulateColor = Color(0.349, 0.349, 0.349)
 var mapsCamLimits := {
 	"DiningRoom": [-140,-186,704,256], #Left,Top,Right,Bottom
 	"LivingRoom": [-992,6,-128,512],
-	"Kitchen": [-992,-538,-128,18]
+	"Kitchen": [-992,-538,-128,18],
+	"Attic": [-820, 1025,-333,1247]
 }
 
 var mapsLightStatus := {
 	"DiningRoom": false,
 	"LivingRoom": false,
-	"Kitchen": false
+	"Kitchen": false,
+	"Attic": false
 }
