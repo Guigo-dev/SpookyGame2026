@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://jcmgo7tb2fp7"]
+
+[ext_resource type="Texture2D" uid="uid://ddudpqw2y65yy" path="res://Sprites/Images/spider.png" id="1_7jur5"]
+[ext_resource type="Script" uid="uid://b1dwwxdf43n60" path="res://Scenes/spider.gd" id="1_cgp8y"]
+
+[sub_resource type="Shader" id="Shader_cgp8y"]
+code = "
+shader_type canvas_item;
+//render_mode light_only;
+
+// --- PARÂMETROS ESTÉTICOS ---
+uniform float color_levels : hint_range(2.0, 128.0) = 14.0;
+uniform float chromatic_aberration : hint_range(0.0, 0.2) = 0.008;
+uniform float blur_amount : hint_range(0.0, 5.0) = 0.0;
+uniform float brightness : hint_range(0.5, 3.0) = 1.2;
+uniform float saturation : hint_range(0.0, 5.0) = 1.0;
+
+// --- PARÂMETROS DE GLITCH ---
+uniform float color_offset_multiplier : hint_range(0.0, 0.2) = 0.004;
+uniform float black_offset_multiplier : hint_range(0.0, 0.5) = 0.1;
+uniform float color_offset : hint_range(-0.1, 0.1) = 0.005;
+
+// --- ILUMINAÇÃO ---
+uniform float light_influence : hint_range(0.0, 1.0) = 1.0;
+
+float noise(vec2 uv, float offset) {
+    return (
+        fract(sin(dot(uv * offset, vec2(12.9898, 78.233)))
+        * 43758.5453) - 0.5
+    ) * 2.0;
+}
+
+vec3 rgb_to_yuv(vec3 rgb) {
+    const mat3 RGB_TO_YUV = mat3(
+        vec3(0.299, 0.587, 0.114),
+        vec3(-0.14713, -0.28886, 0.436),
+        vec3(0.615, -0.51499, -0.10001)
+    );
+    return rgb * RGB_TO_YUV;
+}
+
+vec3 yuv_to_rgb(vec3 yuv) {
+    const mat3 YUV_TO_RGB = mat3(
+        vec3(1.0, 0.0, 1.13983),
+        vec3(1.0, -0.39465, -0.58060),
+        vec3(1.0, 2.03211, 0.0)
+    );
+    return clamp(yuv * YUV_TO_RGB, vec3(0.0), vec3(1.0));
+}
+
+void fragment() {
+    vec4 tex = texture(TEXTURE, UV);
+
+    if (tex.a <= 0.001) {
+        discard;
+    }
+
+    float line_logic = floor(UV.y * 487.0);
+    vec2 noise_coord = vec2(line_logic, 0.0);
+
+    float x_offset = color_offset
+        + noise(noise_coord, TIME) * color_offset_multiplier;
+
+    float black_offset = noise(noise_coord, TIME + 65.0)
+        * (black_offset_multiplier * 0.01);
+
+    float red = texture(
+        TEXTURE,
+        UV + vec2(chromatic_aberration + black_offset, 0.0)
+    ).r;
+
+    float green = tex.g;
+
+    float blue = texture(
+        TEXTURE,
+        UV - vec2(chromatic_aberration - black_offset, 0.0)
+    ).b;
+
+    vec3 col = vec3(red, green, blue);
+
+    vec3 shifted = textureLod(
+        TEXTURE,
+        UV + vec2(x_offset, 0.0),
+        blur_amount * 0.25
+    ).rgb;
+
+    vec3 yuv_base = rgb_to_yuv(col);
+    vec3 yuv_shifted = rgb_to_yuv(shifted);
+
+    col = yuv_to_rgb(
+        vec3(yuv_base.x, yuv_shifted.y, yuv_shifted.z)
+    );
+
+    float luma = dot(col, vec3(0.299, 0.587, 0.114));
+    col = mix(vec3(luma), col, saturation);
+    col *= brightness;
+
+    col = floor(col * color_levels + 0.3) / color_levels;
+    col = clamp(col, 0.0, 1.0);
+    col = mix(col, col * col * (3.0 - 2.0 * col), 0.6);
+
+    COLOR = vec4(col, tex.a);
+}
+
+void light() {
+    // Preserva a cor processada pelo fragment e modula pela luz.
+    vec3 illumination = LIGHT_COLOR.rgb * LIGHT_ENERGY;
+    vec3 light_factor = mix(
+        vec3(1.0),
+        illumination,
+        light_influence
+    );
+
+    LIGHT = vec4(COLOR.rgb * light_factor, COLOR.a * LIGHT_COLOR.a);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgp8y"]
+shader = SubResource("Shader_cgp8y")
+shader_parameter/color_levels = 14.0
+shader_parameter/chromatic_aberration = 0.008
+shader_parameter/blur_amount = 0.0
+shader_parameter/brightness = 1.2
+shader_parameter/saturation = 1.0
+shader_parameter/color_offset_multiplier = 0.004
+shader_parameter/black_offset_multiplier = 0.1
+shader_parameter/color_offset = 0.005
+shader_parameter/light_influence = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgp8y"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc654"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrc5k"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js0a4"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j02d7"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ng7r"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsvk6"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5pga"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slyxj"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnqdq"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw87y"]
+atlas = ExtResource("1_7jur5")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bspbu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgp8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc654")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrc5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js0a4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j02d7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ng7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsvk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5pga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slyxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnqdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hw87y")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o58ds"]
+size = Vector2(26, 12)
+
+[node name="Spider" type="Area2D" unique_id=965816917]
+script = ExtResource("1_cgp8y")
+speed = 10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2006102685]
+material = SubResource("ShaderMaterial_cgp8y")
+sprite_frames = SubResource("SpriteFrames_bspbu")
+animation = &"walk"
+autoplay = "walk"
+frame = 8
+frame_progress = 0.79012626
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1576993490]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_o58ds")

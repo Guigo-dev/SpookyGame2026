@@ -15,7 +15,8 @@
 [ext_resource type="Script" uid="uid://d0gn1w12rlgei" path="res://Scripts/food.gd" id="9_4iykg"]
 [ext_resource type="Texture2D" uid="uid://bw55gygeuocnb" path="res://icon.svg" id="9_e6h3x"]
 [ext_resource type="Texture2D" uid="uid://dswhhl2pa0x4o" path="res://Sprites/Images/HeartBeatTexture.png" id="13_10umt"]
-[ext_resource type="Script" uid="uid://c15tudrp5h3lj" path="res://Scripts/stairs.gd" id="15_ah5am"]
+[ext_resource type="PackedScene" uid="uid://jcmgo7tb2fp7" path="res://Scenes/Spider.tscn" id="15_ah5am"]
+[ext_resource type="Script" uid="uid://c15tudrp5h3lj" path="res://Scripts/stairs.gd" id="16_ah5am"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10umt"]
 texture = ExtResource("5_mvxks")
@@ -340,9 +341,12 @@ pivot_offset = Vector2(360, 180)
 texture = ExtResource("13_10umt")
 stretch_mode = 3
 
+[node name="Spider" parent="." unique_id=965816917 node_paths=PackedStringArray("target") instance=ExtResource("15_ah5am")]
+position = Vector2(288, 69)
+target = NodePath("../Player")
 [node name="Stairs" type="StaticBody2D" parent="." unique_id=94777428 node_paths=PackedStringArray("player", "stairs_goal", "attic_goal")]
 position = Vector2(-375, 466)
-script = ExtResource("15_ah5am")
+script = ExtResource("16_ah5am")
 player = NodePath("../Player")
 stairs_goal = NodePath("../Stairs_Goal")
 attic_goal = NodePath("../Attic_Goal")
@@ -358,7 +362,7 @@ shape = SubResource("RectangleShape2D_2tml3")
 
 [node name="Stairs2" type="StaticBody2D" parent="." unique_id=2071961717 node_paths=PackedStringArray("player", "stairs_goal", "attic_goal")]
 position = Vector2(-802, 1234)
-script = ExtResource("15_ah5am")
+script = ExtResource("16_ah5am")
 player = NodePath("../Player")
 stairs_goal = NodePath("../Stairs_Goal")
 attic_goal = NodePath("../Attic_Goal")
