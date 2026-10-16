@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cv82h02c5ei7n"]
+
+[ext_resource type="Script" uid="uid://c7dneagw7bnmr" path="res://Scripts/main_menu.gd" id="1_7sp8y"]
+[ext_resource type="PackedScene" uid="uid://b16i0md3rdbpl" path="res://Scenes/fase.tscn" id="2_pc006"]
+
+[node name="MainMenu" type="Control" unique_id=721279282 node_paths=PackedStringArray("playButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7sp8y")
+playButton = NodePath("PlayButton")
+mainScene = ExtResource("2_pc006")
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=1619986467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.37254903, 0.20392157, 0.09019608, 1)
+
+[node name="PlayButton" type="Button" parent="." unique_id=1985549942]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 168.0
+offset_right = 376.0
+offset_bottom = 199.0
+text = "Jogar"
+
+[node name="Label" type="Label" parent="." unique_id=313226463]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 48.0
+offset_right = 415.0
+offset_bottom = 71.0
+text = "TÍTULO MANEIRO"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

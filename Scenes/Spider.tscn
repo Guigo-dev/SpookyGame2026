@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://jcmgo7tb2fp7"]
 
 [ext_resource type="Texture2D" uid="uid://ddudpqw2y65yy" path="res://Sprites/Images/spider.png" id="1_7jur5"]
-[ext_resource type="Script" uid="uid://b1dwwxdf43n60" path="res://Scenes/spider.gd" id="1_cgp8y"]
+[ext_resource type="Script" uid="uid://b1dwwxdf43n60" path="res://Scripts/spider.gd" id="1_cgp8y"]
 
 [sub_resource type="Shader" id="Shader_cgp8y"]
 code = "
