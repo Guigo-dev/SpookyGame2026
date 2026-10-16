@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 	
 	var direction = global_position.direction_to(target.global_position)
 	global_position += direction * speed * delta
+	
 	update_material()
 
 

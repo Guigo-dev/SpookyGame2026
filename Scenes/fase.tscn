@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://d0gn1w12rlgei" path="res://Scripts/food.gd" id="9_4iykg"]
 [ext_resource type="Texture2D" uid="uid://bw55gygeuocnb" path="res://icon.svg" id="9_e6h3x"]
 [ext_resource type="Texture2D" uid="uid://dswhhl2pa0x4o" path="res://Sprites/Images/HeartBeatTexture.png" id="13_10umt"]
+[ext_resource type="PackedScene" uid="uid://jcmgo7tb2fp7" path="res://Scenes/Spider.tscn" id="15_ah5am"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10umt"]
 texture = ExtResource("5_mvxks")
@@ -142,6 +143,8 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 648, -108, 0, 0, 0, 0, 678, 32, 0, 0, 0, 0, 617, 211, 0, 0, 0, 0, 6, 184, 0, 0, 0, 0, -92, 36, 0, 0, 0, 0, -60, -114, 0, 0, 0, 0, 648, -108)
 }
 point_count = 7
+
+[sub_resource type="AudioStream" id="AudioStream_bspbu"]
 
 [node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("canvasModulate", "player", "camera", "LivingRoom", "DiningRoom", "Kitchen", "ghostSpawner")]
 script = ExtResource("1_ft64k")
@@ -325,6 +328,13 @@ grow_vertical = 2
 pivot_offset = Vector2(360, 180)
 texture = ExtResource("13_10umt")
 stretch_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1128663701]
+stream = SubResource("AudioStream_bspbu")
+
+[node name="Spider" parent="." unique_id=965816917 node_paths=PackedStringArray("target") instance=ExtResource("15_ah5am")]
+position = Vector2(288, 69)
+target = NodePath("../Player")
 
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
 [connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]
