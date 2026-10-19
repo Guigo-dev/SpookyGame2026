@@ -3,7 +3,8 @@ extends CharacterBody2D
 @onready var flashlight: PointLight2D = $Flashlight
 @onready var interaction_area: Area2D = $InteractionArea
 @export var collectible: PackedScene
-
+@export var audioStream: AudioStreamPlayer
+@export var sprite_2d: AnimatedSprite2D
 
 var fearAmount := 0
 var collectible_counter = 0
@@ -15,7 +16,6 @@ var test_3 = false
 var controls_locked = false
 
 const SPEED = 75.0
-@export var sprite_2d: AnimatedSprite2D
 var direction_looking := Vector2.DOWN
 
 func _ready() -> void:
@@ -26,6 +26,7 @@ func _input(event):
 		return
 	if event.is_action_pressed("flashlight"):
 		flashlight.enabled = !flashlight.enabled
+		flashlight.playSound()
 	if event.is_action_pressed("interact"): 
 		interaction_area.interact()
 		
@@ -60,6 +61,8 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity != Vector2.ZERO:
 		sprite_2d.play("walk")
+		if !audioStream.is_playing():
+			audioStream.play()
 	else:
 		sprite_2d.play("idle")
 		

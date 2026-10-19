@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://b1wbiwhjfk3q7" path="res://Sprites/Images/room-light.png" id="8_4opmr"]
 [ext_resource type="Script" uid="uid://d0gn1w12rlgei" path="res://Scripts/food.gd" id="9_4iykg"]
 [ext_resource type="Texture2D" uid="uid://bw55gygeuocnb" path="res://icon.svg" id="9_e6h3x"]
+[ext_resource type="AudioStream" uid="uid://dy0ub3jlqwud1" path="res://soundtrack/SFX (test)/holloween_sfx_flashon.wav" id="11_0svc4"]
+[ext_resource type="AudioStream" uid="uid://0w1lggwtkfb7" path="res://soundtrack/SFX (test)/holloween_sfx_flashoff.wav" id="12_u1r1b"]
 [ext_resource type="Texture2D" uid="uid://dswhhl2pa0x4o" path="res://Sprites/Images/HeartBeatTexture.png" id="13_10umt"]
 [ext_resource type="Script" uid="uid://c15tudrp5h3lj" path="res://Scripts/stairs.gd" id="16_ah5am"]
 [ext_resource type="Texture2D" uid="uid://vemxxwxoy0bv" path="res://Sprites/Images/Porta.png" id="19_64rri"]
@@ -465,6 +467,8 @@ shadow_enabled = true
 texture = ExtResource("3_1tvu4")
 offset = Vector2(65, 0)
 script = ExtResource("3_m2uwg")
+onSound = ExtResource("11_0svc4")
+offSound = ExtResource("12_u1r1b")
 
 [node name="Area2D" type="Area2D" parent="Player/Flashlight" unique_id=532379061]
 collision_layer = 4
@@ -472,6 +476,9 @@ collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Flashlight/Area2D" unique_id=1621852803]
 polygon = PackedVector2Array(129.00002, -32, 129.00002, 32, 1.5258789e-05, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Flashlight" unique_id=618297968]
+volume_db = -5.0
 
 [node name="CircleLight" type="PointLight2D" parent="Player" unique_id=699591808]
 color = Color(0.58431375, 0.62352943, 0.8666667, 1)

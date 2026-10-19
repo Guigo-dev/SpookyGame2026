@@ -2,6 +2,8 @@ extends PointLight2D
 @onready var player: CharacterBody2D = $".."
 @onready var flashlightArea: Area2D = $Area2D
 var ghosts: Dictionary[Area2D,Dictionary] = {} #
+@export var onSound: AudioStream
+@export var offSound: AudioStream
 
 
 func _ready() -> void:
@@ -19,9 +21,9 @@ func _physics_process(delta: float) -> void:
 			if is_instance_valid(ghost):
 				if ghosts[ghost]["isInFlashlight"]:
 					ghosts[ghost]["time"] += delta #calcula o tempo que o fantasma está colidindo com a lanterna
-					if ghosts[ghost]["time"] >= 3:
+					if ghosts[ghost]["time"] >= 2.4:
 						ghosts.erase(ghost)
-						ghost.queue_free()
+						ghost.die()
 						Global.ghostsQtd -= 1
 			else:
 				ghosts.erase(ghost)
@@ -32,10 +34,12 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if ghosts.has(area):
 		ghosts[area]["isInFlashlight"] = true
+		area.playSound("damage")
 	
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if ghosts.has(area):
 		ghosts[area]["isInFlashlight"] = false
+		area.playSound("stop")
 
 func _on_fase_child_entered_tree(node: Node) -> void:
 	call_deferred("add_ghost", node)
@@ -48,3 +52,10 @@ func add_ghost(node: Node):
 			"time": 0.0,
 			"isInFlashlight": false
 		}
+
+func playSound():
+	if enabled:
+		$AudioStreamPlayer.set_stream(onSound)
+	else:
+		$AudioStreamPlayer.set_stream(offSound)
+	$AudioStreamPlayer.play()

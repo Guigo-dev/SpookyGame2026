@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddwhmpyq8kov6"
+path="res://.godot/imported/holloween_sfx_dooropen.wav-5c5b79dabc9017f8bea759fa84066cb9.sample"
+
+[deps]
+
+source_file="res://soundtrack/SFX (test)/holloween_sfx_dooropen.wav"
+dest_files=["res://.godot/imported/holloween_sfx_dooropen.wav-5c5b79dabc9017f8bea759fa84066cb9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

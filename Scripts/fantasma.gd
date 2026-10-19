@@ -5,6 +5,10 @@ extends Area2D
 
 @export var invMaterial : Material
 @export var strangeMaterial : Material
+@export var dmgSound: AudioStream
+@export var deathSound: AudioStream
+
+var soundPosition := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,3 +49,21 @@ func update_material():
 		$Sprite2D.material.set_shader_parameter("brightness",1.2)
 		$Sprite2D.material.set_shader_parameter("saturation",3.5)
 		$Sprite2D.material.set_shader_parameter("collor_offset_multiplier",0.2)
+
+func playSound(type:String):
+	if type == "damage":
+		$AudioStreamPlayer.set_stream(dmgSound)
+		$AudioStreamPlayer.play(soundPosition)
+	elif type == "death":
+		$AudioStreamPlayer.set_stream(deathSound)
+		$AudioStreamPlayer.play()
+		await $AudioStreamPlayer.finished
+	elif type == "stop":
+		soundPosition = $AudioStreamPlayer.get_playback_position()
+		$AudioStreamPlayer.stop()
+
+func die():
+	$Sprite2D.visible = false
+	$CollisionShape2D.disabled = true
+	await playSound("death")
+	queue_free()
