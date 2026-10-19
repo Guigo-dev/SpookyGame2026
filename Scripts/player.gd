@@ -36,7 +36,8 @@ func spawn_collectible(posicao: Vector2):
 	$"../Collectibles".add_child(item)
 
 func _physics_process(delta: float) -> void:
-	
+	if Global.animationIsPlaying:
+		return
 	if controls_locked:
 		velocity = Vector2.ZERO
 		sprite_2d.play("idle")
@@ -113,3 +114,6 @@ func updateFearAmount(amount : int) -> void:
 		Global.heartbeatInterval = 5.0
 		Global.fearLevel = 1
 	print(fearAmount)
+	
+func playAnimation(anim: String):
+	sprite_2d.play(anim)
