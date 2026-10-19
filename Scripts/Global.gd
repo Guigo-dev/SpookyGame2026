@@ -5,6 +5,7 @@ var ghostsQtd: int
 var heartbeatInterval:= 5.0
 var fearLevel = 1
 var currentCanvasModulateColor = Color(0.349, 0.349, 0.349)
+var animationIsPlaying := false
 
 var mapsCamLimits := {
 	"DiningRoom": [-140,-186,704,256], #Left,Top,Right,Bottom

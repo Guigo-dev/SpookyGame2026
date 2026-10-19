@@ -16,9 +16,12 @@ var ghostCD: float
 var ghostScene = preload("res://Scenes/Fantasma.tscn")
 
 func _ready() -> void:
+	#$AnimationPlayer.play("initialCutscene")
 	randomize()
 
 func _process(delta: float) -> void:
+	if Global.animationIsPlaying:
+		return
 	if ghostCD >= randi_range(10,30) and Global.ghostsQtd < 5: #spawn dos fantasmas
 		spawnGhost()
 		ghostCD = 0
@@ -112,3 +115,11 @@ func _on_kitchen_body_exited(body: Node2D) -> void:
 func _on_attic_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		attic.get_node("AtticLight").enabled = false
+
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	Global.animationIsPlaying = true
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	Global.animationIsPlaying = false
