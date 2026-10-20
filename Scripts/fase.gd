@@ -46,7 +46,7 @@ func heartbeat_pulse():
 	var tween = create_tween()
 
 	heartbeat.modulate.a = 0.0
-
+	$HeartbeatSound.play()
 	# primeira batida
 	tween.tween_property(heartbeat, "modulate:a", 0.7, 0.08)
 	tween.tween_property(heartbeat, "modulate:a", 0.0, 0.08)

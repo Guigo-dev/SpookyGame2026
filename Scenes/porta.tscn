@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://clhwperjen1rt"]
 
 [ext_resource type="Script" uid="uid://da54iiimw25yo" path="res://Scripts/porta.gd" id="1_5f6wt"]
+[ext_resource type="AudioStream" uid="uid://ddwhmpyq8kov6" path="res://soundtrack/SFX (test)/holloween_sfx_dooropen.wav" id="2_5f6wt"]
+[ext_resource type="AudioStream" uid="uid://bwcrbekwmv1sw" path="res://soundtrack/SFX (test)/holloween_sfx_doorclose.wav" id="3_camwj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5quaa"]
 load_path = "res://.godot/imported/Porta.png-942247d64a4e54c9a9889975b2fbeef7.ctex"
@@ -27,3 +29,9 @@ shape = SubResource("RectangleShape2D_bspbu")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1038164814]
 position = Vector2(8, 16)
 occluder = SubResource("OccluderPolygon2D_bspbu")
+
+[node name="OpenAudio" type="AudioStreamPlayer2D" parent="." unique_id=395781205]
+stream = ExtResource("2_5f6wt")
+
+[node name="CloseAudio" type="AudioStreamPlayer2D" parent="." unique_id=2034620881]
+stream = ExtResource("3_camwj")

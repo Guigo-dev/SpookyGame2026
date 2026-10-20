@@ -2,12 +2,17 @@ extends StaticBody2D
 
 @export var Area1 : Area2D
 @export var Area2: Area2D
+@onready var open_audio: AudioStreamPlayer2D = $OpenAudio
+@onready var close_audio: AudioStreamPlayer2D = $CloseAudio
+
 var tween: Tween
 
 func interact():
 	if tween:
 		return
 	var tween = create_tween()
+	open_audio.play()
 	tween.tween_property(self,"rotation",deg_to_rad(-90),2)
 	tween.tween_interval(3)
+	close_audio.play()
 	tween.tween_property(self,"rotation",0,2)
