@@ -7,8 +7,6 @@ func interact():
 	if was_eaten:
 		return
 	
-	$Sprite2D.hide()
-	
 	var player = get_tree().get_first_node_in_group("player")
 	
 	if player:
@@ -20,6 +18,7 @@ func interact():
 		player.controls_locked = false
 		was_eaten = true
 		player.test_2 = true
-		Global.mapsLightStatus["DiningRoom"] = true
-		$"../DiningRoomLight".enabled = true
+		Global.mapsLightStatus["Kitchen"] = true
+		$"../KitchenLight".enabled = true
 		$"../../LightsOnSound".play()
+		Global.ChanllengsCounter += 1

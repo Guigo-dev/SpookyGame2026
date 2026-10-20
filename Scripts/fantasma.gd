@@ -52,6 +52,8 @@ func update_material():
 
 func playSound(type:String):
 	if type == "damage":
+		if $AudioStreamPlayer.is_playing():
+			return
 		$AudioStreamPlayer.set_stream(dmgSound)
 		$AudioStreamPlayer.play(soundPosition)
 	elif type == "death":

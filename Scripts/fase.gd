@@ -16,17 +16,18 @@ var ghostCD: float
 var ghostScene = preload("res://Scenes/Fantasma.tscn")
 
 func _ready() -> void:
-	#$AnimationPlayer.play("initialCutscene")
+	$AnimationPlayer.play("initialCutscene")
 	randomize()
 
 func _process(delta: float) -> void:
 	if Global.animationIsPlaying:
 		return
-	if ghostCD >= randi_range(10,30) and Global.ghostsQtd < 5: #spawn dos fantasmas
-		spawnGhost()
-		ghostCD = 0
-	ghostCD += delta
-	ghostSpawner.progress += 20 * delta
+	if !Global.mapsLightStatus["LivingRoom"]:
+		if ghostCD >= randi_range(7,20) and Global.ghostsQtd < 5: #spawn dos fantasmas
+			spawnGhost()
+			ghostCD = 0
+		ghostCD += delta
+		ghostSpawner.progress += 20 * delta
 	heartbeat_timer += delta
 	if canvasModulate.color != Global.currentCanvasModulateColor:
 		canvasModulate.color = canvasModulate.color.lerp(Global.currentCanvasModulateColor,2.0*delta)

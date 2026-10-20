@@ -32,6 +32,8 @@ occluder = SubResource("OccluderPolygon2D_bspbu")
 
 [node name="OpenAudio" type="AudioStreamPlayer2D" parent="." unique_id=395781205]
 stream = ExtResource("2_5f6wt")
+max_distance = 500.0
 
 [node name="CloseAudio" type="AudioStreamPlayer2D" parent="." unique_id=2034620881]
 stream = ExtResource("3_camwj")
+max_distance = 500.0

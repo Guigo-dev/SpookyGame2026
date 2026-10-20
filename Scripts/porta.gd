@@ -8,11 +8,18 @@ extends StaticBody2D
 var tween: Tween
 
 func interact():
-	if tween:
+	if tween and tween.is_running():
 		return
-	var tween = create_tween()
+
+	tween = create_tween()
+
 	open_audio.play()
-	tween.tween_property(self,"rotation",deg_to_rad(-90),2)
-	tween.tween_interval(3)
+	tween.tween_property(self, "rotation", deg_to_rad(-90), 2)
+
+	await tween.finished
+
+	await get_tree().create_timer(3).timeout
+
 	close_audio.play()
-	tween.tween_property(self,"rotation",0,2)
+	tween = create_tween()
+	tween.tween_property(self, "rotation", 0.0, 2)

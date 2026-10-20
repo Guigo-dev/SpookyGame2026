@@ -45,6 +45,12 @@ size = Vector2(13, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
 size = Vector2(14, 12)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_camwj"]
+playback_mode = 1
+random_pitch = 1.1892071
+streams_count = 1
+stream_0/stream = ExtResource("4_dewec")
+
 [node name="Player" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("audioStream", "sprite_2d")]
 light_mask = 0
 motion_mode = 1
@@ -71,5 +77,5 @@ shape = SubResource("RectangleShape2D_ostoq")
 debug_color = Color(0, 0, 1, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=585524915]
-stream = ExtResource("4_dewec")
-volume_db = -18.0
+stream = SubResource("AudioStreamRandomizer_camwj")
+volume_db = -30.0

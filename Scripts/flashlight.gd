@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 		for ghost in ghosts.keys():
 			if is_instance_valid(ghost):
 				if ghosts[ghost]["isInFlashlight"]:
+					ghost.playSound("damage")
 					ghosts[ghost]["time"] += delta #calcula o tempo que o fantasma está colidindo com a lanterna
 					if ghosts[ghost]["time"] >= 2.4:
 						ghosts.erase(ghost)
@@ -34,7 +35,6 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if ghosts.has(area):
 		ghosts[area]["isInFlashlight"] = true
-		area.playSound("damage")
 	
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if ghosts.has(area):
