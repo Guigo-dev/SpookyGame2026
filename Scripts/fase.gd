@@ -1,7 +1,9 @@
 extends Node2D
 
 @onready var heartbeat = $CanvasLayer/TextureRect
+@onready var spider_spawn_point: Marker2D = $SpiderSpawnPoint
 var heartbeat_timer := 0.0
+const SPIDER_SCENE = preload("res://Scenes/Spider.tscn")
 
 @export var canvasModulate: CanvasModulate
 @export var player: CharacterBody2D
@@ -11,8 +13,17 @@ var heartbeat_timer := 0.0
 @export var Kitchen: Node2D
 @export var ghostSpawner: PathFollow2D
 @export var attic: Area2D
+@export var spider_spawn_interval: float = 0.05
+@export var spider_speed: float = 140.0
+@export var spider_max_count: int = 150
+
+
 var ghostCD: float
 var ghostScene = preload("res://Scenes/Fantasma.tscn")
+var spider_spawn_timer := 0.0
+var spider_challenge_active := false
+var spider_challenge_completed := false
+var attic_spiders: Array[Node2D] = []
 
 func _ready() -> void:
 	#$AnimationPlayer.play("initialCutscene")
@@ -21,6 +32,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.animationIsPlaying:
 		return
+	update_spiders(delta)
 	if !Global.mapsLightStatus["LivingRoom"]:
 		if ghostCD >= randi_range(7,20) and Global.ghostsQtd < 5: #spawn dos fantasmas
 			spawnGhost()
@@ -127,6 +139,7 @@ func _on_kitchen_body_exited(body: Node2D) -> void:
 func _on_attic_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		attic.get_node("AtticLight").enabled = false
+		reset_spider_challenge()
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
@@ -137,7 +150,161 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Global.animationIsPlaying = false
 
 
+<<<<<<< HEAD
 func _on_end_game_trigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and Global.ChanllengsCounter >= 3:
 		var finalMenu = load("res://Scenes/final_menu.tscn")
 		get_tree().change_scene_to_packed(finalMenu)
+=======
+func _on_spider_trigger_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("player"):
+		return
+
+	if spider_challenge_active or spider_challenge_completed:
+		return
+
+	spider_challenge_active = true
+	spider_spawn_timer = 0.0
+
+func spawn_spider() -> void:
+	if attic_spiders.size() >= spider_max_count:
+		return
+
+	var spider = SPIDER_SCENE.instantiate()
+
+	spider.attic_mode = true
+	spider.speed = spider_speed
+
+	add_child(spider)
+
+	spider.global_position = spider_spawn_point.global_position
+	spider.global_position.y += randf_range(-125.0, 115.0)
+
+	attic_spiders.append(spider)
+	
+func update_spiders(delta: float) -> void:
+	if not spider_challenge_active:
+		return
+
+	var left_limit = Global.mapsCamLimits["Attic"][0]
+
+	for spider in attic_spiders.duplicate():
+		if not is_instance_valid(spider):
+			attic_spiders.erase(spider)
+			continue
+
+		if spider.is_queued_for_deletion():
+			attic_spiders.erase(spider)
+			continue
+
+		if spider.global_position.x < left_limit + 100.0:
+			remove_spider(spider)
+
+	spider_spawn_timer += delta
+
+	if spider_spawn_timer >= spider_spawn_interval:
+		spider_spawn_timer = 0.0
+		spawn_spider()
+	if not spider_challenge_active:
+		return
+
+	left_limit = Global.mapsCamLimits["Attic"][0]
+
+	for i in range(attic_spiders.size() - 1, -1, -1):
+		var spider = attic_spiders[i]
+
+		if not is_instance_valid(spider):
+			attic_spiders.remove_at(i)
+			continue
+
+		if spider.is_queued_for_deletion():
+			attic_spiders.remove_at(i)
+			continue
+
+		if spider.global_position.x < left_limit + 100.0:
+			attic_spiders.remove_at(i)
+			spider.queue_free()
+
+	spider_spawn_timer += delta
+
+	if spider_spawn_timer >= spider_spawn_interval:
+		spider_spawn_timer = 0.0
+		spawn_spider()
+	if not spider_challenge_active:
+		return
+
+	left_limit = Global.mapsCamLimits["Attic"][0]
+
+	for i in range(attic_spiders.size() - 1, -1, -1):
+		var spider = attic_spiders[i]
+
+		if not is_instance_valid(spider):
+			attic_spiders.remove_at(i)
+			continue
+
+		if spider.global_position.x < left_limit:
+			attic_spiders.remove_at(i)
+			spider.queue_free()
+
+	spider_spawn_timer += delta
+
+	if spider_spawn_timer >= spider_spawn_interval:
+		spider_spawn_timer = 0.0
+		spawn_spider()
+		
+func finish_spider_challenge() -> void:
+	if spider_challenge_completed:
+		return
+
+	spider_challenge_active = false
+	spider_challenge_completed = true
+	spider_spawn_timer = 0.0
+
+	player.clear_spiders()
+
+	for spider in attic_spiders.duplicate():
+		remove_spider(spider)
+
+	attic_spiders.clear()
+
+	# Remove all attic spiders
+	for spider in attic_spiders:
+		if is_instance_valid(spider):
+			spider.set_process(false)
+			spider.set_physics_process(false)
+			spider.set_deferred("monitoring", false)
+			spider.queue_free()
+
+	attic_spiders.clear()
+
+	Global.mapsLightStatus["Attic"] = true
+	Global.ChanllengsCounter += 1
+
+	if is_instance_valid(attic):
+		var light = attic.get_node_or_null("AtticLight")
+		if light:
+			light.enabled = true
+
+	await get_tree().process_frame
+
+func remove_spider(spider: Node2D) -> void:
+	if not is_instance_valid(spider):
+		return
+
+	if spider.is_queued_for_deletion():
+		return
+
+	attic_spiders.erase(spider)
+	spider.queue_free()
+	
+func reset_spider_challenge() -> void:
+	spider_challenge_active = false
+	spider_spawn_timer = 0.0
+
+	player.clear_spiders()
+
+	for spider in attic_spiders.duplicate():
+		remove_spider(spider)
+
+	attic_spiders.clear()
+>>>>>>> 9137a500d437e2ca766403765d44c50a7b9bb08e
