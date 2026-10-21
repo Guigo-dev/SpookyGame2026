@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://0w1lggwtkfb7" path="res://soundtrack/SFX (test)/holloween_sfx_flashoff.wav" id="12_u1r1b"]
 [ext_resource type="Texture2D" uid="uid://dswhhl2pa0x4o" path="res://Sprites/Images/HeartBeatTexture.png" id="13_10umt"]
 [ext_resource type="Script" uid="uid://c15tudrp5h3lj" path="res://Scripts/stairs.gd" id="16_ah5am"]
+[ext_resource type="Script" uid="uid://ba5ea4o27114w" path="res://Scripts/attic_collectible.gd" id="18_uwplo"]
 [ext_resource type="Texture2D" uid="uid://vemxxwxoy0bv" path="res://Sprites/Images/Porta.png" id="19_64rri"]
 [ext_resource type="AudioStream" uid="uid://b8uwk5pdkph8r" path="res://soundtrack/SFX (test)/holloween-sfx-footsteps1_fyzC9NpE.wav" id="22_cb7w3"]
 [ext_resource type="AudioStream" uid="uid://ddwhmpyq8kov6" path="res://soundtrack/SFX (test)/holloween_sfx_dooropen.wav" id="23_cb7w3"]
@@ -500,6 +501,26 @@ fill_to = Vector2(0.014705882, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
 size = Vector2(488, 224)
+
+[sub_resource type="GDScript" id="GDScript_h31yk"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyn4e"]
+size = Vector2(34, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlj7e"]
+size = Vector2(20, 21)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bspbu"]
 cull_mode = 2
@@ -1063,6 +1084,26 @@ texture = SubResource("GradientTexture2D_lt1cg")
 position = Vector2(10, -1)
 shape = SubResource("RectangleShape2D_ajtct")
 
+[node name="SpiderTrigger" type="Area2D" parent="Attic" unique_id=209441241]
+script = SubResource("GDScript_h31yk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attic/SpiderTrigger" unique_id=1968222988]
+position = Vector2(7, -2)
+shape = SubResource("RectangleShape2D_wyn4e")
+
+[node name="AtticCollectible" type="StaticBody2D" parent="Attic" unique_id=2123533588]
+position = Vector2(239, -8)
+script = ExtResource("18_uwplo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Attic/AtticCollectible" unique_id=1155594604]
+position = Vector2(0.9999924, -0.24996567)
+scale = Vector2(0.15625018, 0.16015679)
+texture = ExtResource("9_e6h3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attic/AtticCollectible" unique_id=837198558]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_jlj7e")
+
 [node name="Collectibles" type="Node2D" parent="." unique_id=1069010613]
 
 [node name="Occluders" type="Node" parent="." unique_id=1261996325]
@@ -1172,6 +1213,9 @@ volume_db = -10.0
 position = Vector2(591, -145.8125)
 scale = Vector2(1.3906249, 1.6933593)
 
+[node name="SpiderSpawnPoint" type="Marker2D" parent="." unique_id=1947432101]
+position = Vector2(-419, 1139)
+
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
 [connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_exited"]
@@ -1184,5 +1228,7 @@ scale = Vector2(1.3906249, 1.6933593)
 [connection signal="body_exited" from="DiningRoom" to="." method="_on_dining_room_body_exited"]
 [connection signal="body_entered" from="Attic" to="." method="_on_attic_body_entered"]
 [connection signal="body_exited" from="Attic" to="." method="_on_attic_body_exited"]
+[connection signal="body_entered" from="Attic/SpiderTrigger" to="." method="_on_spider_trigger_body_entered"]
+[connection signal="body_exited" from="Attic/SpiderTrigger" to="." method="_on_spider_trigger_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

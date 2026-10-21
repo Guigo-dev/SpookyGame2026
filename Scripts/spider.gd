@@ -2,6 +2,9 @@ extends Area2D
 
 @export var speed : float
 @export var target: Node2D
+@export var attic_mode: bool = false
+
+var player_touching: CharacterBody2D = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,39 +13,45 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if attic_mode:
+		global_position.x -= speed * delta
+		$AnimatedSprite2D.flip_h = true
+		return
+
 	if target == null:
 		return
-	
-	var direction = global_position.direction_to(target.global_position)
+
+	var direction: Vector2 = global_position.direction_to(target.global_position)
 	global_position += direction * speed * delta
+
 	if direction.x < 0:
 		$AnimatedSprite2D.flip_h = true
 	elif direction.x > 0:
 		$AnimatedSprite2D.flip_h = false
-	update_material()
+
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if not body.is_in_group("player"):
+		return
+
+	if attic_mode:
+		player_touching = body
+		body.spider_entered(self)
+	else:
 		body.updateFearAmount(25)
 		queue_free()
 
-func update_material():
-	if Global.fearLevel == 1:
-		$AnimatedSprite2D.material.set_shader_parameter("chromatic_aberration",0)
-		$AnimatedSprite2D.material.set_shader_parameter("color_levels",14.0)
-		$AnimatedSprite2D.material.set_shader_parameter("brightness",1.0)
-		$AnimatedSprite2D.material.set_shader_parameter("saturation",1.0)
-		$AnimatedSprite2D.material.set_shader_parameter("collor_offset_multiplier",0.0)
-	if Global.fearLevel == 2:
-		$AnimatedSprite2D.material.set_shader_parameter("chromatic_aberration",0.1)
-		$AnimatedSprite2D.material.set_shader_parameter("color_levels",10.0)
-		$AnimatedSprite2D.material.set_shader_parameter("brightness",1.0)
-		$AnimatedSprite2D.material.set_shader_parameter("saturation",2.0)
-		$AnimatedSprite2D.material.set_shader_parameter("collor_offset_multiplier",0.1)
-	if Global.fearLevel == 3:
-		$AnimatedSprite2D.material.set_shader_parameter("chromatic_aberration",0.18)
-		$AnimatedSprite2D.material.set_shader_parameter("color_levels",2.0)
-		$AnimatedSprite2D.material.set_shader_parameter("brightness",1.2)
-		$AnimatedSprite2D.material.set_shader_parameter("saturation",3.5)
-		$AnimatedSprite2D.material.set_shader_parameter("collor_offset_multiplier",0.2)
+
+func _on_body_exited(body: Node2D) -> void:
+	if not attic_mode:
+		return
+
+	if body == player_touching:
+		player_touching.spider_exited(self)
+		player_touching = null
+
+func _on_tree_exited() -> void:
+	if attic_mode and is_instance_valid(player_touching):
+		player_touching.spider_exited(self)
+		player_touching = null
