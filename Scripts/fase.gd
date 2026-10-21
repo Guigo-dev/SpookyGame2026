@@ -16,7 +16,7 @@ var ghostCD: float
 var ghostScene = preload("res://Scenes/Fantasma.tscn")
 
 func _ready() -> void:
-	$AnimationPlayer.play("initialCutscene")
+	#$AnimationPlayer.play("initialCutscene")
 	randomize()
 
 func _process(delta: float) -> void:

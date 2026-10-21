@@ -9,9 +9,8 @@ extends CharacterBody2D
 var fearAmount := 0
 var collectible_counter = 0
 var flashlight_timer = 0
-var test_1 = false
-var test_2 = false
-var test_3 = false 
+var fearDecay_cd = 0.0
+var fear_cd = 0.0
 
 var controls_locked = false
 
@@ -89,8 +88,20 @@ func _physics_process(delta: float) -> void:
 			Global.ChanllengsCounter += 1
 			spawn_collectible(Vector2(0, 150))
 			
-	elif Global.actualRoom == "LivingRoom" and flashlight.enabled:
+	elif (Global.actualRoom == "LivingRoom" and flashlight.enabled) or Global.actualRoom != "LivingRoom":
 		flashlight_timer = 0
+	
+	#medo constante
+	fear_cd += delta
+	if fear_cd >= 2.0:
+		fear_cd = 0.0
+		updateFearAmount(1)
+	
+	#Diminui medo na luz da sala
+	fearDecay_cd += delta
+	if Global.mapsLightStatus.get(Global.actualRoom,false) and fearDecay_cd >= 2.0:
+		fearDecay_cd = 0.0
+		updateFearAmount(-10)
 
 
 func _on_living_room_body_exited(body: Node2D) -> void:
@@ -101,6 +112,7 @@ func _on_living_room_body_exited(body: Node2D) -> void:
 func updateFearAmount(amount : int) -> void:
 	fearAmount += amount
 	if fearAmount >= 150:
+		fearAmount = 150
 		Global.heartbeatInterval = 0.5
 		Global.currentCanvasModulateColor = Color.BLACK
 	elif fearAmount >= 100:
@@ -118,6 +130,8 @@ func updateFearAmount(amount : int) -> void:
 		Global.currentCanvasModulateColor =Color(0.349, 0.349, 0.349)
 		Global.heartbeatInterval = 5.0
 		Global.fearLevel = 1
+	if fearAmount < 0:
+		fearAmount = 0
 	print(fearAmount)
 	
 func playAnimation(anim: String):

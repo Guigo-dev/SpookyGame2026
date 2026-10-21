@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://pobdkojrflke"]
+
+[ext_resource type="Script" uid="uid://cph6isddthkl8" path="res://Scripts/healing_area.gd" id="1_os755"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bspbu"]
+radius = 32.0
+
+[node name="HealingArea" type="Area2D" unique_id=1914476318]
+script = ExtResource("1_os755")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1560051120]
+shape = SubResource("CircleShape2D_bspbu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

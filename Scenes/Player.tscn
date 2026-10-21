@@ -55,7 +55,7 @@ stream_0/stream = ExtResource("4_dewec")
 light_mask = 0
 motion_mode = 1
 script = ExtResource("1_kyqiw")
-audioStream = NodePath("AudioStreamPlayer")
+audioStream = NodePath("PlayerSteps")
 sprite_2d = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1810341739]
@@ -76,6 +76,6 @@ position = Vector2(1, 4)
 shape = SubResource("RectangleShape2D_ostoq")
 debug_color = Color(0, 0, 1, 1)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=585524915]
+[node name="PlayerSteps" type="AudioStreamPlayer" parent="." unique_id=585524915]
 stream = SubResource("AudioStreamRandomizer_camwj")
 volume_db = -30.0

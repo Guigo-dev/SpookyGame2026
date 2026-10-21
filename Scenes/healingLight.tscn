@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cs43ay7dbn1x7"]
+
+[ext_resource type="PackedScene" uid="uid://pobdkojrflke" path="res://Scenes/healing_area.tscn" id="1_qrqf5"]
+
+[sub_resource type="Gradient" id="Gradient_lt1cg"]
+offsets = PackedFloat32Array(0, 0.1904762, 0.7069597)
+colors = PackedColorArray(1, 1, 1, 1, 0.72527474, 0.72527474, 0.72527474, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5hdi5"]
+gradient = SubResource("Gradient_lt1cg")
+fill = 1
+fill_from = Vector2(0.47630924, 0.53366584)
+fill_to = Vector2(0, 0)
+
+[node name="PointLight2D" type="PointLight2D" unique_id=1956032452]
+texture = SubResource("GradientTexture2D_5hdi5")
+
+[node name="HealingArea" parent="." unique_id=1914476318 instance=ExtResource("1_qrqf5")]
+
+[editable path="HealingArea"]
