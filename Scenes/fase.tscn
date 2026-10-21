@@ -607,6 +607,73 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/CameraCutscene:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h31yk"]
+resource_name = "new_animation"
+length = 3.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/CameraCutscene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(344, 41)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortaEntrada1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5707964]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortaEntrada2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5707964]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/Door")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("23_cb7w3")
+}],
+"times": PackedFloat32Array(1)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_0svc4"]
 resource_name = "initialCutscene"
@@ -895,6 +962,7 @@ tracks/10/use_blend = true
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1r1b"]
 _data = {
 &"RESET": SubResource("Animation_64rri"),
+&"door_opening_cutscene": SubResource("Animation_h31yk"),
 &"initialCutscene": SubResource("Animation_0svc4")
 }
 
@@ -903,6 +971,9 @@ data = PackedByteArray("cW9hZgAAWXcCALuAFAAQKAAAAAAAAAAAAAAAAOAAQAAAAAAAAAAAAAAA
 format = 3
 mix_rate = 48000
 stereo = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bspbu"]
+size = Vector2(20, 65)
 
 [node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("canvasModulate", "player", "camera", "LivingRoom", "DiningRoom", "Kitchen", "ghostSpawner", "attic")]
 script = ExtResource("1_ft64k")
@@ -937,14 +1008,15 @@ tile_set = SubResource("TileSet_bspbu")
 color = Color(0.34901962, 0.34901962, 0.34901962, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
-position = Vector2(461, -64)
+position = Vector2(-75, -64)
 collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=937483451]
-limit_left = -140
+position = Vector2(-38, 81)
+limit_left = 703
 limit_top = -184
-limit_right = 704
+limit_right = 1343
 limit_bottom = 256
 editor_draw_limits = true
 
@@ -1161,6 +1233,12 @@ volume_db = -30.0
 
 [node name="flashlight" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1094180360]
 
+[node name="CameraCutscene" type="Camera2D" parent="AnimationPlayer" unique_id=1780858052]
+position = Vector2(344, 41)
+enabled = false
+position_smoothing_enabled = true
+editor_draw_limits = true
+
 [node name="LightsOnSound" type="AudioStreamPlayer" parent="." unique_id=2060577206]
 stream = ExtResource("25_h31yk")
 
@@ -1171,6 +1249,13 @@ volume_db = -10.0
 [node name="HealingLight" parent="." unique_id=1956032452 instance=ExtResource("26_h31yk")]
 position = Vector2(591, -145.8125)
 scale = Vector2(1.3906249, 1.6933593)
+
+[node name="EndGameTrigger" type="Area2D" parent="." unique_id=1642730605]
+position = Vector2(713, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndGameTrigger" unique_id=253351418]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_bspbu")
 
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
 [connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]
@@ -1186,3 +1271,4 @@ scale = Vector2(1.3906249, 1.6933593)
 [connection signal="body_exited" from="Attic" to="." method="_on_attic_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="body_entered" from="EndGameTrigger" to="." method="_on_end_game_trigger_body_entered"]

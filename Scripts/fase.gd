@@ -11,7 +11,6 @@ var heartbeat_timer := 0.0
 @export var Kitchen: Node2D
 @export var ghostSpawner: PathFollow2D
 @export var attic: Area2D
-
 var ghostCD: float
 var ghostScene = preload("res://Scenes/Fantasma.tscn")
 
@@ -34,6 +33,18 @@ func _process(delta: float) -> void:
 	if heartbeat_timer >= Global.heartbeatInterval:
 		heartbeat_timer = 0.0
 		heartbeat_pulse()
+	
+	if Global.ChanllengsCounter == 3:
+		Global.ChanllengsCounter = 4
+		$AnimationPlayer/CameraCutscene.global_position = $Player/Camera2D.global_position
+		$AnimationPlayer/CameraCutscene.enabled = true
+		$Player/Camera2D.enabled = false
+		$AnimationPlayer/CameraCutscene.make_current()
+		$AnimationPlayer.play("door_opening_cutscene")
+		await $AnimationPlayer.animation_finished
+		$Player/Camera2D.enabled = true
+		$AnimationPlayer/CameraCutscene.enabled = false
+		$Player/Camera2D.make_current()
 	
 
 func spawnGhost() -> void:
@@ -124,3 +135,9 @@ func _on_animation_player_animation_started(anim_name: StringName) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Global.animationIsPlaying = false
+
+
+func _on_end_game_trigger_body_entered(body: Node2D) -> void:
+	if body.name == "Player" and Global.ChanllengsCounter >= 3:
+		var finalMenu = load("res://Scenes/final_menu.tscn")
+		get_tree().change_scene_to_packed(finalMenu)
