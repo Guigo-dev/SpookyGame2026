@@ -9,7 +9,8 @@ var player_touching: CharacterBody2D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_to_group("enemy")
+	if not attic_mode:
+		add_to_group("enemy")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
