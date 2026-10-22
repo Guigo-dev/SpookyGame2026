@@ -13,7 +13,7 @@ func interact() -> void:
 
 	collected = true
 
-	player.collectible_counter += 1
+	Global.ChanllengsCounter += 1
 
 	get_tree().current_scene.finish_spider_challenge()
 

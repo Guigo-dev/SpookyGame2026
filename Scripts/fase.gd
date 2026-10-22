@@ -267,7 +267,6 @@ func finish_spider_challenge() -> void:
 
 	attic_spiders.clear()
 
-	# Remove all attic spiders
 	for spider in attic_spiders:
 		if is_instance_valid(spider):
 			spider.set_process(false)
@@ -278,7 +277,6 @@ func finish_spider_challenge() -> void:
 	attic_spiders.clear()
 
 	Global.mapsLightStatus["Attic"] = true
-	Global.ChanllengsCounter += 1
 
 	if is_instance_valid(attic):
 		var light = attic.get_node_or_null("AtticLight")
