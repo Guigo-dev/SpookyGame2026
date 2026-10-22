@@ -17,7 +17,6 @@ func interact():
 
 		player.controls_locked = false
 		was_eaten = true
-		player.test_2 = true
 		Global.mapsLightStatus["Kitchen"] = true
 		$"../KitchenLight".enabled = true
 		$"../../LightsOnSound".play()
