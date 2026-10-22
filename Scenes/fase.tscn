@@ -547,98 +547,98 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Camera2D:limit_left")
+tracks/0/path = NodePath("Player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [703]
+"update": 0,
+"values": [Vector2(443, -50)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Camera2D:limit_right")
+tracks/1/path = NodePath("Player/Flashlight:enabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1343]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player:position")
+tracks/2/path = NodePath("PortaEntrada1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(443, -50)]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Player/Flashlight:enabled")
+tracks/3/path = NodePath("PortaEntrada2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PortaEntrada1:rotation")
+tracks/4/path = NodePath("Player:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1e-05),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PortaEntrada2:rotation")
+tracks/5/path = NodePath("AnimationPlayer/CameraCutscene:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(0, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Player:scale")
+tracks/6/path = NodePath("AnimationPlayer/CameraCutscene:limit_left")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1e-05),
-"update": 0,
-"values": [Vector2(1, 1)]
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-10000000]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("AnimationPlayer/CameraCutscene:position")
+tracks/7/path = NodePath("AnimationPlayer/CameraCutscene:limit_right")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [10000000]
 }
 
 [sub_resource type="Animation" id="Animation_h31yk"]
@@ -702,82 +702,58 @@ length = 12.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Camera2D:limit_left")
+tracks/0/path = NodePath("Player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 6.9666667, 10),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [692, 692, -140]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Camera2D:limit_right")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 6.9666667, 10),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1440, 1440, 704]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = false
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 7, 8, 9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1324, 31), Vector2(720, 31), Vector2(720, 31), Vector2(634, 31)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Player/Flashlight:enabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = false
-tracks/3/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Flashlight:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 11),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PortaEntrada1:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = false
-tracks/4/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortaEntrada1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
 "times": PackedFloat32Array(7, 8, 10.000001, 10.500001),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -1.5707964, -1.5707964, 0.0]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("PortaEntrada2:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = false
-tracks/5/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PortaEntrada2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
 "times": PackedFloat32Array(7, 8, 10.000001, 10.500001),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 1.5707964, 1.5707964, 0.0]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Player")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 7, 8, 9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
@@ -794,25 +770,25 @@ tracks/6/keys = {
 "method": &"playAnimation"
 }]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Player:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = false
-tracks/7/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Player:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 10.6),
 "transitions": PackedFloat32Array(1, 3.2707765e-05),
 "update": 1,
 "values": [Vector2(-1, 1), Vector2(1, 1)]
 }
-tracks/8/type = "audio"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("AnimationPlayer/Footsteps")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/Footsteps")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -944,14 +920,14 @@ tracks/8/keys = {
 }],
 "times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.8, 1.0666667, 1.3333334, 1.6, 1.8666667, 2.1333334, 2.4, 2.6666667, 2.9333334, 3.2, 3.466667, 3.7333333, 4, 4.266667, 4.533334, 4.8, 5.0666666, 5.3333335, 5.6000004, 5.866667, 6.133333, 6.4, 6.6666665, 6.9333334, 8, 8.266666, 8.533334, 8.8, 10.6)
 }
-tracks/8/use_blend = true
-tracks/9/type = "audio"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("AnimationPlayer/Door")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/6/use_blend = true
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/Door")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -963,14 +939,14 @@ tracks/9/keys = {
 }],
 "times": PackedFloat32Array(7.0000005, 10)
 }
-tracks/9/use_blend = true
-tracks/10/type = "audio"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("AnimationPlayer/flashlight")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/7/use_blend = true
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimationPlayer/flashlight")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -978,7 +954,43 @@ tracks/10/keys = {
 }],
 "times": PackedFloat32Array(11)
 }
-tracks/10/use_blend = true
+tracks/8/use_blend = true
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer/CameraCutscene:limit_left")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 6.866667, 8, 9.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [692, 692, -10000000, -140]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AnimationPlayer/CameraCutscene:limit_right")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 6.866667, 9.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1440, 1440, 704]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimationPlayer/CameraCutscene:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 7.0000005, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1324, 31), Vector2(720, 31), Vector2(634, 31)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1r1b"]
 _data = {
@@ -1029,12 +1041,12 @@ tile_set = SubResource("TileSet_bspbu")
 color = Color(0.34901962, 0.34901962, 0.34901962, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
-position = Vector2(-75, -64)
+position = Vector2(719.99994, 31)
+scale = Vector2(-1, 1)
 collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=937483451]
-position = Vector2(-38, 81)
 limit_left = 703
 limit_top = -184
 limit_right = 1343
@@ -1253,12 +1265,14 @@ position = Vector2(-227, 467)
 
 [node name="PortaEntrada1" type="Sprite2D" parent="." unique_id=923723690]
 position = Vector2(706, 63)
+rotation = -1.5707964
 texture = ExtResource("19_64rri")
 centered = false
 offset = Vector2(-16, -32)
 
 [node name="PortaEntrada2" type="Sprite2D" parent="." unique_id=97270539]
 position = Vector2(706, 0)
+rotation = 1.5707964
 texture = ExtResource("19_64rri")
 centered = false
 offset = Vector2(-16, 0)
@@ -1275,8 +1289,9 @@ volume_db = -30.0
 [node name="flashlight" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1094180360]
 
 [node name="CameraCutscene" type="Camera2D" parent="AnimationPlayer" unique_id=1780858052]
-position = Vector2(344, 41)
+position = Vector2(677, 31)
 enabled = false
+limit_right = 1440
 position_smoothing_enabled = true
 editor_draw_limits = true
 

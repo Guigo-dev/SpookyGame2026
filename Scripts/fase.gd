@@ -26,7 +26,14 @@ var spider_challenge_completed := false
 var attic_spiders: Array[Node2D] = []
 
 func _ready() -> void:
-	#$AnimationPlayer.play("initialCutscene")
+	$AnimationPlayer/CameraCutscene.enabled = true
+	$Player/Camera2D.enabled = false
+	$AnimationPlayer/CameraCutscene.make_current()
+	$AnimationPlayer.play("initialCutscene")
+	await $AnimationPlayer.animation_finished
+	$Player/Camera2D.enabled = true
+	$AnimationPlayer/CameraCutscene.enabled = false
+	$Player/Camera2D.make_current()
 	randomize()
 
 func _process(delta: float) -> void:
@@ -47,6 +54,7 @@ func _process(delta: float) -> void:
 		heartbeat_pulse()
 	
 	if Global.ChanllengsCounter == 3:
+		await $LightsOnSound.finished
 		Global.ChanllengsCounter = 4
 		$AnimationPlayer/CameraCutscene.global_position = $Player/Camera2D.global_position
 		$AnimationPlayer/CameraCutscene.enabled = true
@@ -90,7 +98,7 @@ func _on_living_room_body_entered(body: Node2D) -> void:
 		camera.limit_right = Global.mapsCamLimits["LivingRoom"][2]
 		camera.limit_bottom = Global.mapsCamLimits["LivingRoom"][3]
 		if Global.mapsLightStatus[Global.actualRoom] == true:
-			LivingRoom.get_node("LivingRoomLight").enable = true
+			LivingRoom.get_node("LivingRoomLight").enabled = true
 		
 
 #setar a camera para a dining room

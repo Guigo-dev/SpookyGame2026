@@ -16,5 +16,6 @@ func interact() -> void:
 	Global.ChanllengsCounter += 1
 
 	get_tree().current_scene.finish_spider_challenge()
+	$"../../LightsOnSound".play()
 
 	queue_free()
