@@ -150,12 +150,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	Global.animationIsPlaying = false
 
 
-<<<<<<< HEAD
+
 func _on_end_game_trigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and Global.ChanllengsCounter >= 3:
 		var finalMenu = load("res://Scenes/final_menu.tscn")
 		get_tree().change_scene_to_packed(finalMenu)
-=======
+
 func _on_spider_trigger_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
@@ -307,4 +307,3 @@ func reset_spider_challenge() -> void:
 		remove_spider(spider)
 
 	attic_spiders.clear()
->>>>>>> 9137a500d437e2ca766403765d44c50a7b9bb08e

@@ -1297,6 +1297,7 @@ position = Vector2(713, 35)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndGameTrigger" unique_id=253351418]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_bspbu")
+
 [node name="SpiderSpawnPoint" type="Marker2D" parent="." unique_id=1947432101]
 position = Vector2(-419, 1139)
 
