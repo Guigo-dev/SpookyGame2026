@@ -27,6 +27,8 @@
 [ext_resource type="AudioStream" uid="uid://bwcrbekwmv1sw" path="res://soundtrack/SFX (test)/holloween_sfx_doorclose.wav" id="24_0ctqs"]
 [ext_resource type="AudioStream" uid="uid://c3fscjvb3poo7" path="res://soundtrack/SFX (test)/holloween_sfx_lightson.wav" id="25_h31yk"]
 [ext_resource type="PackedScene" uid="uid://cs43ay7dbn1x7" path="res://Scenes/healingLight.tscn" id="26_h31yk"]
+[ext_resource type="Script" uid="uid://bm766qy6qtr7p" path="res://Scripts/hole_trigger.gd" id="28_lt1cg"]
+[ext_resource type="Shader" uid="uid://cjl1o1l4mvpj0" path="res://Scenes/transicao.gdshader" id="29_oxw4l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10umt"]
 texture = ExtResource("5_mvxks")
@@ -1008,6 +1010,16 @@ stereo = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bspbu"]
 size = Vector2(20, 65)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loq3h"]
+radius = 45.0
+height = 90.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lt1cg"]
+shader = ExtResource("29_oxw4l")
+shader_parameter/radius = 1.5
+shader_parameter/softness = 0.03
+shader_parameter/center = Vector2(0.5, 0.5)
+
 [node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("canvasModulate", "player", "camera", "LivingRoom", "DiningRoom", "Kitchen", "ghostSpawner", "attic")]
 script = ExtResource("1_ft64k")
 canvasModulate = NodePath("CanvasModulate")
@@ -1315,6 +1327,37 @@ shape = SubResource("RectangleShape2D_bspbu")
 
 [node name="SpiderSpawnPoint" type="Marker2D" parent="." unique_id=1947432101]
 position = Vector2(-419, 1139)
+
+[node name="HoleTrigger" type="Area2D" parent="." unique_id=1544750594 node_paths=PackedStringArray("player", "camera_2d", "fall_destiny", "fade")]
+position = Vector2(-772, 1080)
+script = ExtResource("28_lt1cg")
+player = NodePath("../Player")
+camera_2d = NodePath("../Player/Camera2D")
+fall_destiny = NodePath("../FallDestiny")
+fade = NodePath("../FallTransition/Fade")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoleTrigger" unique_id=139123516]
+position = Vector2(1, 2)
+shape = SubResource("CapsuleShape2D_loq3h")
+
+[node name="FallDestiny" type="Marker2D" parent="." unique_id=1268409438]
+position = Vector2(73, 52)
+
+[node name="FallTransition" type="CanvasLayer" parent="." unique_id=191352448]
+layer = 10
+
+[node name="Fade" type="ColorRect" parent="FallTransition" unique_id=1873654087]
+material = SubResource("ShaderMaterial_lt1cg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -5.0
+offset_right = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
 [connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]

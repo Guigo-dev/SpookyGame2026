@@ -5,8 +5,7 @@ extends CharacterBody2D
 @export var collectible: PackedScene
 @export var audioStream: AudioStreamPlayer
 @export var sprite_2d: AnimatedSprite2D
-@export var spider_push_force: float = 35.0
-@export var right_speed_multiplier: float = 0.55
+@export var spider_push_force: float = 30.0
 
 var touching_spiders: Array[Node2D] = []
 
@@ -60,12 +59,26 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 		
-		#Aranha reduz velocidade
-	if not touching_spiders.is_empty():
-		if direction.x > 0:
-			velocity.x = SPEED * right_speed_multiplier - spider_push_force
-		else:
-			velocity.x = minf(velocity.x, 0.0) - spider_push_force
+	#Aranha reduz velocidade
+	if touching_spiders.size() > 0:
+		var total_push := Vector2.ZERO
+
+		for spider in touching_spiders.duplicate():
+			if not is_instance_valid(spider):
+				touching_spiders.erase(spider)
+				continue
+
+			if spider.is_queued_for_deletion():
+				touching_spiders.erase(spider)
+				continue
+
+			var push_direction: Vector2 = spider.global_position.direction_to(
+				spider.hole_target
+			)
+
+			total_push += push_direction * spider_push_force
+
+		velocity += total_push.limit_length(70.0)
 		
 		
 	

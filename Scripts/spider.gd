@@ -5,6 +5,7 @@ extends Area2D
 @export var attic_mode: bool = false
 
 var player_touching: CharacterBody2D = null
+var hole_target: Vector2 = Vector2.ZERO
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,8 +16,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if attic_mode:
-		global_position.x -= speed * delta
-		$AnimatedSprite2D.flip_h = true
+		var direction = global_position.direction_to(hole_target)
+
+		global_position += direction * speed * delta
+
+		if abs(direction.x) > 0.01:
+			$AnimatedSprite2D.flip_h = direction.x < 0
+
 		return
 
 	if target == null:
