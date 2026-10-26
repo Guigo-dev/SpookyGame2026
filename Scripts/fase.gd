@@ -26,14 +26,14 @@ var spider_challenge_completed := false
 var attic_spiders: Array[Node2D] = []
 
 func _ready() -> void:
-	$AnimationPlayer/CameraCutscene.enabled = true
-	$Player/Camera2D.enabled = false
-	$AnimationPlayer/CameraCutscene.make_current()
-	$AnimationPlayer.play("initialCutscene")
-	await $AnimationPlayer.animation_finished
-	$Player/Camera2D.enabled = true
-	$AnimationPlayer/CameraCutscene.enabled = false
-	$Player/Camera2D.make_current()
+	#$AnimationPlayer/CameraCutscene.enabled = true
+	#$Player/Camera2D.enabled = false
+	#$AnimationPlayer/CameraCutscene.make_current()
+	#$AnimationPlayer.play("initialCutscene")
+	#await $AnimationPlayer.animation_finished
+	#$Player/Camera2D.enabled = true
+	#$AnimationPlayer/CameraCutscene.enabled = false
+	#$Player/Camera2D.make_current()
 	randomize()
 
 func _process(delta: float) -> void:
