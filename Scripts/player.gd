@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var audioStream: AudioStreamPlayer
 @export var sprite_2d: AnimatedSprite2D
 @export var spider_push_force: float = 30.0
-
+@export var interact_hint: Label
 @export var spider_fear_per_spider: int = 2
 @export var spider_fear_max: int = 10
 @export var spider_fear_interval: float = 1.0
@@ -45,6 +45,7 @@ func spawn_collectible(posicao: Vector2):
 	$"../Collectibles".add_child(item)
 
 func _physics_process(delta: float) -> void:
+	interact_hint.scale.x = 1.0 if scale.x > 0 else -1.0
 	if Global.animationIsPlaying:
 		return
 	if controls_locked:
