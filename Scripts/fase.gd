@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var heartbeat = $CanvasLayer/TextureRect
 @onready var spider_spawn_point: Marker2D = $SpiderSpawnPoint
+@onready var spider_spawn_point_2: Marker2D = $SpiderSpawnPoint2
+@onready var spider_spawn_point_3: Marker2D = $SpiderSpawnPoint3
 @onready var spider_hole: Area2D = $HoleTrigger
 var heartbeat_timer := 0.0
 const SPIDER_SCENE = preload("res://Scenes/Spider.tscn")
@@ -187,9 +189,18 @@ func spawn_spider() -> void:
 	spider.hole_target = spider_hole.global_position
 
 	add_child(spider)
-
-	spider.global_position = spider_spawn_point.global_position
-	spider.global_position.y += randf_range(-120.0, 120.0)
+	
+	var spawn_index = randi_range(0, 9)
+	
+	if spawn_index >= 0 and spawn_index <= 5:
+		spider.global_position = spider_spawn_point.global_position
+		spider.global_position.y += randf_range(-120.0, 120.0)
+	elif spawn_index >=6 and spawn_index <= 7:
+		spider.global_position = spider_spawn_point_2.global_position
+		spider.global_position.x += randf_range(-120.0, 120.0)
+	else:
+		spider.global_position = spider_spawn_point_3.global_position
+		spider.global_position.x += randf_range(-120.0, 120.0)
 
 	attic_spiders.append(spider)
 

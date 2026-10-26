@@ -36,6 +36,8 @@
 [ext_resource type="Script" uid="uid://bm766qy6qtr7p" path="res://Scripts/hole_trigger.gd" id="28_lt1cg"]
 [ext_resource type="Shader" uid="uid://cjl1o1l4mvpj0" path="res://Scenes/transicao.gdshader" id="29_oxw4l"]
 [ext_resource type="FontFile" uid="uid://cobwl3spvd4ev" path="res://scary halloween.ttf" id="31_1j3mc"]
+[ext_resource type="Texture2D" uid="uid://bnt3b1jb40s4y" path="res://Sprites/Images/wasd_blood.png" id="35_apnvp"]
+[ext_resource type="Texture2D" uid="uid://dl2hlkqi3ydc0" path="res://Sprites/Images/flashlight_blood.png" id="36_ftq5m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10umt"]
 texture = ExtResource("5_mvxks")
@@ -1309,7 +1311,6 @@ tile_map_data = PackedByteArray("AAD7////AAACAAIAAAD7/wAAAAAFAAIAAAD7/wEAAAACAAE
 tile_set = SubResource("TileSet_bspbu")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1541262574]
-visible = false
 color = Color(0.34901962, 0.34901962, 0.34901962, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
@@ -1440,6 +1441,7 @@ position = Vector2(1.4644775, 27.269531)
 shape = SubResource("RectangleShape2D_iss0w")
 
 [node name="DiningRoom" type="Area2D" parent="." unique_id=46779004]
+visible = false
 position = Vector2(443, 41)
 scale = Vector2(2.9285583, 4.958064)
 metadata/_edit_group_ = true
@@ -1529,6 +1531,7 @@ rotation = 1.359703
 rotates = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1669754905]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=484415971]
 modulate = Color(1, 1, 1, 0)
@@ -1630,9 +1633,6 @@ position = Vector2(713, 35)
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_bspbu")
 
-[node name="SpiderSpawnPoint" type="Marker2D" parent="." unique_id=1947432101]
-position = Vector2(-419, 1139)
-
 [node name="HoleTrigger" type="Area2D" parent="." unique_id=1544750594 node_paths=PackedStringArray("player", "camera_2d", "fall_destiny", "fade")]
 position = Vector2(-772, 1080)
 script = ExtResource("28_lt1cg")
@@ -1712,11 +1712,26 @@ vertical_alignment = 1
 visible_characters = 0
 visible_ratio = 0.01
 
-[node name="SpiderSpawnPoint" type="Marker2D" parent="Dialogue" unique_id=740371392]
-position = Vector2(-586, 1050)
+[node name="SpiderSpawnPoint3" type="Marker2D" parent="." unique_id=740371392]
+position = Vector2(-580, 1033)
 
-[node name="SpiderSpawnPoint2" type="Marker2D" parent="Dialogue" unique_id=1051753320]
-position = Vector2(-586, 1222)
+[node name="SpiderSpawnPoint2" type="Marker2D" parent="." unique_id=1051753320]
+position = Vector2(-584, 1241)
+
+[node name="SpiderSpawnPoint" type="Marker2D" parent="." unique_id=1947432101]
+position = Vector2(-419, 1139)
+
+[node name="WasdBlood" type="Sprite2D" parent="." unique_id=1975300886]
+z_index = -1
+position = Vector2(570, 32)
+scale = Vector2(1.9531244, 2.21875)
+texture = ExtResource("35_apnvp")
+
+[node name="FlashlightBlood" type="Sprite2D" parent="." unique_id=1704467890]
+z_index = -1
+position = Vector2(568, 127)
+scale = Vector2(1.71875, 2.15625)
+texture = ExtResource("36_ftq5m")
 
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
 [connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]
