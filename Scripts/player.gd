@@ -5,8 +5,14 @@ extends CharacterBody2D
 @export var collectible: PackedScene
 @export var audioStream: AudioStreamPlayer
 @export var sprite_2d: AnimatedSprite2D
-@export var spider_push_force: float = 35.0
-@export var right_speed_multiplier: float = 0.55
+@export var spider_push_force: float = 30.0
+@export var interact_hint: Label
+@export var spider_fear_per_spider: int = 2
+@export var spider_fear_max: int = 10
+@export var spider_fear_interval: float = 1.0
+
+
+var spider_fear_timer: float = 0.0
 
 var touching_spiders: Array[Node2D] = []
 
@@ -17,6 +23,8 @@ var fearDecay_cd = 0.0
 var fear_cd = 0.0
 
 var controls_locked = false
+var was_in_attic: bool = false
+var is_dead: bool = false
 
 const SPEED = 75.0
 var direction_looking := Vector2.DOWN
@@ -40,6 +48,13 @@ func spawn_collectible(posicao: Vector2):
 	$"../Collectibles".add_child(item)
 
 func _physics_process(delta: float) -> void:
+	var is_in_attic: bool = Global.actualRoom == "Attic"
+	if was_in_attic and not is_in_attic:
+		if fearAmount >= 120:
+			updateFearAmount(100 - fearAmount)
+	was_in_attic = is_in_attic
+	
+	interact_hint.scale.x = 1.0 if scale.x > 0 else -1.0
 	if Global.animationIsPlaying:
 		return
 	if controls_locked:
@@ -60,13 +75,41 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 		
-		#Aranha reduz velocidade
-	if not touching_spiders.is_empty():
-		if direction.x > 0:
-			velocity.x = SPEED * right_speed_multiplier - spider_push_force
+	#Aranha reduz velocidade
+	if touching_spiders.size() > 0:
+		var total_push := Vector2.ZERO
+
+		for spider in touching_spiders.duplicate():
+			if not is_instance_valid(spider):
+				touching_spiders.erase(spider)
+				continue
+
+			if spider.is_queued_for_deletion():
+				touching_spiders.erase(spider)
+				continue
+
+			var push_direction: Vector2 = spider.global_position.direction_to(
+				spider.hole_target
+			)
+
+			total_push += push_direction * spider_push_force
+
+		velocity += total_push.limit_length(70.0)
+		#medo aranha
+		if touching_spiders.size() > 0:
+			spider_fear_timer += delta
+
+			if spider_fear_timer >= spider_fear_interval:
+				spider_fear_timer = 0.0
+
+				var fear_increase = min(
+					touching_spiders.size() * spider_fear_per_spider,
+					spider_fear_max
+				)
+
+				updateFearAmount(fear_increase)
 		else:
-			velocity.x = minf(velocity.x, 0.0) - spider_push_force
-		
+			spider_fear_timer = 0.0
 		
 	
 	if velocity != Vector2.ZERO:
@@ -144,6 +187,9 @@ func updateFearAmount(amount : int) -> void:
 	if fearAmount < 0:
 		fearAmount = 0
 	print(fearAmount)
+	if fearAmount >= 150 and Global.actualRoom != "Attic":
+		die()
+
 	
 func playAnimation(anim: String):
 	sprite_2d.play(anim)
@@ -161,3 +207,10 @@ func spider_exited(spider: Node2D) -> void:
 
 func clear_spiders() -> void:
 	touching_spiders.clear()
+
+func die() -> void:
+	is_dead = true
+	controls_locked = true
+	velocity = Vector2.ZERO
+
+	sprite_2d.play("idle")

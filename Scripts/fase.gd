@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var heartbeat = $CanvasLayer/TextureRect
 @onready var spider_spawn_point: Marker2D = $SpiderSpawnPoint
+@onready var spider_hole: Area2D = $HoleTrigger
 var heartbeat_timer := 0.0
 const SPIDER_SCENE = preload("res://Scenes/Spider.tscn")
 
@@ -13,9 +14,10 @@ const SPIDER_SCENE = preload("res://Scenes/Spider.tscn")
 @export var Kitchen: Node2D
 @export var ghostSpawner: PathFollow2D
 @export var attic: Area2D
-@export var spider_spawn_interval: float = 0.05
+@export var spider_spawn_interval: float = 0.075
 @export var spider_speed: float = 140.0
-@export var spider_max_count: int = 150
+@export var spider_max_count: int = 100
+
 
 
 var ghostCD: float
@@ -182,14 +184,15 @@ func spawn_spider() -> void:
 
 	spider.attic_mode = true
 	spider.speed = spider_speed
+	spider.hole_target = spider_hole.global_position
 
 	add_child(spider)
 
 	spider.global_position = spider_spawn_point.global_position
-	spider.global_position.y += randf_range(-125.0, 115.0)
+	spider.global_position.y += randf_range(-120.0, 120.0)
 
 	attic_spiders.append(spider)
-	
+
 func update_spiders(delta: float) -> void:
 	if not spider_challenge_active:
 		return
@@ -205,7 +208,7 @@ func update_spiders(delta: float) -> void:
 			attic_spiders.erase(spider)
 			continue
 
-		if spider.global_position.x < left_limit + 100.0:
+		if spider.global_position.distance_to(spider_hole.global_position) < 12.0:
 			remove_spider(spider)
 
 	spider_spawn_timer += delta

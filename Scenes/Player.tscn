@@ -51,12 +51,69 @@ random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("4_dewec")
 
-[node name="Player" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("audioStream", "sprite_2d")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ostoq"]
+bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+border_blend = true
+corner_detail = 1
+
+[sub_resource type="FontFile" id="FontFile_ketxm"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/15/0/ascent = 0.0
+cache/0/15/0/descent = 0.0
+cache/0/15/0/underline_position = 0.0
+cache/0/15/0/underline_thickness = 0.0
+cache/0/15/0/scale = 1.0
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/13/0/ascent = 0.0
+cache/0/13/0/descent = 0.0
+cache/0/13/0/underline_position = 0.0
+cache/0/13/0/underline_thickness = 0.0
+cache/0/13/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+
+[node name="Player" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("audioStream", "sprite_2d", "interact_hint")]
 light_mask = 0
 motion_mode = 1
 script = ExtResource("1_kyqiw")
 audioStream = NodePath("PlayerSteps")
 sprite_2d = NodePath("Sprite2D")
+interact_hint = NodePath("PanelContainer/InteractHint")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1810341739]
 sprite_frames = SubResource("SpriteFrames_5ixxa")
@@ -67,9 +124,10 @@ autoplay = "idle"
 position = Vector2(-0.5, 10)
 shape = SubResource("RectangleShape2D_rpqav")
 
-[node name="InteractionArea" type="Area2D" parent="." unique_id=1549334966]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1549334966 node_paths=PackedStringArray("panel_container")]
 position = Vector2(-1, 6)
 script = ExtResource("3_gntrk")
+panel_container = NodePath("../PanelContainer")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea" unique_id=566845921]
 position = Vector2(1, 4)
@@ -79,3 +137,18 @@ debug_color = Color(0, 0, 1, 1)
 [node name="PlayerSteps" type="AudioStreamPlayer" parent="." unique_id=585524915]
 stream = SubResource("AudioStreamRandomizer_camwj")
 volume_db = -30.0
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=37672605]
+visible = false
+offset_left = -8.0
+offset_top = -36.0
+offset_right = 8.0
+offset_bottom = -18.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ostoq")
+
+[node name="InteractHint" type="Label" parent="PanelContainer" unique_id=1486346853]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_ketxm")
+theme_override_font_sizes/font_size = 10
+text = "E"
+horizontal_alignment = 1
