@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var spider_fear_max: int = 10
 @export var spider_fear_interval: float = 1.0
 
+
 var spider_fear_timer: float = 0.0
 
 var touching_spiders: Array[Node2D] = []
@@ -22,6 +23,8 @@ var fearDecay_cd = 0.0
 var fear_cd = 0.0
 
 var controls_locked = false
+var was_in_attic: bool = false
+var is_dead: bool = false
 
 const SPEED = 75.0
 var direction_looking := Vector2.DOWN
@@ -45,6 +48,12 @@ func spawn_collectible(posicao: Vector2):
 	$"../Collectibles".add_child(item)
 
 func _physics_process(delta: float) -> void:
+	var is_in_attic: bool = Global.actualRoom == "Attic"
+	if was_in_attic and not is_in_attic:
+		if fearAmount >= 120:
+			updateFearAmount(100 - fearAmount)
+	was_in_attic = is_in_attic
+	
 	interact_hint.scale.x = 1.0 if scale.x > 0 else -1.0
 	if Global.animationIsPlaying:
 		return
@@ -178,6 +187,9 @@ func updateFearAmount(amount : int) -> void:
 	if fearAmount < 0:
 		fearAmount = 0
 	print(fearAmount)
+	if fearAmount >= 150 and Global.actualRoom != "Attic":
+		die()
+
 	
 func playAnimation(anim: String):
 	sprite_2d.play(anim)
@@ -195,3 +207,10 @@ func spider_exited(spider: Node2D) -> void:
 
 func clear_spiders() -> void:
 	touching_spiders.clear()
+
+func die() -> void:
+	is_dead = true
+	controls_locked = true
+	velocity = Vector2.ZERO
+
+	sprite_2d.play("idle")

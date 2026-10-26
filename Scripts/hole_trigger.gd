@@ -133,7 +133,6 @@ func start_fall() -> void:
 	player.controls_locked = false
 	falling = false
 
-	print("Fall transition completed")
 
 
 func update_transition_center() -> void:
