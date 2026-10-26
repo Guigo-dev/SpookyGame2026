@@ -30,7 +30,13 @@ func _physics_process(delta: float) -> void:
 	if ghosts.size() > 0 and self.enabled == true:
 		for ghost in ghosts.keys():
 			if is_instance_valid(ghost):
-				if ghosts[ghost]["isInFlashlight"]:
+				#apagar ghosts se estiver no attic
+				if Global.actualRoom == "Attic":
+					ghosts.erase(ghost)
+					ghost.die()
+					Global.ghostsQtd -= 1
+				#dar dano nos fantasmas
+				elif ghosts[ghost]["isInFlashlight"]:
 					ghost.playSound("damage")
 					ghosts[ghost]["time"] += delta #calcula o tempo que o fantasma está colidindo com a lanterna
 					if ghosts[ghost]["time"] >= 2.4:

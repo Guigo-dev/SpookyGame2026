@@ -316,3 +316,7 @@ func reset_spider_challenge() -> void:
 		remove_spider(spider)
 
 	attic_spiders.clear()
+
+
+func _on_pintura_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

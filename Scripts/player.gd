@@ -33,7 +33,7 @@ func _ready() -> void:
 	add_to_group("player")
 	
 func _input(event):
-	if controls_locked:
+	if controls_locked or Global.animationIsPlaying:
 		return
 	if event.is_action_pressed("flashlight"):
 		flashlight.enabled = !flashlight.enabled
@@ -48,6 +48,9 @@ func spawn_collectible(posicao: Vector2):
 	$"../Collectibles".add_child(item)
 
 func _physics_process(delta: float) -> void:
+	if Global.animationIsPlaying:
+		return
+	
 	var is_in_attic: bool = Global.actualRoom == "Attic"
 	if was_in_attic and not is_in_attic:
 		if fearAmount >= 120:
@@ -55,8 +58,6 @@ func _physics_process(delta: float) -> void:
 	was_in_attic = is_in_attic
 	
 	interact_hint.scale.x = 1.0 if scale.x > 0 else -1.0
-	if Global.animationIsPlaying:
-		return
 	if controls_locked:
 		velocity = Vector2.ZERO
 		sprite_2d.play("idle")
