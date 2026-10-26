@@ -1544,7 +1544,7 @@ position = Vector2(37, -4.25)
 shape = SubResource("RectangleShape2D_2tml3")
 
 [node name="Stairs_Goal" type="Marker2D" parent="." unique_id=1637283366]
-position = Vector2(-711, 1231)
+position = Vector2(-789, 1220)
 
 [node name="Attic_Goal" type="Marker2D" parent="." unique_id=662797685]
 position = Vector2(-145, 352)
@@ -1594,9 +1594,6 @@ position = Vector2(713, 35)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndGameTrigger" unique_id=253351418]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_bspbu")
-
-[node name="SpiderSpawnPoint" type="Marker2D" parent="." unique_id=1947432101]
-position = Vector2(-419, 1139)
 
 [node name="HoleTrigger" type="Area2D" parent="." unique_id=1544750594 node_paths=PackedStringArray("player", "camera_2d", "fall_destiny", "fade")]
 position = Vector2(-772, 1080)
@@ -1677,11 +1674,14 @@ vertical_alignment = 1
 visible_characters = 0
 visible_ratio = 0.01
 
-[node name="SpiderSpawnPoint" type="Marker2D" parent="Dialogue" unique_id=740371392]
-position = Vector2(-586, 1050)
+[node name="SpiderSpawnPoint3" type="Marker2D" parent="." unique_id=740371392]
+position = Vector2(-580, 1033)
 
-[node name="SpiderSpawnPoint2" type="Marker2D" parent="Dialogue" unique_id=1051753320]
-position = Vector2(-586, 1222)
+[node name="SpiderSpawnPoint2" type="Marker2D" parent="." unique_id=1051753320]
+position = Vector2(-584, 1241)
+
+[node name="SpiderSpawnPoint" type="Marker2D" parent="." unique_id=1947432101]
+position = Vector2(-419, 1139)
 
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
 [connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]
