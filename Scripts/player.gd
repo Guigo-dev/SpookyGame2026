@@ -7,6 +7,12 @@ extends CharacterBody2D
 @export var sprite_2d: AnimatedSprite2D
 @export var spider_push_force: float = 30.0
 
+@export var spider_fear_per_spider: int = 2
+@export var spider_fear_max: int = 10
+@export var spider_fear_interval: float = 1.0
+
+var spider_fear_timer: float = 0.0
+
 var touching_spiders: Array[Node2D] = []
 
 var fearAmount := 0
@@ -79,7 +85,21 @@ func _physics_process(delta: float) -> void:
 			total_push += push_direction * spider_push_force
 
 		velocity += total_push.limit_length(70.0)
-		
+		#medo aranha
+		if touching_spiders.size() > 0:
+			spider_fear_timer += delta
+
+			if spider_fear_timer >= spider_fear_interval:
+				spider_fear_timer = 0.0
+
+				var fear_increase = min(
+					touching_spiders.size() * spider_fear_per_spider,
+					spider_fear_max
+				)
+
+				updateFearAmount(fear_increase)
+		else:
+			spider_fear_timer = 0.0
 		
 	
 	if velocity != Vector2.ZERO:
