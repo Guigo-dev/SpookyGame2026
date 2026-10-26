@@ -24,6 +24,8 @@
 [ext_resource type="Script" uid="uid://di7laxkkmg3cm" path="res://Scenes/pintura.gd" id="18_b1erg"]
 [ext_resource type="Script" uid="uid://ba5ea4o27114w" path="res://Scripts/attic_collectible.gd" id="18_uwplo"]
 [ext_resource type="Texture2D" uid="uid://vemxxwxoy0bv" path="res://Sprites/Images/Porta.png" id="19_64rri"]
+[ext_resource type="Script" uid="uid://c5qdf2a8skmdp" path="res://Scenes/espelho.gd" id="19_apnvp"]
+[ext_resource type="Script" uid="uid://cfcfcb341515c" path="res://Scenes/espelho_2.gd" id="20_ftq5m"]
 [ext_resource type="AudioStream" uid="uid://b8uwk5pdkph8r" path="res://soundtrack/SFX (test)/holloween-sfx-footsteps1_fyzC9NpE.wav" id="22_cb7w3"]
 [ext_resource type="Texture2D" uid="uid://40lhty75imcp" path="res://Sprites/Archives/staircase.png" id="22_lt1cg"]
 [ext_resource type="AudioStream" uid="uid://ddwhmpyq8kov6" path="res://soundtrack/SFX (test)/holloween_sfx_dooropen.wav" id="23_cb7w3"]
@@ -710,7 +712,7 @@ fill = 1
 fill_to = Vector2(0.014705882, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hdi5"]
-size = Vector2(61.499756, 59.49675)
+size = Vector2(61.499756, 153.69987)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltfj6"]
 size = Vector2(840, 488)
@@ -727,6 +729,12 @@ fill_to = Vector2(0.014705882, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ketxm"]
 size = Vector2(7.878071, 5.0211477)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ox1qk"]
+size = Vector2(61.499756, 153.69987)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iss0w"]
+size = Vector2(61.499756, 153.69987)
+
 [sub_resource type="Gradient" id="Gradient_h6vqe"]
 colors = PackedColorArray(0, 0, 0, 1, 0.406135, 0.3913, 0.43, 0.80784315)
 
@@ -738,6 +746,9 @@ fill_to = Vector2(0.014705882, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_loq3h"]
 size = Vector2(283.75735, 70.99545)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftq5m"]
+size = Vector2(18, 33)
 
 [sub_resource type="Gradient" id="Gradient_uwplo"]
 colors = PackedColorArray(0, 0, 0, 1, 0.406135, 0.3913, 0.43, 0.80784315)
@@ -1268,6 +1279,7 @@ shader_parameter/softness = 0.03
 shader_parameter/center = Vector2(0.5, 0.5)
 
 [node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("canvasModulate", "player", "camera", "LivingRoom", "DiningRoom", "Kitchen", "ghostSpawner", "attic")]
+texture_filter = 1
 script = ExtResource("1_ft64k")
 canvasModulate = NodePath("CanvasModulate")
 player = NodePath("Player")
@@ -1301,7 +1313,8 @@ visible = false
 color = Color(0.34901962, 0.34901962, 0.34901962, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
-position = Vector2(-752, 1181)
+texture_filter = 1
+position = Vector2(-208, 144)
 collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
 
@@ -1404,6 +1417,28 @@ script = ExtResource("9_4iykg")
 position = Vector2(0.5000305, -0.514801)
 shape = SubResource("RectangleShape2D_ketxm")
 
+[node name="Espelho" type="Area2D" parent="Kitchen" unique_id=1511550522 node_paths=PackedStringArray("label", "control")]
+position = Vector2(214, 13)
+scale = Vector2(0.34146494, 0.20169163)
+script = ExtResource("19_apnvp")
+label = NodePath("../../Dialogue/Control/PanelContainer/RichTextLabel")
+control = NodePath("../../Dialogue/Control")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Espelho" unique_id=1037331984]
+position = Vector2(1.4644775, 27.269531)
+shape = SubResource("RectangleShape2D_ox1qk")
+
+[node name="Espelho2" type="Area2D" parent="Kitchen" unique_id=1383299069 node_paths=PackedStringArray("label", "control")]
+position = Vector2(279, 13)
+scale = Vector2(0.34146494, 0.20169163)
+script = ExtResource("20_ftq5m")
+label = NodePath("../../Dialogue/Control/PanelContainer/RichTextLabel")
+control = NodePath("../../Dialogue/Control")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Espelho2" unique_id=596038917]
+position = Vector2(1.4644775, 27.269531)
+shape = SubResource("RectangleShape2D_iss0w")
+
 [node name="DiningRoom" type="Area2D" parent="." unique_id=46779004]
 position = Vector2(443, 41)
 scale = Vector2(2.9285583, 4.958064)
@@ -1423,15 +1458,15 @@ position = Vector2(-53.097794, 1.4118423)
 shape = SubResource("RectangleShape2D_loq3h")
 
 [node name="Pintura" type="Area2D" parent="DiningRoom" unique_id=636291824 node_paths=PackedStringArray("label", "control")]
-position = Vector2(-151.26897, -8.269357)
+position = Vector2(-123.268845, -37.716335)
 scale = Vector2(0.34146494, 0.20169163)
 script = ExtResource("18_b1erg")
 label = NodePath("../../Dialogue/Control/PanelContainer/RichTextLabel")
 control = NodePath("../../Dialogue/Control")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DiningRoom/Pintura" unique_id=1468030048]
-position = Vector2(81.5, -140.5)
-shape = SubResource("RectangleShape2D_5hdi5")
+position = Vector2(-1, 6.5)
+shape = SubResource("RectangleShape2D_ftq5m")
 
 [node name="Attic" type="Area2D" parent="." unique_id=1375245725]
 position = Vector2(-586, 1137)
@@ -1544,7 +1579,7 @@ position = Vector2(37, -4.25)
 shape = SubResource("RectangleShape2D_2tml3")
 
 [node name="Stairs_Goal" type="Marker2D" parent="." unique_id=1637283366]
-position = Vector2(-711, 1231)
+position = Vector2(-796, 1218)
 
 [node name="Attic_Goal" type="Marker2D" parent="." unique_id=662797685]
 position = Vector2(-145, 352)
@@ -1692,6 +1727,8 @@ position = Vector2(-586, 1222)
 [connection signal="body_entered" from="LivingRoom/Livro" to="LivingRoom/Livro" method="_on_body_entered"]
 [connection signal="body_entered" from="Kitchen" to="." method="_on_kitchen_body_entered"]
 [connection signal="body_exited" from="Kitchen" to="." method="_on_kitchen_body_exited"]
+[connection signal="body_entered" from="Kitchen/Espelho" to="Kitchen/Espelho" method="_on_body_entered"]
+[connection signal="body_entered" from="Kitchen/Espelho2" to="Kitchen/Espelho2" method="_on_body_entered"]
 [connection signal="body_entered" from="DiningRoom" to="." method="_on_dining_room_body_entered"]
 [connection signal="body_exited" from="DiningRoom" to="." method="_on_dining_room_body_exited"]
 [connection signal="body_entered" from="DiningRoom/Pintura" to="DiningRoom/Pintura" method="_on_body_entered"]
