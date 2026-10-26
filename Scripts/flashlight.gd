@@ -5,9 +5,20 @@ var ghosts: Dictionary[Area2D,Dictionary] = {} #
 @export var onSound: AudioStream
 @export var offSound: AudioStream
 
+@export var mouse_center_deadzone: float = 16.0
+
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	
+func _process(_delta: float) -> void:
+	var mouse_position: Vector2 = get_global_mouse_position()
+	var mouse_direction: Vector2 = mouse_position - global_position
+
+	if mouse_direction.length_squared() > mouse_center_deadzone * mouse_center_deadzone:
+		global_rotation = mouse_direction.angle()
+
 
 
 func _physics_process(delta: float) -> void:
