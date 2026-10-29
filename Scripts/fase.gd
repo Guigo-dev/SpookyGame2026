@@ -37,10 +37,8 @@ func _ready() -> void:
 	#set inicial
 	Global.ghostsQtd = 0;
 	Global.ChanllengsCounter = 0;
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	randomize()
-	if $AmbienceSound.playing == false and $CutscneAmbienceSound.playing == false:
-		$AmbienceSound.play()
 	#tocar cutscene inicial
 	#$AnimationPlayer/CameraCutscene.enabled = true
 	#$Player/Camera2D.enabled = false
@@ -63,6 +61,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.animationIsPlaying:
 		return
+	#deixa musica em loop
+	if $AmbienceSound.playing == false and $CutscneAmbienceSound.playing == false:
+		$AmbienceSound.play()
 	update_spiders(delta)
 	if !Global.mapsLightStatus["LivingRoom"]:
 		if ghostCD >= randi_range(7,20) and Global.ghostsQtd < 5: #spawn dos fantasmas
@@ -157,6 +158,9 @@ func _on_attic_body_entered(body: Node2D) -> void:
 		camera.limit_bottom = Global.mapsCamLimits["Attic"][3]
 		if Global.mapsLightStatus[Global.actualRoom] == true:
 			attic.get_node("AtticLight").enabled = true
+		if !$LivingRoom/LivroSecreto.visible:
+			$LivingRoom/LivroSecreto.visible = true
+			$LivingRoom/LivroSecreto/CollisionShape2D.set_deferred("disabled",false)
 			
 
 func _on_living_room_body_exited(body: Node2D) -> void:
@@ -330,6 +334,9 @@ func finish_spider_challenge() -> void:
 	if is_instance_valid(attic):
 		var light = attic.get_node_or_null("AtticLight")
 		if light:
+			player.controls_locked = true
+			await get_tree().create_timer(1.0).timeout
+			player.controls_locked = false
 			light.enabled = true
 	$SpidersSound.stop()
 	await get_tree().process_frame

@@ -121,10 +121,10 @@ theme_override_fonts/font = ExtResource("2_y2sro")
 theme_override_font_sizes/font_size = 22
 text = "Programação     -     Guigo-dev
 Programação     -     Dezin_Grein
-      Arte            -     Guigo-Dev
+      Arte             -     Guigo-Dev
 Main-menu arte   -      Nanamizu
-      SFX              -        Diego
-Soundtrack        -        Diego"
+      SFX              -    Diego Wandal
+Soundtrack       -   Diego Wandal"
 
 [node name="PlayButton" type="Button" parent="." unique_id=1456718541]
 layout_mode = 0

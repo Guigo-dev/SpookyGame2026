@@ -17,5 +17,4 @@ func interact() -> void:
 
 	get_tree().current_scene.finish_spider_challenge()
 	$"../../LightsOnSound".play()
-
-	queue_free()
+	$AnimatedSprite2D.play("apagado")

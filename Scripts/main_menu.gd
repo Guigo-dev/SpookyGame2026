@@ -8,6 +8,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 func _on_play_button_pressed() -> void:
+	$Block.visible = true
 	MusicManager.stop()
 	background.texture = load("res://Sprites/Images/Menu_porta_aberta.png")
 	$DoorSound.play()

@@ -42,10 +42,6 @@ func _input(event):
 		interaction_area.interact()
 		
 	
-func spawn_collectible(posicao: Vector2):
-	var item = collectible.instantiate()
-	item.position = posicao
-	$"../Collectibles".add_child(item)
 
 func _physics_process(delta: float) -> void:
 	if Global.animationIsPlaying:
@@ -141,8 +137,8 @@ func _physics_process(delta: float) -> void:
 			Global.mapsLightStatus["LivingRoom"] = true
 			$"../LightsOnSound".play()
 			Global.ChanllengsCounter += 1
-			spawn_collectible(Vector2(0, 150))
-			
+
+
 	elif (Global.actualRoom == "LivingRoom" and flashlight.enabled) or Global.actualRoom != "LivingRoom":
 		flashlight_timer = 0
 	

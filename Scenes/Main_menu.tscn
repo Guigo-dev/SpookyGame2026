@@ -85,6 +85,16 @@ volume_db = -10.0
 [node name="DoorSound" type="AudioStreamPlayer" parent="." unique_id=1805658751]
 stream = ExtResource("5_ihofj")
 
+[node name="Block" type="ColorRect" parent="." unique_id=13544149]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
