@@ -215,3 +215,7 @@ func die() -> void:
 	velocity = Vector2.ZERO
 
 	sprite_2d.play("idle")
+
+func playHurtSound():
+	if $PlayerHurt.playing == false:
+		$PlayerHurt.play()

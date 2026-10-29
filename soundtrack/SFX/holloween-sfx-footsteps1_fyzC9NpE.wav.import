@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b8uwk5pdkph8r"
-path="res://.godot/imported/holloween-sfx-footsteps1_fyzC9NpE.wav-777ec7f8562badedfa380faee3e76253.sample"
+path="res://.godot/imported/holloween-sfx-footsteps1_fyzC9NpE.wav-a62b677d0842d40bba0958bb3d1f4130.sample"
 
 [deps]
 
-source_file="res://soundtrack/SFX (test)/holloween-sfx-footsteps1_fyzC9NpE.wav"
-dest_files=["res://.godot/imported/holloween-sfx-footsteps1_fyzC9NpE.wav-777ec7f8562badedfa380faee3e76253.sample"]
+source_file="res://soundtrack/SFX/holloween-sfx-footsteps1_fyzC9NpE.wav"
+dest_files=["res://.godot/imported/holloween-sfx-footsteps1_fyzC9NpE.wav-a62b677d0842d40bba0958bb3d1f4130.sample"]
 
 [params]
 

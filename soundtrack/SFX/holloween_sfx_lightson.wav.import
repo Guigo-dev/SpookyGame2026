@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c3fscjvb3poo7"
-path="res://.godot/imported/holloween_sfx_lightson.wav-486f3a356ae630546db3b5219821cfa6.sample"
+path="res://.godot/imported/holloween_sfx_lightson.wav-d49f2fe48868f534c13841dfc831f072.sample"
 
 [deps]
 
-source_file="res://soundtrack/SFX (test)/holloween_sfx_lightson.wav"
-dest_files=["res://.godot/imported/holloween_sfx_lightson.wav-486f3a356ae630546db3b5219821cfa6.sample"]
+source_file="res://soundtrack/SFX/holloween_sfx_lightson.wav"
+dest_files=["res://.godot/imported/holloween_sfx_lightson.wav-d49f2fe48868f534c13841dfc831f072.sample"]
 
 [params]
 

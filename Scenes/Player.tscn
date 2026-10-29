@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://knhb5ilupbno" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://14tn1j8kpxor" path="res://Sprites/Images/broba_sprite_sheet.png" id="1_rpqav"]
 [ext_resource type="Script" uid="uid://cdh64a43btaer" path="res://Scripts/interaction_area.gd" id="3_gntrk"]
-[ext_resource type="AudioStream" uid="uid://b8uwk5pdkph8r" path="res://soundtrack/SFX (test)/holloween-sfx-footsteps1_fyzC9NpE.wav" id="4_dewec"]
+[ext_resource type="AudioStream" uid="uid://b8uwk5pdkph8r" path="res://soundtrack/SFX/holloween-sfx-footsteps1_fyzC9NpE.wav" id="4_dewec"]
+[ext_resource type="AudioStream" uid="uid://ccflhagmwo78l" path="res://soundtrack/SFX/holloween_sfx_playerdmg.wav" id="5_5ixxa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("1_rpqav")
@@ -155,6 +156,10 @@ theme_override_fonts/font = SubResource("FontFile_ketxm")
 theme_override_font_sizes/font_size = 10
 text = "E"
 horizontal_alignment = 1
+
+[node name="PlayerHurt" type="AudioStreamPlayer" parent="." unique_id=453103159]
+stream = ExtResource("5_5ixxa")
+volume_db = -20.0
 
 [connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]

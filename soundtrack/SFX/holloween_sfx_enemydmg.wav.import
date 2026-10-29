@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ccmopxuyh28f1"
-path="res://.godot/imported/holloween_sfx_enemydmg.wav-6184e22a9c6beca6a864d64766ac8995.sample"
+path="res://.godot/imported/holloween_sfx_enemydmg.wav-f2f3c7af233b87c3508b7f27aba43a46.sample"
 
 [deps]
 
-source_file="res://soundtrack/SFX (test)/holloween_sfx_enemydmg.wav"
-dest_files=["res://.godot/imported/holloween_sfx_enemydmg.wav-6184e22a9c6beca6a864d64766ac8995.sample"]
+source_file="res://soundtrack/SFX/holloween_sfx_enemydmg.wav"
+dest_files=["res://.godot/imported/holloween_sfx_enemydmg.wav-f2f3c7af233b87c3508b7f27aba43a46.sample"]
 
 [params]
 

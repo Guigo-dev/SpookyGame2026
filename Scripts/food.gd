@@ -12,11 +12,14 @@ func interact():
 	if player:
 		player.controls_locked = true
 		player.flashlight.enabled = false
-
-		await get_tree().create_timer(5.0).timeout
-
 		player.controls_locked = false
 		was_eaten = true
+		$AnimatedSprite2D.play("eat")
+		var comidas = 0
+		while comidas < 3:
+			if $EatSound.playing == false:
+				$EatSound.play()
+				comidas += 1
 		Global.mapsLightStatus["Kitchen"] = true
 		$"../KitchenLight".enabled = true
 		$"../../LightsOnSound".play()

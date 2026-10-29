@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d2w3pg4ud7slx"
-path="res://.godot/imported/holloween_sfx_ghostdeath.wav-23d5dc7a130b3d4fc85825a56d264be0.sample"
+path="res://.godot/imported/holloween_sfx_ghostdeath.wav-0c8e8cdfb7ea6528b24822fdf20fcda2.sample"
 
 [deps]
 
-source_file="res://soundtrack/SFX (test)/holloween_sfx_ghostdeath.wav"
-dest_files=["res://.godot/imported/holloween_sfx_ghostdeath.wav-23d5dc7a130b3d4fc85825a56d264be0.sample"]
+source_file="res://soundtrack/SFX/holloween_sfx_ghostdeath.wav"
+dest_files=["res://.godot/imported/holloween_sfx_ghostdeath.wav-0c8e8cdfb7ea6528b24822fdf20fcda2.sample"]
 
 [params]
 

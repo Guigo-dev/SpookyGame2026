@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bwcrbekwmv1sw"
-path="res://.godot/imported/holloween_sfx_doorclose.wav-70a35de0d68acec76c59769c76203587.sample"
+path="res://.godot/imported/holloween_sfx_doorclose.wav-2bda0d83ff9128d32ea36536b849f6f4.sample"
 
 [deps]
 
-source_file="res://soundtrack/SFX (test)/holloween_sfx_doorclose.wav"
-dest_files=["res://.godot/imported/holloween_sfx_doorclose.wav-70a35de0d68acec76c59769c76203587.sample"]
+source_file="res://soundtrack/SFX/holloween_sfx_doorclose.wav"
+dest_files=["res://.godot/imported/holloween_sfx_doorclose.wav-2bda0d83ff9128d32ea36536b849f6f4.sample"]
 
 [params]
 

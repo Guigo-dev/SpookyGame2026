@@ -58,6 +58,7 @@ func _process(delta: float) -> void:
 		heartbeat_pulse()
 	
 	if Global.ChanllengsCounter == 3:
+		$DiningRoom/DiningRoomLight.enabled = true
 		await $LightsOnSound.finished
 		Global.ChanllengsCounter = 4
 		$AnimationPlayer/CameraCutscene.global_position = $Player/Camera2D.global_position
@@ -201,7 +202,9 @@ func spawn_spider() -> void:
 	else:
 		spider.global_position = spider_spawn_point_3.global_position
 		spider.global_position.x += randf_range(-120.0, 120.0)
-
+	if $SpidersSound.playing == false:
+		$SpidersSound.play()
+	
 	attic_spiders.append(spider)
 
 func update_spiders(delta: float) -> void:
@@ -304,7 +307,7 @@ func finish_spider_challenge() -> void:
 		var light = attic.get_node_or_null("AtticLight")
 		if light:
 			light.enabled = true
-
+	$SpidersSound.stop()
 	await get_tree().process_frame
 
 func remove_spider(spider: Node2D) -> void:
@@ -325,7 +328,7 @@ func reset_spider_challenge() -> void:
 
 	for spider in attic_spiders.duplicate():
 		remove_spider(spider)
-
+	$SpidersSound.stop()
 	attic_spiders.clear()
 
 
