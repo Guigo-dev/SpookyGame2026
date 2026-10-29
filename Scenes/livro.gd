@@ -5,7 +5,7 @@ extends Area2D
 
 func interact():
 	Global.animationIsPlaying = true
-	label.text = "Quem não gosta do escuro?"
+	label.text = "Apenas 10 segundos de coragem" if Global.visitedAttic else "Quem não gosta do escuro?"
 	label.visible_characters = 0
 	control.visible = true
 # Animação de aparecimento do texto
