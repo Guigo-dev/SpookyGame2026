@@ -194,6 +194,30 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_end_game_trigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and Global.ChanllengsCounter >= 3:
+		
+		# Bloqueia os controles
+		$Player.controls_locked = true
+		$Player.velocity = Vector2.ZERO
+
+		var fade = $FallTransition/Fade
+		var material = fade.material.duplicate() as ShaderMaterial
+		fade.material = material
+
+		var screen_position = $Player.get_global_transform_with_canvas().origin
+		var screen_size = get_viewport().get_visible_rect().size
+
+		material.set_shader_parameter("center", screen_position / screen_size)
+		material.set_shader_parameter("radius", screen_size.length() + 100.0)
+		fade.visible = true
+		var tween = create_tween()
+		tween.tween_method(
+			func(radius: float): material.set_shader_parameter("radius", radius),
+			screen_size.length() + 100.0,
+			0.0,
+			2.0
+		).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		await tween.finished
+		
 		var finalMenu = load("res://Scenes/final_menu.tscn")
 		get_tree().change_scene_to_packed(finalMenu)
 

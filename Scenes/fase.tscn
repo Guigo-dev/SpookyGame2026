@@ -1895,15 +1895,14 @@ position = Vector2(73, 52)
 layer = 10
 
 [node name="Fade" type="ColorRect" parent="FallTransition" unique_id=1873654087]
-visible = false
 material = SubResource("ShaderMaterial_lt1cg")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
+offset_left = -2.0
 offset_top = -5.0
 offset_right = 1.0
-offset_bottom = -5.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
