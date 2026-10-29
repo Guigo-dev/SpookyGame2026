@@ -33,6 +33,12 @@ var spider_challenge_completed := false
 var attic_spiders: Array[Node2D] = []
 
 func _ready() -> void:
+	#set inicial
+	Global.ghostsQtd = 0;
+	Global.ChanllengsCounter = 0;
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	randomize()
+	#tocar cutscene inicial
 	$AnimationPlayer/CameraCutscene.enabled = true
 	$Player/Camera2D.enabled = false
 	$AnimationPlayer/CameraCutscene.make_current()
@@ -41,7 +47,8 @@ func _ready() -> void:
 	$Player/Camera2D.enabled = true
 	$AnimationPlayer/CameraCutscene.enabled = false
 	$Player/Camera2D.make_current()
-	randomize()
+	
+	#animacao tutorial
 	wasd_blood.material = wasd_blood.material.duplicate()
 	flashlight_blood.material = flashlight_blood.material.duplicate()
 

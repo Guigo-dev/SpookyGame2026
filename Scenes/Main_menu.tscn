@@ -1,8 +1,22 @@
 [gd_scene format=3 uid="uid://cv82h02c5ei7n"]
 
 [ext_resource type="Script" uid="uid://c7dneagw7bnmr" path="res://Scripts/main_menu.gd" id="1_7sp8y"]
+[ext_resource type="Texture2D" uid="uid://2qgydxinp77t" path="res://Sprites/Images/Menu.png" id="2_pc006"]
+[ext_resource type="Texture2D" uid="uid://d4dbag76djp4j" path="res://Sprites/Images/player_menu.png" id="3_f7j37"]
+[ext_resource type="AudioStream" uid="uid://dy0ub3jlqwud1" path="res://soundtrack/SFX/holloween_sfx_flashon.wav" id="4_787fc"]
+[ext_resource type="AudioStream" uid="uid://ddwhmpyq8kov6" path="res://soundtrack/SFX/holloween_sfx_dooropen.wav" id="5_ihofj"]
 
-[node name="MainMenu" type="Control" unique_id=721279282 node_paths=PackedStringArray("playButton")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bspbu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5hdi5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i7a4e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vcu7i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jthga"]
+
+[node name="MainMenu" type="Control" unique_id=721279282 node_paths=PackedStringArray("character_rect", "background")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,31 +24,68 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7sp8y")
-playButton = NodePath("PlayButton")
+character_rect = NodePath("Character")
+background = NodePath("BackGround")
 
-[node name="Fundo" type="ColorRect" parent="." unique_id=1619986467]
+[node name="BackGround" type="TextureRect" parent="." unique_id=1869996169]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.37254903, 0.20392157, 0.09019608, 1)
+texture = ExtResource("2_pc006")
+
+[node name="Character" type="TextureRect" parent="." unique_id=1697096794]
+layout_mode = 0
+offset_right = 2160.0
+offset_bottom = 360.0
+texture = ExtResource("3_f7j37")
 
 [node name="PlayButton" type="Button" parent="." unique_id=1985549942]
 layout_mode = 0
-offset_left = 328.0
-offset_top = 168.0
-offset_right = 376.0
-offset_bottom = 199.0
-text = "Jogar"
+offset_left = 291.0
+offset_top = 189.0
+offset_right = 432.0
+offset_bottom = 360.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bspbu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5hdi5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i7a4e")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vcu7i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jthga")
 
-[node name="Label" type="Label" parent="." unique_id=313226463]
+[node name="OptionsButton" type="Button" parent="." unique_id=558850630]
 layout_mode = 0
-offset_left = 280.0
-offset_top = 48.0
-offset_right = 415.0
-offset_bottom = 71.0
-text = "Casa Dos Medrosos"
+offset_left = 93.0
+offset_top = 189.0
+offset_right = 234.0
+offset_bottom = 360.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bspbu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5hdi5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i7a4e")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vcu7i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jthga")
 
+[node name="CreditsButton" type="Button" parent="." unique_id=1843897583]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 189.0
+offset_right = 632.0
+offset_bottom = 360.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bspbu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5hdi5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i7a4e")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vcu7i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jthga")
+
+[node name="FlashlightSound" type="AudioStreamPlayer" parent="." unique_id=19908047]
+stream = ExtResource("4_787fc")
+volume_db = -10.0
+
+[node name="DoorSound" type="AudioStreamPlayer" parent="." unique_id=1805658751]
+stream = ExtResource("5_ihofj")
+
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
+[connection signal="mouse_entered" from="CreditsButton" to="." method="_on_credits_button_mouse_entered"]
