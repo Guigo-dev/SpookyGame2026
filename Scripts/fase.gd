@@ -39,6 +39,8 @@ func _ready() -> void:
 	Global.ChanllengsCounter = 0;
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	randomize()
+	if $AmbienceSound.playing == false and $CutscneAmbienceSound.playing == false:
+		$AmbienceSound.play()
 	#tocar cutscene inicial
 	$AnimationPlayer/CameraCutscene.enabled = true
 	$Player/Camera2D.enabled = false
