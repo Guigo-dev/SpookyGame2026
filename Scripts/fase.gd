@@ -5,6 +5,9 @@ extends Node2D
 @onready var spider_spawn_point_2: Marker2D = $SpiderSpawnPoint2
 @onready var spider_spawn_point_3: Marker2D = $SpiderSpawnPoint3
 @onready var spider_hole: Area2D = $HoleTrigger
+@onready var wasd_blood: Sprite2D = $WasdBlood
+@onready var flashlight_blood: Sprite2D = $FlashlightBlood
+var blood_animation_started := false
 var heartbeat_timer := 0.0
 const SPIDER_SCENE = preload("res://Scenes/Spider.tscn")
 
@@ -30,15 +33,22 @@ var spider_challenge_completed := false
 var attic_spiders: Array[Node2D] = []
 
 func _ready() -> void:
-	#$AnimationPlayer/CameraCutscene.enabled = true
-	#$Player/Camera2D.enabled = false
-	#$AnimationPlayer/CameraCutscene.make_current()
-	#$AnimationPlayer.play("initialCutscene")
-	#await $AnimationPlayer.animation_finished
-	#$Player/Camera2D.enabled = true
-	#$AnimationPlayer/CameraCutscene.enabled = false
-	#$Player/Camera2D.make_current()
+	$AnimationPlayer/CameraCutscene.enabled = true
+	$Player/Camera2D.enabled = false
+	$AnimationPlayer/CameraCutscene.make_current()
+	$AnimationPlayer.play("initialCutscene")
+	await $AnimationPlayer.animation_finished
+	$Player/Camera2D.enabled = true
+	$AnimationPlayer/CameraCutscene.enabled = false
+	$Player/Camera2D.make_current()
 	randomize()
+	wasd_blood.material = wasd_blood.material.duplicate()
+	flashlight_blood.material = flashlight_blood.material.duplicate()
+
+	wasd_blood.material.set_shader_parameter("reveal", 0.0)
+	flashlight_blood.material.set_shader_parameter("reveal", 0.0)
+
+	animate_blood()
 
 func _process(delta: float) -> void:
 	if Global.animationIsPlaying:
@@ -140,6 +150,8 @@ func _on_attic_body_entered(body: Node2D) -> void:
 func _on_living_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		LivingRoom.get_node("LivingRoomLight").enabled = false
+		wasd_blood.visible = false
+		flashlight_blood.visible = false
 
 func _on_dining_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
@@ -334,3 +346,27 @@ func reset_spider_challenge() -> void:
 
 func _on_pintura_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
+
+func animate_blood() -> void:
+	if blood_animation_started:
+		return
+
+	blood_animation_started = true
+
+	var tween = create_tween()
+
+	tween.tween_method(
+		func(value: float):
+			wasd_blood.material.set_shader_parameter("reveal", value),
+		0.0,
+		1.0,
+		2.0
+	)
+
+	tween.parallel().tween_method(
+		func(value: float):
+			flashlight_blood.material.set_shader_parameter("reveal", value),
+		0.0,
+		1.0,
+		2.0
+	)
