@@ -209,8 +209,14 @@ func die() -> void:
 	is_dead = true
 	controls_locked = true
 	velocity = Vector2.ZERO
+	flashlight.enabled = false
 
 	sprite_2d.play("idle")
+	audioStream.stop()
+	
+	await get_tree().create_timer(2.0).timeout
+	Global.reset_game()
+	get_tree().change_scene_to_file("res://Scenes/Main_menu.tscn")
 
 func playHurtSound():
 	if $PlayerHurt.playing == false:

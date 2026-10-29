@@ -54,7 +54,7 @@ func _ready() -> void:
 	flashlight_blood.material = flashlight_blood.material.duplicate()
 
 	wasd_blood.material.set_shader_parameter("reveal", 0.0)
-	flashlight_blood.material.set_shader_parameter("reveal", 0.0)
+	flashlight_blood.material.set_shader_parameter("reveal", 0.0)	
 
 	animate_blood()
 
