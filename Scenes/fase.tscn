@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://bnt3b1jb40s4y" path="res://Sprites/Images/wasd_blood.png" id="35_apnvp"]
 [ext_resource type="Texture2D" uid="uid://dl2hlkqi3ydc0" path="res://Sprites/Images/flashlight_blood.png" id="36_ftq5m"]
 [ext_resource type="AudioStream" uid="uid://celmui5bg51ln" path="res://soundtrack/SFX/holloween_sfx_spidernoise.wav" id="39_5o4tr"]
+[ext_resource type="Shader" uid="uid://dgmp52clatvlq" path="res://Scenes/blood_reveal.gdshader" id="39_s7ra4"]
 [ext_resource type="AudioStream" uid="uid://dyvmass4lvnha" path="res://soundtrack/SFX/holloween_sfx_textboxphrase.wav" id="40_vx2j6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10umt"]
@@ -1372,6 +1373,14 @@ shader_parameter/radius = 1.5
 shader_parameter/softness = 0.03
 shader_parameter/center = Vector2(0.5, 0.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
+shader = ExtResource("39_s7ra4")
+shader_parameter/reveal = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajtct"]
+shader = ExtResource("39_s7ra4")
+shader_parameter/reveal = 0.0
+
 [node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("canvasModulate", "player", "camera", "LivingRoom", "DiningRoom", "Kitchen", "ghostSpawner", "attic")]
 texture_filter = 1
 script = ExtResource("1_ft64k")
@@ -1383,6 +1392,9 @@ DiningRoom = NodePath("DiningRoom")
 Kitchen = NodePath("Kitchen")
 ghostSpawner = NodePath("Path2D/PathFollow2D")
 attic = NodePath("Attic")
+spider_spawn_interval = null
+spider_speed = null
+spider_max_count = null
 
 [node name="Chao" type="TileMapLayer" parent="." unique_id=628494821]
 z_index = -1
@@ -1826,12 +1838,14 @@ position = Vector2(-419, 1139)
 
 [node name="WasdBlood" type="Sprite2D" parent="." unique_id=1975300886]
 z_index = -1
+material = SubResource("ShaderMaterial_ostoq")
 position = Vector2(570, 32)
 scale = Vector2(1.9531244, 2.21875)
 texture = ExtResource("35_apnvp")
 
 [node name="FlashlightBlood" type="Sprite2D" parent="." unique_id=1704467890]
 z_index = -1
+material = SubResource("ShaderMaterial_ajtct")
 position = Vector2(568, 127)
 scale = Vector2(1.71875, 2.15625)
 texture = ExtResource("36_ftq5m")
