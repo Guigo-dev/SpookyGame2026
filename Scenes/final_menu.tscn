@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bi5ajravp8rel"]
 
 [ext_resource type="Script" uid="uid://dbiddwmsdd2tj" path="res://Scripts/final_menu.gd" id="1_7bvve"]
-[ext_resource type="FontFile" uid="uid://j0ga7np2uahp" path="res://GhoulFriAOE.ttf" id="2_y2sro"]
+[ext_resource type="FontFile" uid="uid://j0ga7np2uahp" path="res://Fonts/GhoulFriAOE.ttf" id="2_y2sro"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lvhjc"]
 

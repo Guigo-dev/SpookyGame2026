@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cobwl3spvd4ev"
-path="res://.godot/imported/scary halloween.ttf-ea216a4a4a6bf28538939cba7ba34d79.fontdata"
+path="res://.godot/imported/scary halloween.ttf-ef0a2fe098726f65c8cd7effc1fbd267.fontdata"
 
 [deps]
 
-source_file="res://scary halloween.ttf"
-dest_files=["res://.godot/imported/scary halloween.ttf-ea216a4a4a6bf28538939cba7ba34d79.fontdata"]
+source_file="res://Fonts/scary halloween.ttf"
+dest_files=["res://.godot/imported/scary halloween.ttf-ef0a2fe098726f65c8cd7effc1fbd267.fontdata"]
 
 [params]
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var heartbeat = $CanvasLayer/TextureRect
+@onready var heartbeat = %HeartbeatTexture
 @onready var spider_spawn_point: Marker2D = $SpiderSpawnPoint
 @onready var spider_spawn_point_2: Marker2D = $SpiderSpawnPoint2
 @onready var spider_spawn_point_3: Marker2D = $SpiderSpawnPoint3
@@ -42,14 +42,14 @@ func _ready() -> void:
 	if $AmbienceSound.playing == false and $CutscneAmbienceSound.playing == false:
 		$AmbienceSound.play()
 	#tocar cutscene inicial
-	$AnimationPlayer/CameraCutscene.enabled = true
-	$Player/Camera2D.enabled = false
-	$AnimationPlayer/CameraCutscene.make_current()
-	$AnimationPlayer.play("initialCutscene")
-	await $AnimationPlayer.animation_finished
-	$Player/Camera2D.enabled = true
-	$AnimationPlayer/CameraCutscene.enabled = false
-	$Player/Camera2D.make_current()
+	#$AnimationPlayer/CameraCutscene.enabled = true
+	#$Player/Camera2D.enabled = false
+	#$AnimationPlayer/CameraCutscene.make_current()
+	#$AnimationPlayer.play("initialCutscene")
+	#await $AnimationPlayer.animation_finished
+	#$Player/Camera2D.enabled = true
+	#$AnimationPlayer/CameraCutscene.enabled = false
+	#$Player/Camera2D.make_current()
 	
 	#animacao tutorial
 	wasd_blood.material = wasd_blood.material.duplicate()

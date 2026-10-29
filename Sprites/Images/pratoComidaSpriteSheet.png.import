@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crd6rebhvg5h0"
-path="res://.godot/imported/staircase2.png-87b62d45372de764e958fecf2b9fd980.ctex"
+uid="uid://mysv16fm7r4o"
+path="res://.godot/imported/pratoComidaSpriteSheet.png-90f2596adf0049496472c745ded9d46f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Archives/staircase2.png"
-dest_files=["res://.godot/imported/staircase2.png-87b62d45372de764e958fecf2b9fd980.ctex"]
+source_file="res://Sprites/Images/pratoComidaSpriteSheet.png"
+dest_files=["res://.godot/imported/pratoComidaSpriteSheet.png-90f2596adf0049496472c745ded9d46f.ctex"]
 
 [params]
 

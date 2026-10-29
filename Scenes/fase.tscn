@@ -18,31 +18,30 @@
 [ext_resource type="Texture2D" uid="uid://bw55gygeuocnb" path="res://icon.svg" id="9_e6h3x"]
 [ext_resource type="AudioStream" uid="uid://dy0ub3jlqwud1" path="res://soundtrack/SFX/holloween_sfx_flashon.wav" id="11_0svc4"]
 [ext_resource type="AudioStream" uid="uid://0w1lggwtkfb7" path="res://soundtrack/SFX/holloween_sfx_flashoff.wav" id="12_u1r1b"]
-[ext_resource type="Texture2D" uid="uid://dswhhl2pa0x4o" path="res://Sprites/Images/HeartBeatTexture.png" id="13_10umt"]
 [ext_resource type="Script" uid="uid://c15tudrp5h3lj" path="res://Scripts/stairs.gd" id="16_ah5am"]
-[ext_resource type="Script" uid="uid://6vuxy7r3nicf" path="res://Scenes/livro.gd" id="17_caf05"]
-[ext_resource type="Script" uid="uid://di7laxkkmg3cm" path="res://Scenes/pintura.gd" id="18_b1erg"]
+[ext_resource type="Script" uid="uid://6vuxy7r3nicf" path="res://Scripts/Dicas/livro.gd" id="17_caf05"]
+[ext_resource type="Script" uid="uid://di7laxkkmg3cm" path="res://Scripts/Dicas/pintura.gd" id="18_b1erg"]
 [ext_resource type="Script" uid="uid://ba5ea4o27114w" path="res://Scripts/attic_collectible.gd" id="18_uwplo"]
 [ext_resource type="Texture2D" uid="uid://vemxxwxoy0bv" path="res://Sprites/Images/Porta.png" id="19_64rri"]
-[ext_resource type="Script" uid="uid://c5qdf2a8skmdp" path="res://Scenes/espelho.gd" id="19_apnvp"]
-[ext_resource type="Texture2D" uid="uid://mysv16fm7r4o" path="res://Sprites/Archives/pratoComidaSpriteSheet.png" id="19_mdxkp"]
-[ext_resource type="Script" uid="uid://cfcfcb341515c" path="res://Scenes/espelho_2.gd" id="20_ftq5m"]
+[ext_resource type="Script" uid="uid://c5qdf2a8skmdp" path="res://Scripts/Dicas/espelho.gd" id="19_apnvp"]
+[ext_resource type="Texture2D" uid="uid://mysv16fm7r4o" path="res://Sprites/Images/pratoComidaSpriteSheet.png" id="19_mdxkp"]
+[ext_resource type="Script" uid="uid://cfcfcb341515c" path="res://Scripts/Dicas/espelho_2.gd" id="20_ftq5m"]
 [ext_resource type="AudioStream" uid="uid://cm21tkkfu7cq1" path="res://soundtrack/SFX/holloween_sfx_footstepsinsects1.wav" id="20_s7ra4"]
 [ext_resource type="AudioStream" uid="uid://bxnrhhdrk7eqx" path="res://soundtrack/SFX/holloween_sfx_footstepsinsects2.wav" id="21_iw10b"]
 [ext_resource type="AudioStream" uid="uid://b8uwk5pdkph8r" path="res://soundtrack/SFX/holloween-sfx-footsteps1_fyzC9NpE.wav" id="22_cb7w3"]
-[ext_resource type="Texture2D" uid="uid://40lhty75imcp" path="res://Sprites/Archives/staircase.png" id="22_lt1cg"]
+[ext_resource type="Texture2D" uid="uid://40lhty75imcp" path="res://Sprites/Images/staircase.png" id="22_lt1cg"]
 [ext_resource type="AudioStream" uid="uid://ddwhmpyq8kov6" path="res://soundtrack/SFX/holloween_sfx_dooropen.wav" id="23_cb7w3"]
 [ext_resource type="AudioStream" uid="uid://bwcrbekwmv1sw" path="res://soundtrack/SFX/holloween_sfx_doorclose.wav" id="24_0ctqs"]
-[ext_resource type="Texture2D" uid="uid://crd6rebhvg5h0" path="res://Sprites/Archives/staircase2.png" id="25_1ofpn"]
+[ext_resource type="Texture2D" uid="uid://crd6rebhvg5h0" path="res://Sprites/Images/staircase2.png" id="25_1ofpn"]
 [ext_resource type="AudioStream" uid="uid://c3fscjvb3poo7" path="res://soundtrack/SFX/holloween_sfx_lightson.wav" id="25_h31yk"]
 [ext_resource type="PackedScene" uid="uid://cs43ay7dbn1x7" path="res://Scenes/healingLight.tscn" id="26_h31yk"]
 [ext_resource type="Script" uid="uid://bm766qy6qtr7p" path="res://Scripts/hole_trigger.gd" id="28_lt1cg"]
-[ext_resource type="Shader" uid="uid://cjl1o1l4mvpj0" path="res://Scenes/transicao.gdshader" id="29_oxw4l"]
-[ext_resource type="FontFile" uid="uid://cobwl3spvd4ev" path="res://scary halloween.ttf" id="31_1j3mc"]
+[ext_resource type="Shader" uid="uid://cjl1o1l4mvpj0" path="res://Shaders/transicao.gdshader" id="29_oxw4l"]
+[ext_resource type="FontFile" uid="uid://cobwl3spvd4ev" path="res://Fonts/scary halloween.ttf" id="31_1j3mc"]
 [ext_resource type="Texture2D" uid="uid://bnt3b1jb40s4y" path="res://Sprites/Images/wasd_blood.png" id="35_apnvp"]
 [ext_resource type="Texture2D" uid="uid://dl2hlkqi3ydc0" path="res://Sprites/Images/flashlight_blood.png" id="36_ftq5m"]
 [ext_resource type="AudioStream" uid="uid://celmui5bg51ln" path="res://soundtrack/SFX/holloween_sfx_spidernoise.wav" id="39_5o4tr"]
-[ext_resource type="Shader" uid="uid://dgmp52clatvlq" path="res://Scenes/blood_reveal.gdshader" id="39_s7ra4"]
+[ext_resource type="Shader" uid="uid://dgmp52clatvlq" path="res://Shaders/blood_reveal.gdshader" id="39_s7ra4"]
 [ext_resource type="AudioStream" uid="uid://dyvmass4lvnha" path="res://soundtrack/SFX/holloween_sfx_textboxphrase.wav" id="40_vx2j6"]
 [ext_resource type="AudioStream" uid="uid://dkmw1y7b2q286" path="res://soundtrack/music/cutscene.wav" id="45_gufgi"]
 
@@ -880,6 +879,9 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iw10b"]
+load_path = "res://.godot/imported/HeartBeatTexture.png-d6b38eec1a7f7eb6dcdd6adf3c1ee57c.ctex"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tml3"]
 size = Vector2(20, 60.5)
 
@@ -1694,10 +1696,11 @@ position = Vector2(-958, 94)
 rotation = 1.359703
 rotates = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1669754905]
-visible = false
+[node name="HeartbeatLayer" type="CanvasLayer" parent="." unique_id=1669754905]
+layer = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=484415971]
+[node name="HeartbeatTexture" type="TextureRect" parent="HeartbeatLayer" unique_id=484415971]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -1705,7 +1708,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(360, 180)
-texture = ExtResource("13_10umt")
+texture = SubResource("CompressedTexture2D_iw10b")
 stretch_mode = 3
 
 [node name="Stairs" type="StaticBody2D" parent="." unique_id=94777428 node_paths=PackedStringArray("player", "stairs_goal", "attic_goal")]
