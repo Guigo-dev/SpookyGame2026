@@ -31,6 +31,7 @@ var spider_spawn_timer := 0.0
 var spider_challenge_active := false
 var spider_challenge_completed := false
 var attic_spiders: Array[Node2D] = []
+var attic_entered := false
 
 func _ready() -> void:
 	$AnimationPlayer/CameraCutscene.enabled = true
@@ -140,12 +141,14 @@ func _on_kitchen_body_entered(body: Node2D) -> void:
 func _on_attic_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		Global.actualRoom = "Attic"
+		Global.visitedAttic = true
 		camera.limit_left = Global.mapsCamLimits["Attic"][0]
 		camera.limit_top = Global.mapsCamLimits["Attic"][1]
 		camera.limit_right = Global.mapsCamLimits["Attic"][2]
 		camera.limit_bottom = Global.mapsCamLimits["Attic"][3]
 		if Global.mapsLightStatus[Global.actualRoom] == true:
 			attic.get_node("AtticLight").enabled = true
+			
 
 func _on_living_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
