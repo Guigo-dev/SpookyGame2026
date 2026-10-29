@@ -1,19 +1,82 @@
 [gd_scene format=3 uid="uid://bi5ajravp8rel"]
 
 [ext_resource type="Script" uid="uid://dbiddwmsdd2tj" path="res://Scripts/final_menu.gd" id="1_7bvve"]
-[ext_resource type="FontFile" uid="uid://j0ga7np2uahp" path="res://GhoulFriAOE.ttf" id="2_y2sro"]
+[ext_resource type="FontFile" uid="uid://j0ga7np2uahp" path="res://Fonts/GhoulFriAOE.ttf" id="2_y2sro"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7sp8y"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lvhjc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bvve"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7a4e"]
+bg_color = Color(0.53793013, 0.38821146, 0.29372323, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.88030255, 0.5907465, 0.34030825, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2sro"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2sro"]
+bg_color = Color(0.5372549, 0.3882353, 0.29411766, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8784314, 0.5921569, 0.34117648, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vtqj"]
+bg_color = Color(0.7624416, 0.5905813, 0.48359597, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.93447477, 0.6868046, 0.4798097, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3chs1"]
+bg_color = Color(0.39438936, 0.27755406, 0.20351017, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.58920413, 0.36651415, 0.15970644, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vtqj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3chs1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hdi5"]
+bg_color = Color(0.5372549, 0.3882353, 0.29411766, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8784314, 0.5921569, 0.34117648, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="Final_menu" type="Control" unique_id=1535404519]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,48 +92,77 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.37254903, 0.20392157, 0.09019608, 1)
+color = Color(0, 0, 0, 1)
 
-[node name="PlayButton" type="Button" parent="." unique_id=1456718541]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 12.0
-offset_top = 7.0
-offset_right = 71.0
-offset_bottom = 38.0
+[node name="CreditePanel" type="Panel" parent="." unique_id=423690448]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 104.0
+offset_right = 256.0
+offset_bottom = 144.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lvhjc")
+
+[node name="PanelContainer" type="PanelContainer" parent="CreditePanel" unique_id=1108114610]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7a4e")
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditePanel/PanelContainer" unique_id=1114577099]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Credits" type="Label" parent="CreditePanel/PanelContainer/MarginContainer" unique_id=406652909]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y2sro")
 theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7sp8y")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_7bvve")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_y2sro")
+text = "Programação     -     Guigo-dev
+Programação     -     Dezin_Grein
+      Arte             -     Guigo-Dev
+Main-menu arte   -      Nanamizu
+      SFX              -    Diego Wandal
+Soundtrack       -   Diego Wandal"
+
+[node name="PlayButton" type="Button" parent="." unique_id=1456718541]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 74.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("2_y2sro")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_y2sro")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3vtqj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3chs1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3vtqj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3chs1")
 text = "Voltar "
 
-[node name="Title" type="Label" parent="." unique_id=986207353]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -114.0
-offset_top = 21.0
-offset_right = 114.0
-offset_bottom = 49.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_y2sro")
-theme_override_font_sizes/font_size = 24
-text = "Um jogo por biscuit studios"
+[node name="TilePanel" type="Panel" parent="." unique_id=691401529]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 32.0
+offset_right = 263.0
+offset_bottom = 72.0
 
-[node name="Credits" type="Label" parent="." unique_id=406652909]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -114.0
-offset_top = 21.0
-offset_right = 114.0
-offset_bottom = 49.0
-grow_horizontal = 2
+[node name="PanelContainer" type="PanelContainer" parent="TilePanel" unique_id=718782096]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5hdi5")
+
+[node name="MarginContainer" type="MarginContainer" parent="TilePanel/PanelContainer" unique_id=1608260390]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Title" type="Label" parent="TilePanel/PanelContainer/MarginContainer" unique_id=986207353]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y2sro")
 theme_override_font_sizes/font_size = 24
 text = "Um jogo por biscuit studios"

@@ -23,3 +23,21 @@ var mapsLightStatus := {
 	"Kitchen": false,
 	"Attic": false
 }
+
+func reset_game() -> void:
+	actualRoom = ""
+	ghostsQtd = 0
+	heartbeatInterval = 5.0
+	fearLevel = 1
+	currentCanvasModulateColor = Color(0.349, 0.349, 0.349)
+	animationIsPlaying = false
+	ChanllengsCounter = 0
+	hasBeenAttic = false
+	visitedAttic = false
+
+	mapsLightStatus = {
+		"DiningRoom": false,
+		"LivingRoom": false,
+		"Kitchen": false,
+		"Attic": false
+	}

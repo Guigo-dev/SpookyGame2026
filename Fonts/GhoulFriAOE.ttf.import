@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://j0ga7np2uahp"
-path="res://.godot/imported/GhoulFriAOE.ttf-4c8ca0a3324c526ca0c8089834aee5cb.fontdata"
+path="res://.godot/imported/GhoulFriAOE.ttf-2253a47d51bc4b2500b25424fa64f9fc.fontdata"
 
 [deps]
 
-source_file="res://GhoulFriAOE.ttf"
-dest_files=["res://.godot/imported/GhoulFriAOE.ttf-4c8ca0a3324c526ca0c8089834aee5cb.fontdata"]
+source_file="res://Fonts/GhoulFriAOE.ttf"
+dest_files=["res://.godot/imported/GhoulFriAOE.ttf-2253a47d51bc4b2500b25424fa64f9fc.fontdata"]
 
 [params]
 

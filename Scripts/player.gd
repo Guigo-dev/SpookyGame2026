@@ -42,10 +42,6 @@ func _input(event):
 		interaction_area.interact()
 		
 	
-func spawn_collectible(posicao: Vector2):
-	var item = collectible.instantiate()
-	item.position = posicao
-	$"../Collectibles".add_child(item)
 
 func _physics_process(delta: float) -> void:
 	if Global.animationIsPlaying:
@@ -141,8 +137,8 @@ func _physics_process(delta: float) -> void:
 			Global.mapsLightStatus["LivingRoom"] = true
 			$"../LightsOnSound".play()
 			Global.ChanllengsCounter += 1
-			spawn_collectible(Vector2(0, 150))
-			
+
+
 	elif (Global.actualRoom == "LivingRoom" and flashlight.enabled) or Global.actualRoom != "LivingRoom":
 		flashlight_timer = 0
 	
@@ -213,8 +209,14 @@ func die() -> void:
 	is_dead = true
 	controls_locked = true
 	velocity = Vector2.ZERO
+	flashlight.enabled = false
 
 	sprite_2d.play("idle")
+	audioStream.stop()
+	
+	await get_tree().create_timer(2.0).timeout
+	Global.reset_game()
+	get_tree().change_scene_to_file("res://Scenes/Main_menu.tscn")
 
 func playHurtSound():
 	if $PlayerHurt.playing == false:

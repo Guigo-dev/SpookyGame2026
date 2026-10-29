@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://tjuncl0pcvn5"]
+
+[ext_resource type="Script" uid="uid://cuef8dff4cctf" path="res://Scripts/music_manager.gd" id="1_tylfe"]
+[ext_resource type="AudioStream" uid="uid://doaovawdceeh3" path="res://soundtrack/music/fullsong.wav" id="2_rjr7q"]
+
+[node name="MusicManager" type="Node" unique_id=1463606625]
+script = ExtResource("1_tylfe")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=448962227]
+stream = ExtResource("2_rjr7q")
+volume_db = -10.0

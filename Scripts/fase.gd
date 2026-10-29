@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var heartbeat = $CanvasLayer/TextureRect
+@onready var heartbeat = %HeartbeatTexture
 @onready var spider_spawn_point: Marker2D = $SpiderSpawnPoint
 @onready var spider_spawn_point_2: Marker2D = $SpiderSpawnPoint2
 @onready var spider_spawn_point_3: Marker2D = $SpiderSpawnPoint3
@@ -37,30 +37,33 @@ func _ready() -> void:
 	#set inicial
 	Global.ghostsQtd = 0;
 	Global.ChanllengsCounter = 0;
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	randomize()
 	#tocar cutscene inicial
-	$AnimationPlayer/CameraCutscene.enabled = true
-	$Player/Camera2D.enabled = false
-	$AnimationPlayer/CameraCutscene.make_current()
-	$AnimationPlayer.play("initialCutscene")
-	await $AnimationPlayer.animation_finished
-	$Player/Camera2D.enabled = true
-	$AnimationPlayer/CameraCutscene.enabled = false
-	$Player/Camera2D.make_current()
+	#$AnimationPlayer/CameraCutscene.enabled = true
+	#$Player/Camera2D.enabled = false
+	#$AnimationPlayer/CameraCutscene.make_current()
+	#$AnimationPlayer.play("initialCutscene")
+	#await $AnimationPlayer.animation_finished
+	#$Player/Camera2D.enabled = true
+	#$AnimationPlayer/CameraCutscene.enabled = false
+	#$Player/Camera2D.make_current()
 	
 	#animacao tutorial
 	wasd_blood.material = wasd_blood.material.duplicate()
 	flashlight_blood.material = flashlight_blood.material.duplicate()
 
 	wasd_blood.material.set_shader_parameter("reveal", 0.0)
-	flashlight_blood.material.set_shader_parameter("reveal", 0.0)
+	flashlight_blood.material.set_shader_parameter("reveal", 0.0)	
 
 	animate_blood()
 
 func _process(delta: float) -> void:
 	if Global.animationIsPlaying:
 		return
+	#deixa musica em loop
+	if $AmbienceSound.playing == false and $CutscneAmbienceSound.playing == false:
+		$AmbienceSound.play()
 	update_spiders(delta)
 	if !Global.mapsLightStatus["LivingRoom"]:
 		if ghostCD >= randi_range(7,20) and Global.ghostsQtd < 5: #spawn dos fantasmas
@@ -155,6 +158,9 @@ func _on_attic_body_entered(body: Node2D) -> void:
 		camera.limit_bottom = Global.mapsCamLimits["Attic"][3]
 		if Global.mapsLightStatus[Global.actualRoom] == true:
 			attic.get_node("AtticLight").enabled = true
+		if !$LivingRoom/LivroSecreto.visible:
+			$LivingRoom/LivroSecreto.visible = true
+			$LivingRoom/LivroSecreto/CollisionShape2D.set_deferred("disabled",false)
 			
 
 func _on_living_room_body_exited(body: Node2D) -> void:
@@ -188,6 +194,30 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_end_game_trigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and Global.ChanllengsCounter >= 3:
+		
+		# Bloqueia os controles
+		$Player.controls_locked = true
+		$Player.velocity = Vector2.ZERO
+
+		var fade = $FallTransition/Fade
+		var material = fade.material.duplicate() as ShaderMaterial
+		fade.material = material
+
+		var screen_position = $Player.get_global_transform_with_canvas().origin
+		var screen_size = get_viewport().get_visible_rect().size
+
+		material.set_shader_parameter("center", screen_position / screen_size)
+		material.set_shader_parameter("radius", screen_size.length() + 100.0)
+		fade.visible = true
+		var tween = create_tween()
+		tween.tween_method(
+			func(radius: float): material.set_shader_parameter("radius", radius),
+			screen_size.length() + 100.0,
+			0.0,
+			2.0
+		).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		await tween.finished
+		
 		var finalMenu = load("res://Scenes/final_menu.tscn")
 		get_tree().change_scene_to_packed(finalMenu)
 
@@ -328,6 +358,9 @@ func finish_spider_challenge() -> void:
 	if is_instance_valid(attic):
 		var light = attic.get_node_or_null("AtticLight")
 		if light:
+			player.controls_locked = true
+			await get_tree().create_timer(1.0).timeout
+			player.controls_locked = false
 			light.enabled = true
 	$SpidersSound.stop()
 	await get_tree().process_frame
