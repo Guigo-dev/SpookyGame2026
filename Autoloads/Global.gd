@@ -1,0 +1,43 @@
+extends Node2D
+
+var actualRoom: String
+var ghostsQtd: int
+var heartbeatInterval:= 5.0
+var fearLevel = 1
+var currentCanvasModulateColor = Color(0.349, 0.349, 0.349)
+var animationIsPlaying := false
+var ChanllengsCounter := 0
+var hasBeenAttic := false
+var visitedAttic: bool = false	
+
+var mapsCamLimits := {
+	"DiningRoom": [-140,-186,704,256], #Left,Top,Right,Bottom
+	"LivingRoom": [-992,6,-128,512],
+	"Kitchen": [-992,-538,-128,18],
+	"Attic": [-820, 1025,-333,1247]
+}
+
+var mapsLightStatus := {
+	"DiningRoom": false,
+	"LivingRoom": false,
+	"Kitchen": false,
+	"Attic": false
+}
+
+func reset_game() -> void:
+	actualRoom = ""
+	ghostsQtd = 0
+	heartbeatInterval = 5.0
+	fearLevel = 1
+	currentCanvasModulateColor = Color(0.349, 0.349, 0.349)
+	animationIsPlaying = false
+	ChanllengsCounter = 0
+	hasBeenAttic = false
+	visitedAttic = false
+
+	mapsLightStatus = {
+		"DiningRoom": false,
+		"LivingRoom": false,
+		"Kitchen": false,
+		"Attic": false
+	}
