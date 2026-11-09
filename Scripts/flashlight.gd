@@ -10,6 +10,7 @@ extends PointLight2D
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	flashlightArea.add_to_group("flashlight")
 	
 func _process(_delta: float) -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()

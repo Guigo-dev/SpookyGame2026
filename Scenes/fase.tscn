@@ -929,9 +929,9 @@ polygon = PackedVector2Array(-512, -482, -512, -282, -140, -281, -140, -314, -50
 
 [sub_resource type="Curve2D" id="Curve2D_10umt"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -958, 94, 0, 0, 0, 0, -949, 437, 0, 0, 0, 0, -184, 434, 0, 0, 0, 0, -176, 82, 0, 0, 0, 0, -958, 94)
+"points": PackedVector2Array(0, 0, 0, 0, -969, 460, 0, 0, 0, 0, -983, -466, 0, 0, 0, 0, -547, -454, 0, 0, 0, 0, -543, -223, 0, 0, 0, 0, -180, -235, 0, 0, 0, 0, -178, -118, 0, 0, 0, 0, 652, -118, 0, 0, 0, 0, 647, 212, 0, 0, 0, 0, -196, 204, 0, 0, 0, 0, -197, 452, 0, 0, 0, 0, -969, 460)
 }
-point_count = 5
+point_count = 11
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iw10b"]
 load_path = "res://.godot/imported/HeartBeatTexture.png-d6b38eec1a7f7eb6dcdd6adf3c1ee57c.ctex"
@@ -1870,7 +1870,7 @@ position = Vector2(20, 0)
 curve = SubResource("Curve2D_10umt")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1290355828]
-position = Vector2(-958, 94)
+position = Vector2(-969, 460)
 rotation = 1.359703
 rotates = false
 
