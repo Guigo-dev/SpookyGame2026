@@ -929,9 +929,9 @@ polygon = PackedVector2Array(-512, -482, -512, -282, -140, -281, -140, -314, -50
 
 [sub_resource type="Curve2D" id="Curve2D_10umt"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -958, 94, 0, 0, 0, 0, -949, 437, 0, 0, 0, 0, -184, 434, 0, 0, 0, 0, -176, 82, 0, 0, 0, 0, -958, 94)
+"points": PackedVector2Array(0, 0, 0, 0, -969, 460, 0, 0, 0, 0, -983, -466, 0, 0, 0, 0, -547, -454, 0, 0, 0, 0, -543, -223, 0, 0, 0, 0, -180, -235, 0, 0, 0, 0, -178, -118, 0, 0, 0, 0, 652, -118, 0, 0, 0, 0, 647, 212, 0, 0, 0, 0, -196, 204, 0, 0, 0, 0, -197, 452, 0, 0, 0, 0, -969, 460)
 }
-point_count = 5
+point_count = 11
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iw10b"]
 load_path = "res://.godot/imported/HeartBeatTexture.png-d6b38eec1a7f7eb6dcdd6adf3c1ee57c.ctex"
@@ -968,7 +968,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PortaEntrada1:rotation")
+tracks/2/path = NodePath("PortaEntr/PortaEntrada1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -980,7 +980,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PortaEntrada2:rotation")
+tracks/3/path = NodePath("PortaEntr2/PortaEntrada2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1049,6 +1049,42 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PortaEntr/CollisionShape2D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 50)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PortaEntr2/CollisionShape2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, -50)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimationPlayer/CameraCutscene:position_smoothing_enabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_h31yk"]
 resource_name = "new_animation"
@@ -1068,7 +1104,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PortaEntrada1:rotation")
+tracks/1/path = NodePath("PortaEntr/PortaEntrada1:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1080,7 +1116,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PortaEntrada2:rotation")
+tracks/2/path = NodePath("PortaEntr2/PortaEntrada2:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1104,6 +1140,30 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1)
 }
 tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PortaEntr2/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 2.0333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8, 15), Vector2(-8, -50)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PortaEntr/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 2.0333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 5), Vector2(-1, 50)]
+}
 
 [sub_resource type="AudioStreamWAV" id="AudioStreamWAV_vx2j6"]
 data = PackedByteArray("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AEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAgEAgEAgECAQCAQCAQCAAIBAIBAIBAAEAooooooooCAQCAQCAQCAKKKKKKKKKKAEAgEAgEAgECiiiiiiiiigAIBAIBAIBAAoooooooooo=")
@@ -1153,7 +1213,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PortaEntrada1:rotation")
+tracks/2/path = NodePath("PortaEntr/PortaEntrada1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -1165,7 +1225,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PortaEntrada2:rotation")
+tracks/3/path = NodePath("PortaEntr2/PortaEntrada2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -1445,6 +1505,42 @@ tracks/13/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PortaEntr/CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(7.0000005, 10.500001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 50), Vector2(-1, 5)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PortaEntr2/CollisionShape2D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(7.0000005, 10.500001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8, -50), Vector2(-8, 15)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("AnimationPlayer/CameraCutscene:position_smoothing_enabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 7.0000005),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1r1b"]
 _data = {
@@ -1485,6 +1581,12 @@ format = 3
 mix_rate = 48000
 stereo = true
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcu7i"]
+size = Vector2(16, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gufgi"]
+size = Vector2(16, 32.5)
+
 [node name="Fase" type="Node2D" unique_id=1801651182 node_paths=PackedStringArray("canvasModulate", "player", "camera", "LivingRoom", "DiningRoom", "Kitchen", "ghostSpawner", "attic")]
 texture_filter = 1
 script = ExtResource("1_ft64k")
@@ -1521,7 +1623,8 @@ color = Color(0.34901962, 0.34901962, 0.34901962, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
 texture_filter = 1
-position = Vector2(-272, 206)
+position = Vector2(1324, 31)
+scale = Vector2(-1, 1)
 collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
 
@@ -1530,11 +1633,11 @@ limit_left = 703
 limit_top = -184
 limit_right = 1343
 limit_bottom = 256
-position_smoothing_enabled = true
 editor_draw_limits = true
 
 [node name="Flashlight" type="PointLight2D" parent="Player" unique_id=679989713]
 position = Vector2(0.99998474, 7)
+enabled = false
 color = Color(0.58431375, 0.62352943, 0.8666667, 1)
 energy = 3.0
 blend_mode = 2
@@ -1767,7 +1870,7 @@ position = Vector2(20, 0)
 curve = SubResource("Curve2D_10umt")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1290355828]
-position = Vector2(-958, 94)
+position = Vector2(-969, 460)
 rotation = 1.359703
 rotates = false
 
@@ -1829,20 +1932,6 @@ position = Vector2(-796, 1218)
 [node name="Attic_Goal" type="Marker2D" parent="." unique_id=662797685]
 position = Vector2(-145, 352)
 
-[node name="PortaEntrada1" type="Sprite2D" parent="." unique_id=923723690]
-position = Vector2(706, 63)
-rotation = -1.5707964
-texture = ExtResource("19_64rri")
-centered = false
-offset = Vector2(-16, -32)
-
-[node name="PortaEntrada2" type="Sprite2D" parent="." unique_id=97270539]
-position = Vector2(706, 0)
-rotation = 1.5707964
-texture = ExtResource("19_64rri")
-centered = false
-offset = Vector2(-16, 0)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=100766898]
 reset_on_save = false
 libraries/ = SubResource("AnimationLibrary_u1r1b")
@@ -1855,11 +1944,11 @@ volume_db = -30.0
 [node name="flashlight" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1094180360]
 
 [node name="CameraCutscene" type="Camera2D" parent="AnimationPlayer" unique_id=1780858052]
-position = Vector2(634, 31)
+position = Vector2(1324, 31)
 enabled = false
-limit_left = -140
-limit_right = 704
-position_smoothing_enabled = true
+limit_left = 692
+limit_right = 1440
+limit_smoothed = true
 editor_draw_limits = true
 
 [node name="LightsOnSound" type="AudioStreamPlayer" parent="." unique_id=2060577206]
@@ -1895,6 +1984,7 @@ position = Vector2(73, 52)
 layer = 10
 
 [node name="Fade" type="ColorRect" parent="FallTransition" unique_id=1873654087]
+visible = false
 material = SubResource("ShaderMaterial_lt1cg")
 anchors_preset = 15
 anchor_right = 1.0
@@ -1989,8 +2079,32 @@ volume_db = -20.0
 autoplay = true
 
 [node name="CutscneAmbienceSound" type="AudioStreamPlayer" parent="." unique_id=1127947521]
-stream = ExtResource("45_gufgi")
 volume_db = -10.0
+
+[node name="PortaEntr" type="StaticBody2D" parent="." unique_id=756774852]
+position = Vector2(699, 43)
+
+[node name="PortaEntrada1" type="Sprite2D" parent="PortaEntr" unique_id=923723690]
+position = Vector2(7, 21)
+texture = ExtResource("19_64rri")
+centered = false
+offset = Vector2(-16, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortaEntr" unique_id=641411782]
+position = Vector2(-1, 50)
+shape = SubResource("RectangleShape2D_vcu7i")
+
+[node name="PortaEntr2" type="StaticBody2D" parent="." unique_id=1976544751]
+position = Vector2(706, 0)
+
+[node name="PortaEntrada2" type="Sprite2D" parent="PortaEntr2" unique_id=97270539]
+texture = ExtResource("19_64rri")
+centered = false
+offset = Vector2(-16, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortaEntr2" unique_id=390318928]
+position = Vector2(-8, -50)
+shape = SubResource("RectangleShape2D_gufgi")
 
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
 [connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]
