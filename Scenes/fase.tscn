@@ -39,12 +39,12 @@
 [ext_resource type="Script" uid="uid://bm766qy6qtr7p" path="res://Scripts/hole_trigger.gd" id="28_lt1cg"]
 [ext_resource type="Shader" uid="uid://cjl1o1l4mvpj0" path="res://Shaders/transicao.gdshader" id="29_oxw4l"]
 [ext_resource type="FontFile" uid="uid://cobwl3spvd4ev" path="res://Fonts/scary halloween.ttf" id="31_1j3mc"]
+[ext_resource type="AudioStream" uid="uid://krr6io7oehvi" path="res://soundtrack/music/cutscene1.wav" id="32_gufgi"]
 [ext_resource type="Texture2D" uid="uid://bnt3b1jb40s4y" path="res://Sprites/Images/wasd_blood.png" id="35_apnvp"]
 [ext_resource type="Texture2D" uid="uid://dl2hlkqi3ydc0" path="res://Sprites/Images/flashlight_blood.png" id="36_ftq5m"]
 [ext_resource type="AudioStream" uid="uid://celmui5bg51ln" path="res://soundtrack/SFX/holloween_sfx_spidernoise.wav" id="39_5o4tr"]
 [ext_resource type="Shader" uid="uid://dgmp52clatvlq" path="res://Shaders/blood_reveal.gdshader" id="39_s7ra4"]
 [ext_resource type="AudioStream" uid="uid://dyvmass4lvnha" path="res://soundtrack/SFX/holloween_sfx_textboxphrase.wav" id="40_vx2j6"]
-[ext_resource type="AudioStream" uid="uid://dkmw1y7b2q286" path="res://soundtrack/music/cutscene.wav" id="45_gufgi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10umt"]
 texture = ExtResource("5_mvxks")
@@ -1488,7 +1488,7 @@ tracks/12/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("45_gufgi")
+"stream": ExtResource("32_gufgi")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -1623,7 +1623,7 @@ color = Color(0.34901962, 0.34901962, 0.34901962, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
 texture_filter = 1
-position = Vector2(1324, 31)
+position = Vector2(-391, 256)
 scale = Vector2(-1, 1)
 collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
@@ -1649,8 +1649,8 @@ onSound = ExtResource("11_0svc4")
 offSound = ExtResource("12_u1r1b")
 
 [node name="Area2D" type="Area2D" parent="Player/Flashlight" unique_id=532379061]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Flashlight/Area2D" unique_id=1621852803]
 polygon = PackedVector2Array(129.00002, -32, 129.00002, 32, 1.5258789e-05, 0)
@@ -1948,7 +1948,6 @@ position = Vector2(1324, 31)
 enabled = false
 limit_left = 692
 limit_right = 1440
-limit_smoothed = true
 editor_draw_limits = true
 
 [node name="LightsOnSound" type="AudioStreamPlayer" parent="." unique_id=2060577206]

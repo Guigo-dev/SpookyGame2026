@@ -9,6 +9,8 @@ extends Area2D
 @export var deathSound: AudioStream
 
 var soundPosition := 0.0
+var flashlighTime := 0.0
+var isInFlashlight := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +25,11 @@ func _process(delta: float) -> void:
 	global_position += direction * speed * delta
 	
 	update_material()
+	
+	if isInFlashlight:
+		flashlighTime += delta
+	if flashlighTime >= 2.4:
+		die()
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -30,6 +37,19 @@ func _on_body_entered(body: Node2D) -> void:
 		body.updateFearAmount(25)
 		body.playHurtSound()
 		queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("flashlight"):
+		print("colidiu")
+		playSound("damage")
+		isInFlashlight = true
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.is_in_group("flashlight"):
+		isInFlashlight = false
+		playSound("stop")
 
 func update_material():
 	if Global.fearLevel == 1:

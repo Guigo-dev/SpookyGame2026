@@ -1,7 +1,6 @@
 extends PointLight2D
 @onready var player: CharacterBody2D = $".."
 @onready var flashlightArea: Area2D = $Area2D
-var ghosts: Dictionary[Area2D,Dictionary] = {} #
 @export var onSound: AudioStream
 @export var offSound: AudioStream
 
@@ -11,6 +10,8 @@ var ghosts: Dictionary[Area2D,Dictionary] = {} #
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	$Area2D.add_to_group("flashlight")
+	add_to_group("flashlight")
 	
 func _process(_delta: float) -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()
@@ -19,56 +20,12 @@ func _process(_delta: float) -> void:
 	if mouse_direction.length_squared() > mouse_center_deadzone * mouse_center_deadzone:
 		global_rotation = mouse_direction.angle()
 
-
-
 func _physics_process(delta: float) -> void:
 	
 	var rotation_speed = 2
 	var mouse_position = get_global_mouse_position()
 	var target_angle = global_position.angle_to_point(mouse_position)
 	rotation = lerp_angle(rotation, target_angle, rotation_speed * delta)
-	if ghosts.size() > 0 and self.enabled == true:
-		for ghost in ghosts.keys():
-			if is_instance_valid(ghost):
-				#apagar ghosts se estiver no attic
-				if Global.actualRoom == "Attic":
-					ghosts.erase(ghost)
-					ghost.die()
-					Global.ghostsQtd -= 1
-				#dar dano nos fantasmas
-				elif ghosts[ghost]["isInFlashlight"]:
-					ghost.playSound("damage")
-					ghosts[ghost]["time"] += delta #calcula o tempo que o fantasma está colidindo com a lanterna
-					if ghosts[ghost]["time"] >= 2.4:
-						ghosts.erase(ghost)
-						ghost.die()
-						Global.ghostsQtd -= 1
-			else:
-				ghosts.erase(ghost)
-				Global.ghostsQtd -= 1
-			
-		
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if ghosts.has(area):
-		ghosts[area]["isInFlashlight"] = true
-	
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	if ghosts.has(area):
-		ghosts[area]["isInFlashlight"] = false
-		area.playSound("stop")
-
-func _on_fase_child_entered_tree(node: Node) -> void:
-	call_deferred("add_ghost", node)
-
-func add_ghost(node: Node):
-	if node.is_in_group("enemy"):
-		Global.ghostsQtd += 1
-		var area = node as Area2D
-		ghosts[area] = {
-			"time": 0.0,
-			"isInFlashlight": false
-		}
 
 func playSound():
 	if enabled:
