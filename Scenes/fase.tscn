@@ -1649,8 +1649,8 @@ onSound = ExtResource("11_0svc4")
 offSound = ExtResource("12_u1r1b")
 
 [node name="Area2D" type="Area2D" parent="Player/Flashlight" unique_id=532379061]
-collision_layer = 5
-collision_mask = 5
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Flashlight/Area2D" unique_id=1621852803]
 polygon = PackedVector2Array(129.00002, -32, 129.00002, 32, 1.5258789e-05, 0)
@@ -2106,8 +2106,6 @@ position = Vector2(-8, -50)
 shape = SubResource("RectangleShape2D_gufgi")
 
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
-[connection signal="area_entered" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Player/Flashlight/Area2D" to="Player/Flashlight" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="LivingRoom" to="." method="_on_living_room_body_entered"]
 [connection signal="body_exited" from="LivingRoom" to="." method="_on_living_room_body_exited"]
 [connection signal="body_exited" from="LivingRoom" to="Player" method="_on_living_room_body_exited"]
