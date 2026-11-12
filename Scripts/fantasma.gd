@@ -72,20 +72,20 @@ func update_material():
 
 func playSound(type:String):
 	if type == "damage":
-		if $AudioStreamPlayer.is_playing():
+		if $HurtSound.is_playing():
 			return
-		$AudioStreamPlayer.set_stream(dmgSound)
-		$AudioStreamPlayer.play(soundPosition)
-	elif type == "death":
-		$AudioStreamPlayer.set_stream(deathSound)
-		$AudioStreamPlayer.play()
-		await $AudioStreamPlayer.finished
+		$HurtSound.set_stream(dmgSound)
+		$HurtSound.play(soundPosition)
 	elif type == "stop":
-		soundPosition = $AudioStreamPlayer.get_playback_position()
-		$AudioStreamPlayer.stop()
+		soundPosition = $HurtSound.get_playback_position()
+		$HurtSound.stop()
 
 func die():
+	if $DeathSound.playing == true:
+		return
+	
 	$Sprite2D.visible = false
 	$CollisionShape2D.disabled = true
-	await playSound("death")
+	$DeathSound.play()
+	await $DeathSound.finished
 	queue_free()
