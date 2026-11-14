@@ -22,6 +22,7 @@ const SPIDER_SCENE = preload("res://Scenes/Spider.tscn")
 @export var spider_spawn_interval: float = 0.075
 @export var spider_speed: float = 140.0
 @export var spider_max_count: int = 100
+@export var playInitialCutseneFlag : bool
 
 
 
@@ -35,20 +36,14 @@ var attic_entered := false
 
 func _ready() -> void:
 	#set inicial
-	Global.ghostsQtd = 0;
-	Global.ChanllengsCounter = 0;
+	canvasModulate.visible = true
+	player.scale = Vector2(1,1)
+	Global.reset_game()
+	MusicManager.stop()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	randomize()
-	#tocar cutscene inicial
-	#$AnimationPlayer/CameraCutscene.enabled = true
-	#$Player/Camera2D.enabled = false
-	#$AnimationPlayer/CameraCutscene.make_current()
-	#$AnimationPlayer.play("initialCutscene")
-	#await $AnimationPlayer.animation_finished
-	#$Player/Camera2D.enabled = true
-	#$AnimationPlayer/CameraCutscene.enabled = false
-	#$Player/Camera2D.make_current()
-	
+	if playInitialCutseneFlag:
+		PlayInitialCutscene()
 	#animacao tutorial
 	wasd_blood.material = wasd_blood.material.duplicate()
 	flashlight_blood.material = flashlight_blood.material.duplicate()
@@ -99,7 +94,17 @@ func spawnGhost() -> void:
 	ghostInstance.global_position = $Path2D/PathFollow2D.global_position
 	ghostInstance.target = get_node("Player")
 	ghostInstance.set_collision_layer_value(3,true)
-	
+
+func PlayInitialCutscene():
+	$AnimationPlayer/CameraCutscene.enabled = true
+	$Player/Camera2D.enabled = false
+	$AnimationPlayer/CameraCutscene.make_current()
+	$AnimationPlayer.play("initialCutscene")
+	await $AnimationPlayer.animation_finished
+	$Player/Camera2D.enabled = true
+	$AnimationPlayer/CameraCutscene.enabled = false
+	$Player/Camera2D.make_current()
+
 func heartbeat_pulse():
 	var tween = create_tween()
 

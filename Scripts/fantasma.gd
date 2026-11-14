@@ -9,6 +9,8 @@ extends Area2D
 @export var deathSound: AudioStream
 
 var soundPosition := 0.0
+var flashlighTime := 0.0
+var isInFlashlight := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +25,11 @@ func _process(delta: float) -> void:
 	global_position += direction * speed * delta
 	
 	update_material()
+	
+	if isInFlashlight:
+		flashlighTime += delta
+	if flashlighTime >= 2.4:
+		die()
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -30,6 +37,18 @@ func _on_body_entered(body: Node2D) -> void:
 		body.updateFearAmount(25)
 		body.playHurtSound()
 		queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("flashlight"):
+		playSound("damage")
+		isInFlashlight = true
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.is_in_group("flashlight"):
+		isInFlashlight = false
+		playSound("stop")
 
 func update_material():
 	if Global.fearLevel == 1:
@@ -53,20 +72,20 @@ func update_material():
 
 func playSound(type:String):
 	if type == "damage":
-		if $AudioStreamPlayer.is_playing():
+		if $HurtSound.is_playing():
 			return
-		$AudioStreamPlayer.set_stream(dmgSound)
-		$AudioStreamPlayer.play(soundPosition)
-	elif type == "death":
-		$AudioStreamPlayer.set_stream(deathSound)
-		$AudioStreamPlayer.play()
-		await $AudioStreamPlayer.finished
+		$HurtSound.set_stream(dmgSound)
+		$HurtSound.play(soundPosition)
 	elif type == "stop":
-		soundPosition = $AudioStreamPlayer.get_playback_position()
-		$AudioStreamPlayer.stop()
+		soundPosition = $HurtSound.get_playback_position()
+		$HurtSound.stop()
 
 func die():
+	if $DeathSound.playing == true:
+		return
+	
 	$Sprite2D.visible = false
 	$CollisionShape2D.disabled = true
-	await playSound("death")
+	$DeathSound.play()
+	await $DeathSound.finished
 	queue_free()

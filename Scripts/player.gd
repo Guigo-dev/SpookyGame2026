@@ -183,7 +183,6 @@ func updateFearAmount(amount : int) -> void:
 		Global.fearLevel = 1
 	if fearAmount < 0:
 		fearAmount = 0
-	print(fearAmount)
 	if fearAmount >= 150 and Global.actualRoom != "Attic":
 		die()
 
