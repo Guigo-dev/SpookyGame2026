@@ -96,9 +96,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="CreditePanel" type="Panel" parent="." unique_id=423690448]
 layout_mode = 0
-offset_left = 216.0
+offset_left = 201.0
 offset_top = 104.0
-offset_right = 256.0
+offset_right = 241.0
 offset_bottom = 144.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_lvhjc")
 
@@ -143,9 +143,9 @@ text = "Voltar "
 
 [node name="TilePanel" type="Panel" parent="." unique_id=691401529]
 layout_mode = 0
-offset_left = 223.0
+offset_left = 209.0
 offset_top = 32.0
-offset_right = 263.0
+offset_right = 249.0
 offset_bottom = 72.0
 
 [node name="PanelContainer" type="PanelContainer" parent="TilePanel" unique_id=718782096]

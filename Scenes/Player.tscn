@@ -113,6 +113,7 @@ cache/0/11/0/scale = 1.0
 
 [node name="Player" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("audioStream", "sprite_2d", "interact_hint")]
 light_mask = 0
+z_index = 1
 motion_mode = 1
 script = ExtResource("1_kyqiw")
 audioStream = NodePath("PlayerSteps")
