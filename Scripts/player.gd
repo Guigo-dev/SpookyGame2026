@@ -13,6 +13,8 @@ extends CharacterBody2D
 
 
 var spider_fear_timer: float = 0.0
+var footstep_timer: float = 0.0
+const FOOTSTEP_INTERVAL: float = 0.20
 
 var touching_spiders: Array[Node2D] = []
 
@@ -111,10 +113,16 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity != Vector2.ZERO:
 		sprite_2d.play("walk")
-		if !audioStream.is_playing():
+		
+		footstep_timer += delta
+		
+		if footstep_timer >= FOOTSTEP_INTERVAL and !audioStream.is_playing():
 			audioStream.play()
+			footstep_timer = 0.0
+		
 	else:
 		sprite_2d.play("idle")
+		footstep_timer = FOOTSTEP_INTERVAL
 		
 		
 	#Hitbox da interação
