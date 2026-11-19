@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://c15tudrp5h3lj" path="res://Scripts/stairs.gd" id="16_ah5am"]
 [ext_resource type="Script" uid="uid://6vuxy7r3nicf" path="res://Scripts/Dicas/livro.gd" id="17_caf05"]
 [ext_resource type="Script" uid="uid://di7laxkkmg3cm" path="res://Scripts/Dicas/pintura.gd" id="18_b1erg"]
+[ext_resource type="AudioStream" uid="uid://dd1rpuy17e8u8" path="res://soundtrack/SFX/holloween_sfx_reading.wav" id="18_eymn4"]
 [ext_resource type="Script" uid="uid://baeltpqgou13h" path="res://Scripts/Dicas/livro_secreto.gd" id="18_gufgi"]
 [ext_resource type="Script" uid="uid://ba5ea4o27114w" path="res://Scripts/attic_collectible.gd" id="18_uwplo"]
 [ext_resource type="Texture2D" uid="uid://vemxxwxoy0bv" path="res://Sprites/Images/Porta.png" id="19_64rri"]
@@ -42,6 +43,7 @@
 [ext_resource type="AudioStream" uid="uid://krr6io7oehvi" path="res://soundtrack/music/cutscene1.wav" id="32_gufgi"]
 [ext_resource type="Texture2D" uid="uid://bnt3b1jb40s4y" path="res://Sprites/Images/wasd_blood.png" id="35_apnvp"]
 [ext_resource type="Texture2D" uid="uid://dl2hlkqi3ydc0" path="res://Sprites/Images/flashlight_blood.png" id="36_ftq5m"]
+[ext_resource type="AudioStream" uid="uid://curgpjc4xmpvw" path="res://soundtrack/SFX/holloween_sfx_hole.wav" id="38_qx8rk"]
 [ext_resource type="AudioStream" uid="uid://celmui5bg51ln" path="res://soundtrack/SFX/holloween_sfx_spidernoise.wav" id="39_5o4tr"]
 [ext_resource type="Shader" uid="uid://dgmp52clatvlq" path="res://Shaders/blood_reveal.gdshader" id="39_s7ra4"]
 [ext_resource type="AudioStream" uid="uid://dyvmass4lvnha" path="res://soundtrack/SFX/holloween_sfx_textboxphrase.wav" id="40_vx2j6"]
@@ -1657,12 +1659,15 @@ polygon = PackedVector2Array(129.00002, -32, 129.00002, 32, 1.5258789e-05, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Flashlight" unique_id=618297968]
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="CircleLight" type="PointLight2D" parent="Player" unique_id=699591808]
 color = Color(0.58431375, 0.62352943, 0.8666667, 1)
 energy = 2.0
 shadow_enabled = true
 texture = ExtResource("4_mvxks")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player" unique_id=943004580]
 
 [node name="Porta_saguao-sala_1" parent="." unique_id=2099430038 instance=ExtResource("5_1tvu4")]
 position = Vector2(-141, -64)
@@ -1700,6 +1705,10 @@ control = NodePath("../../Dialogue/Control")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LivingRoom/Livro" unique_id=302414518]
 position = Vector2(1.4643555, 14.874237)
 shape = SubResource("RectangleShape2D_5hdi5")
+
+[node name="ReadingSound" type="AudioStreamPlayer" parent="LivingRoom/Livro" unique_id=1827030818]
+stream = ExtResource("18_eymn4")
+bus = &"SFX"
 
 [node name="LivroSecreto" type="Area2D" parent="LivingRoom" unique_id=982913092 node_paths=PackedStringArray("label", "control")]
 visible = false
@@ -1937,14 +1946,12 @@ reset_on_save = false
 libraries/ = SubResource("AnimationLibrary_u1r1b")
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1118020692]
-volume_db = -30.0
 
 [node name="Door" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=133346544]
 
 [node name="flashlight" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1094180360]
 
 [node name="CameraCutscene" type="Camera2D" parent="AnimationPlayer" unique_id=1780858052]
-position = Vector2(1324, 31)
 enabled = false
 limit_left = 692
 limit_right = 1440
@@ -1976,6 +1983,10 @@ fade = NodePath("../FallTransition/Fade")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HoleTrigger" unique_id=139123516]
 position = Vector2(4, 7)
 shape = SubResource("CapsuleShape2D_loq3h")
+
+[node name="HoleSound" type="AudioStreamPlayer" parent="HoleTrigger" unique_id=305811352]
+stream = ExtResource("38_qx8rk")
+bus = &"SFX"
 
 [node name="FallDestiny" type="Marker2D" parent="." unique_id=1268409438]
 position = Vector2(73, 52)
@@ -2069,16 +2080,21 @@ texture = ExtResource("36_ftq5m")
 
 [node name="SpidersSound" type="AudioStreamPlayer" parent="." unique_id=2087567704]
 stream = ExtResource("39_5o4tr")
+bus = &"SFX"
 
 [node name="TextBoxSound" type="AudioStreamPlayer" parent="." unique_id=322306022]
 stream = ExtResource("40_vx2j6")
+bus = &"SFX"
 
 [node name="AmbienceSound" type="AudioStreamPlayer" parent="." unique_id=1962491341]
 stream = ExtResource("45_vm8mv")
+autoplay = true
+bus = &"Music"
 
 [node name="CutscneAmbienceSound" type="AudioStreamPlayer" parent="." unique_id=1127947521]
 stream = ExtResource("32_gufgi")
 volume_db = -10.0
+bus = &"Music"
 
 [node name="PortaEntr" type="StaticBody2D" parent="." unique_id=756774852]
 position = Vector2(699, 43)

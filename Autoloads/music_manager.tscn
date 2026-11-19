@@ -9,3 +9,4 @@ script = ExtResource("1_tylfe")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=448962227]
 stream = ExtResource("2_2xcax")
 volume_db = -10.0
+bus = &"Music"

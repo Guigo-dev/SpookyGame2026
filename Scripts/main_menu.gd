@@ -8,6 +8,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 func _on_play_button_pressed() -> void:
+	$ConfirmSound.play()
 	$Block.visible = true
 	MusicManager.stop()
 	background.texture = load("res://Sprites/Images/Menu_porta_abertaNOVO.png")
@@ -17,6 +18,7 @@ func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_packed(mainScene)
 
 func _on_credits_button_pressed() -> void:
+	$ConfirmSound.play()
 	var creditsScene = load("res://Scenes/final_menu.tscn")
 	get_tree().change_scene_to_packed(creditsScene)
 

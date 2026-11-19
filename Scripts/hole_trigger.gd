@@ -63,6 +63,7 @@ func _on_body_entered(body: Node2D) -> void:
 func start_fall() -> void:
 	player.controls_locked = true
 	player.velocity = Vector2.ZERO
+	$HoleSound.play()
 
 	fade.visible = true
 	fade.color = Color.WHITE
