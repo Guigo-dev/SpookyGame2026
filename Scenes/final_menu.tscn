@@ -124,14 +124,10 @@ Programação     -     Dezin_Grein
       Arte             -     Guigo-Dev
 Main-menu arte   -      Nanamizu
       SFX              -    Diego Wandal
-Soundtrack       -   Diego Wandal"
+    Música           -   Diego Wandal"
 
-[node name="PlayButton" type="Button" parent="." unique_id=1456718541]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 74.0
-offset_bottom = 48.0
+[node name="PlayButton" type="Button" parent="CreditePanel/PanelContainer/MarginContainer" unique_id=1456718541]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y2sro")
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_y2sro")
@@ -167,4 +163,4 @@ theme_override_fonts/font = ExtResource("2_y2sro")
 theme_override_font_sizes/font_size = 24
 text = "Um jogo por biscuit studios"
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CreditePanel/PanelContainer/MarginContainer/PlayButton" to="." method="_on_play_button_pressed"]

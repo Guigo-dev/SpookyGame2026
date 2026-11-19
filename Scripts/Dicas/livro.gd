@@ -4,6 +4,8 @@ extends Area2D
 @export var control: Control
 
 func interact():
+	$ReadingSound.play()
+	await $ReadingSound.finished
 	Global.animationIsPlaying = true
 	label.text = "Apenas 10 segundos de coragem" if Global.visitedAttic else "Quem não gosta do escuro?"
 	label.visible_characters = 0
