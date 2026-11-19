@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void:
 
 func playSound():
 	if enabled:
-		$AudioStreamPlayer.set_stream(onSound)
+		$"../AudioStreamPlayer".set_stream(onSound)
 	else:
-		$AudioStreamPlayer.set_stream(offSound)
-	$AudioStreamPlayer.play()
+		$"../AudioStreamPlayer".set_stream(offSound)
+
+	$"../AudioStreamPlayer".play()
