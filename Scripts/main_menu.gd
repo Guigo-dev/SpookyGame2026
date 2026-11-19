@@ -10,7 +10,7 @@ func _ready() -> void:
 func _on_play_button_pressed() -> void:
 	$Block.visible = true
 	MusicManager.stop()
-	background.texture = load("res://Sprites/Images/Menu_porta_aberta.png")
+	background.texture = load("res://Sprites/Images/Menu_porta_abertaNOVO.png")
 	$DoorSound.play()
 	await $DoorSound.finished
 	var mainScene = load("res://Scenes/fase.tscn")
@@ -21,7 +21,7 @@ func _on_credits_button_pressed() -> void:
 	get_tree().change_scene_to_packed(creditsScene)
 
 func _on_play_button_mouse_entered() -> void:
-	character_rect.position.x = -720
+	character_rect.position.x = -640
 	$FlashlightSound.play()
 
 func _on_options_button_mouse_entered() -> void:
@@ -29,5 +29,5 @@ func _on_options_button_mouse_entered() -> void:
 	$FlashlightSound.play()
 
 func _on_credits_button_mouse_entered() -> void:
-	character_rect.position.x = -1440
+	character_rect.position.x = -1280
 	$FlashlightSound.play()

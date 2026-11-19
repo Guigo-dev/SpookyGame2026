@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cv82h02c5ei7n"]
 
 [ext_resource type="Script" uid="uid://c7dneagw7bnmr" path="res://Scripts/main_menu.gd" id="1_7sp8y"]
-[ext_resource type="Texture2D" uid="uid://2qgydxinp77t" path="res://Sprites/Images/Menu.png" id="2_pc006"]
-[ext_resource type="Texture2D" uid="uid://d4dbag76djp4j" path="res://Sprites/Images/player_menu.png" id="3_f7j37"]
+[ext_resource type="Texture2D" uid="uid://byfwk4dso7qcc" path="res://Sprites/Images/MenuNOVO.png" id="2_ihofj"]
+[ext_resource type="Texture2D" uid="uid://dr4jwm55oepw5" path="res://Sprites/Images/player_menuNOVO.png" id="3_xwboo"]
 [ext_resource type="AudioStream" uid="uid://dy0ub3jlqwud1" path="res://soundtrack/SFX/holloween_sfx_flashon.wav" id="4_787fc"]
 [ext_resource type="AudioStream" uid="uid://ddwhmpyq8kov6" path="res://soundtrack/SFX/holloween_sfx_dooropen.wav" id="5_ihofj"]
 
@@ -34,13 +34,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_pc006")
+texture = ExtResource("2_ihofj")
+stretch_mode = 2
 
 [node name="Character" type="TextureRect" parent="." unique_id=1697096794]
 layout_mode = 0
-offset_right = 2160.0
+offset_right = 1920.0
 offset_bottom = 360.0
-texture = ExtResource("3_f7j37")
+texture = ExtResource("3_xwboo")
+stretch_mode = 2
 
 [node name="PlayButton" type="Button" parent="." unique_id=1985549942]
 layout_mode = 0

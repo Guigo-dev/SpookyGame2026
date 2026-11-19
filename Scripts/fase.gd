@@ -104,6 +104,7 @@ func PlayInitialCutscene():
 	$Player/Camera2D.enabled = true
 	$AnimationPlayer/CameraCutscene.enabled = false
 	$Player/Camera2D.make_current()
+	$AmbienceSound.play()
 
 func heartbeat_pulse():
 	var tween = create_tween()

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cdh64a43btaer" path="res://Scripts/interaction_area.gd" id="3_gntrk"]
 [ext_resource type="AudioStream" uid="uid://b8uwk5pdkph8r" path="res://soundtrack/SFX/holloween-sfx-footsteps1_fyzC9NpE.wav" id="4_dewec"]
 [ext_resource type="AudioStream" uid="uid://ccflhagmwo78l" path="res://soundtrack/SFX/holloween_sfx_playerdmg.wav" id="5_5ixxa"]
+[ext_resource type="FontFile" uid="uid://j0ga7np2uahp" path="res://Fonts/GhoulFriAOE.ttf" id="5_nn08x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("1_rpqav")
@@ -62,55 +63,6 @@ border_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
 border_blend = true
 corner_detail = 1
 
-[sub_resource type="FontFile" id="FontFile_ketxm"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/10/0/ascent = 0.0
-cache/0/10/0/descent = 0.0
-cache/0/10/0/underline_position = 0.0
-cache/0/10/0/underline_thickness = 0.0
-cache/0/10/0/scale = 1.0
-cache/0/15/0/ascent = 0.0
-cache/0/15/0/descent = 0.0
-cache/0/15/0/underline_position = 0.0
-cache/0/15/0/underline_thickness = 0.0
-cache/0/15/0/scale = 1.0
-cache/0/14/0/ascent = 0.0
-cache/0/14/0/descent = 0.0
-cache/0/14/0/underline_position = 0.0
-cache/0/14/0/underline_thickness = 0.0
-cache/0/14/0/scale = 1.0
-cache/0/13/0/ascent = 0.0
-cache/0/13/0/descent = 0.0
-cache/0/13/0/underline_position = 0.0
-cache/0/13/0/underline_thickness = 0.0
-cache/0/13/0/scale = 1.0
-cache/0/12/0/ascent = 0.0
-cache/0/12/0/descent = 0.0
-cache/0/12/0/underline_position = 0.0
-cache/0/12/0/underline_thickness = 0.0
-cache/0/12/0/scale = 1.0
-cache/0/11/0/ascent = 0.0
-cache/0/11/0/descent = 0.0
-cache/0/11/0/underline_position = 0.0
-cache/0/11/0/underline_thickness = 0.0
-cache/0/11/0/scale = 1.0
-
 [node name="Player" type="CharacterBody2D" unique_id=3198480 node_paths=PackedStringArray("audioStream", "sprite_2d", "interact_hint")]
 light_mask = 0
 motion_mode = 1
@@ -152,10 +104,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ostoq")
 
 [node name="InteractHint" type="Label" parent="PanelContainer" unique_id=1486346853]
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontFile_ketxm")
+theme_override_fonts/font = ExtResource("5_nn08x")
 theme_override_font_sizes/font_size = 10
-text = "E"
+text = " E"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerHurt" type="AudioStreamPlayer" parent="." unique_id=453103159]
 stream = ExtResource("5_5ixxa")

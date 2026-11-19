@@ -1597,6 +1597,7 @@ DiningRoom = NodePath("DiningRoom")
 Kitchen = NodePath("Kitchen")
 ghostSpawner = NodePath("Path2D/PathFollow2D")
 attic = NodePath("Attic")
+playInitialCutseneFlag = true
 
 [node name="Chao" type="TileMapLayer" parent="." unique_id=628494821]
 z_index = -1
@@ -1622,7 +1623,7 @@ color = Color(0.34901962, 0.34901962, 0.34901962, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
 texture_filter = 1
-position = Vector2(-470, 174)
+position = Vector2(1324, 31)
 scale = Vector2(-1, 1)
 collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
@@ -1947,6 +1948,7 @@ position = Vector2(1324, 31)
 enabled = false
 limit_left = 692
 limit_right = 1440
+limit_smoothed = true
 editor_draw_limits = true
 
 [node name="LightsOnSound" type="AudioStreamPlayer" parent="." unique_id=2060577206]
@@ -2073,7 +2075,6 @@ stream = ExtResource("40_vx2j6")
 
 [node name="AmbienceSound" type="AudioStreamPlayer" parent="." unique_id=1962491341]
 stream = ExtResource("45_vm8mv")
-autoplay = true
 
 [node name="CutscneAmbienceSound" type="AudioStreamPlayer" parent="." unique_id=1127947521]
 stream = ExtResource("32_gufgi")
