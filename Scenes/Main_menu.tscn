@@ -1,11 +1,9 @@
 [gd_scene format=4 uid="uid://cv82h02c5ei7n"]
 
 [ext_resource type="Script" uid="uid://c7dneagw7bnmr" path="res://Scripts/main_menu.gd" id="1_7sp8y"]
-
 [ext_resource type="Texture2D" uid="uid://byfwk4dso7qcc" path="res://Sprites/Images/MenuNOVO.png" id="2_ihofj"]
 [ext_resource type="Texture2D" uid="uid://dr4jwm55oepw5" path="res://Sprites/Images/player_menuNOVO.png" id="3_xwboo"]
 [ext_resource type="AudioStream" uid="uid://c1ufgc1akfxmx" path="res://soundtrack/SFX/holloween_sfx_select.wav" id="4_ihofj"]
-
 [ext_resource type="AudioStream" uid="uid://ddwhmpyq8kov6" path="res://soundtrack/SFX/holloween_sfx_dooropen.wav" id="5_ihofj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bspbu"]
@@ -113,5 +111,6 @@ color = Color(1, 1, 1, 0)
 [connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="CreditsButton" to="." method="_on_credits_button_mouse_entered"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

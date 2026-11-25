@@ -4,10 +4,12 @@ extends Control
 @export var background : TextureRect
 
 func _ready() -> void:
+	Global.onMainMenu = true
 	MusicManager.start()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 func _on_play_button_pressed() -> void:
+	Global.onMainMenu = false
 	$ConfirmSound.play()
 	$Block.visible = true
 	MusicManager.stop()
@@ -22,6 +24,11 @@ func _on_credits_button_pressed() -> void:
 	var creditsScene = load("res://Scenes/final_menu.tscn")
 	get_tree().change_scene_to_packed(creditsScene)
 
+func _on_options_button_pressed() -> void:
+	$ConfirmSound.play()
+	var optionsScene = load("res://Scenes/options_menu.tscn")
+	get_tree().change_scene_to_packed(optionsScene)
+	
 func _on_play_button_mouse_entered() -> void:
 	character_rect.position.x = -640
 	$FlashlightSound.play()

@@ -1599,7 +1599,6 @@ DiningRoom = NodePath("DiningRoom")
 Kitchen = NodePath("Kitchen")
 ghostSpawner = NodePath("Path2D/PathFollow2D")
 attic = NodePath("Attic")
-playInitialCutseneFlag = true
 
 [node name="Chao" type="TileMapLayer" parent="." unique_id=628494821]
 z_index = -1
@@ -1625,7 +1624,7 @@ color = Color(0.34901962, 0.34901962, 0.34901962, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
 texture_filter = 1
-position = Vector2(1324, 31)
+position = Vector2(518, -32)
 scale = Vector2(-1, 1)
 collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
@@ -2120,6 +2119,9 @@ offset = Vector2(-16, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortaEntr2" unique_id=390318928]
 position = Vector2(-8, -50)
 shape = SubResource("RectangleShape2D_gufgi")
+
+[node name="OptionsLayer" type="CanvasLayer" parent="." unique_id=1588902475]
+layer = 10
 
 [connection signal="child_entered_tree" from="." to="Player/Flashlight" method="_on_fase_child_entered_tree"]
 [connection signal="body_entered" from="LivingRoom" to="." method="_on_living_room_body_entered"]

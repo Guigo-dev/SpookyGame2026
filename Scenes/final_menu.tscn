@@ -17,6 +17,18 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hdi5"]
+bg_color = Color(0.5372549, 0.3882353, 0.29411766, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8784314, 0.5921569, 0.34117648, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2sro"]
 bg_color = Color(0.5372549, 0.3882353, 0.29411766, 1)
 border_width_left = 5
@@ -62,18 +74,6 @@ expand_margin_right = 5.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vtqj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3chs1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hdi5"]
-bg_color = Color(0.5372549, 0.3882353, 0.29411766, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.8784314, 0.5921569, 0.34117648, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [node name="Final_menu" type="Control" unique_id=1535404519]
 texture_filter = 1
@@ -126,17 +126,6 @@ Main-menu arte   -      Nanamizu
       SFX              -    Diego Wandal
     Música           -   Diego Wandal"
 
-[node name="PlayButton" type="Button" parent="CreditePanel/PanelContainer/MarginContainer" unique_id=1456718541]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_y2sro")
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_y2sro")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3vtqj")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3chs1")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_3vtqj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3chs1")
-text = "Voltar "
-
 [node name="TilePanel" type="Panel" parent="." unique_id=691401529]
 layout_mode = 0
 offset_left = 223.0
@@ -163,4 +152,19 @@ theme_override_fonts/font = ExtResource("2_y2sro")
 theme_override_font_sizes/font_size = 24
 text = "Um jogo por biscuit studios"
 
-[connection signal="pressed" from="CreditePanel/PanelContainer/MarginContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[node name="PlayButton" type="Button" parent="." unique_id=1456718541]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 76.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("2_y2sro")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_y2sro")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3vtqj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3chs1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3vtqj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3chs1")
+text = "Voltar "
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

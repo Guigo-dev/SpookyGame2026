@@ -33,6 +33,7 @@ var spider_challenge_active := false
 var spider_challenge_completed := false
 var attic_spiders: Array[Node2D] = []
 var attic_entered := false
+var options_menu_scene = preload("res://Scenes/options_menu.tscn")
 
 func _ready() -> void:
 	#set inicial
@@ -72,7 +73,11 @@ func _process(delta: float) -> void:
 	if heartbeat_timer >= Global.heartbeatInterval:
 		heartbeat_timer = 0.0
 		heartbeat_pulse()
-	
+	#cria menu de opcoes
+	if Input.is_action_just_pressed("options"):
+		if get_tree().get_first_node_in_group("options_menu") == null:
+			var options_menu_instance = options_menu_scene.instantiate()
+			$OptionsLayer.add_child(options_menu_instance)
 	if Global.ChanllengsCounter == 3:
 		$DiningRoom/DiningRoomLight.enabled = true
 		await $LightsOnSound.finished
