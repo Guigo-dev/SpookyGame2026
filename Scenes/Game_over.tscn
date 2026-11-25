@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dlngr8wo0kvxc"]
+
+[ext_resource type="Script" uid="uid://2s2xerkxmllm" path="res://Scripts/game_over.gd" id="1_6uwv4"]
+[ext_resource type="Shader" uid="uid://duyx6pksfinqr" path="res://Shaders/Game_over.gdshader" id="1_xj6ph"]
+[ext_resource type="FontFile" uid="uid://j0ga7np2uahp" path="res://Fonts/GhoulFriAOE.ttf" id="2_thwhc"]
+[ext_resource type="FontFile" uid="uid://cobwl3spvd4ev" path="res://Fonts/scary halloween.ttf" id="4_x0ppo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
+shader = ExtResource("1_xj6ph")
+
+[node name="GameOver" type="Control" unique_id=1497211427]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
+script = ExtResource("1_6uwv4")
+
+[node name="BackGround" type="ColorRect" parent="." unique_id=1463343807]
+material = SubResource("ShaderMaterial_ostoq")
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackGround" unique_id=239592228]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 216.0
+offset_right = 389.0
+offset_bottom = 306.0
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="BackGround/VBoxContainer" unique_id=1821945580]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="BackGround/VBoxContainer/ButtonsContainer" unique_id=1328933877]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.63529414, 0.7411765, 0.94509804, 1)
+theme_override_fonts/font = ExtResource("2_thwhc")
+text = "Continuar"
+
+[node name="BackMenuButton" type="Button" parent="BackGround/VBoxContainer/ButtonsContainer" unique_id=533240705]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.63529414, 0.7411765, 0.94509804, 1)
+theme_override_fonts/font = ExtResource("2_thwhc")
+text = "Desistir"
+
+[node name="Label" type="Label" parent="BackGround" unique_id=1937414318]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 56.0
+offset_right = 410.0
+offset_bottom = 173.0
+theme_override_colors/font_color = Color(2.9492383, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.42745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x0ppo")
+theme_override_font_sizes/font_size = 40
+text = "Morreu 
+de medo"
+
+[connection signal="pressed" from="BackGround/VBoxContainer/ButtonsContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="BackGround/VBoxContainer/ButtonsContainer/BackMenuButton" to="." method="_on_back_menu_button_pressed"]

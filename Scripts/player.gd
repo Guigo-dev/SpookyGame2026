@@ -223,7 +223,7 @@ func die() -> void:
 	
 	await get_tree().create_timer(2.0).timeout
 	Global.reset_game()
-	get_tree().change_scene_to_file("res://Scenes/Main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 func playHurtSound():
 	if $PlayerHurt.playing == false:
