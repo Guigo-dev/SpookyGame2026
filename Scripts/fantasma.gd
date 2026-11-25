@@ -15,6 +15,7 @@ var isInFlashlight := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("enemy")
+	$Sprite2D.material = $Sprite2D.material.duplicate()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,13 +24,21 @@ func _process(delta: float) -> void:
 	
 	var direction = global_position.direction_to(target.global_position)
 	global_position += direction * speed * delta
-	
-	update_material()
+
 	
 	if isInFlashlight:
 		flashlighTime += delta
+		var damage = pow(flashlighTime / 2.4, 5.0)
+		damage = damage * damage
+		$Sprite2D.material.set_shader_parameter("brightness", 1.0 + damage * 9)
+		$Sprite2D.material.set_shader_parameter("saturation", 1.0 - damage)
+		$Sprite2D.material.set_shader_parameter("light_influence", 1.0 - damage)
+	else:
+		update_material()
 	if flashlighTime >= 2.4:
 		die()
+				
+	
 
 
 func _on_body_entered(body: Node2D) -> void:
