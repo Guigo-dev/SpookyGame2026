@@ -41,8 +41,8 @@
 [ext_resource type="Shader" uid="uid://cjl1o1l4mvpj0" path="res://Shaders/transicao.gdshader" id="29_oxw4l"]
 [ext_resource type="FontFile" uid="uid://cobwl3spvd4ev" path="res://Fonts/scary halloween.ttf" id="31_1j3mc"]
 [ext_resource type="AudioStream" uid="uid://krr6io7oehvi" path="res://soundtrack/music/cutscene1.wav" id="32_gufgi"]
-[ext_resource type="Texture2D" uid="uid://bnt3b1jb40s4y" path="res://Sprites/Images/wasd_blood.png" id="35_apnvp"]
-[ext_resource type="Texture2D" uid="uid://dl2hlkqi3ydc0" path="res://Sprites/Images/flashlight_blood.png" id="36_ftq5m"]
+[ext_resource type="Texture2D" uid="uid://c3oc42mqlmdch" path="res://Sprites/Images/wasd_blood.png" id="35_apnvp"]
+[ext_resource type="Texture2D" uid="uid://cub74tvyqlb1a" path="res://Sprites/Images/flashlight_blood.png" id="36_ftq5m"]
 [ext_resource type="AudioStream" uid="uid://curgpjc4xmpvw" path="res://soundtrack/SFX/holloween_sfx_hole.wav" id="38_qx8rk"]
 [ext_resource type="AudioStream" uid="uid://celmui5bg51ln" path="res://soundtrack/SFX/holloween_sfx_spidernoise.wav" id="39_5o4tr"]
 [ext_resource type="Shader" uid="uid://dgmp52clatvlq" path="res://Shaders/blood_reveal.gdshader" id="39_s7ra4"]
@@ -1578,6 +1578,16 @@ shader_parameter/center = Vector2(0.5, 0.5)
 shader = ExtResource("39_s7ra4")
 shader_parameter/reveal = 0.0
 
+[sub_resource type="Gradient" id="Gradient_qx8rk"]
+offsets = PackedFloat32Array(0, 0.95955884)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bspbu"]
+gradient = SubResource("Gradient_qx8rk")
+fill = 1
+fill_from = Vector2(0.48, 0.5175)
+fill_to = Vector2(0.0175, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ajtct"]
 shader = ExtResource("39_s7ra4")
 shader_parameter/reveal = 0.0
@@ -1599,6 +1609,7 @@ DiningRoom = NodePath("DiningRoom")
 Kitchen = NodePath("Kitchen")
 ghostSpawner = NodePath("Path2D/PathFollow2D")
 attic = NodePath("Attic")
+playInitialCutseneFlag = true
 
 [node name="Chao" type="TileMapLayer" parent="." unique_id=628494821]
 z_index = -1
@@ -1624,7 +1635,7 @@ color = Color(0.34901962, 0.34901962, 0.34901962, 1)
 
 [node name="Player" parent="." unique_id=3198480 instance=ExtResource("2_m2uwg")]
 texture_filter = 1
-position = Vector2(518, -32)
+position = Vector2(1324, 31)
 scale = Vector2(-1, 1)
 collectible = ExtResource("4_qgtny")
 metadata/_edit_group_ = true
@@ -1945,16 +1956,18 @@ reset_on_save = false
 libraries/ = SubResource("AnimationLibrary_u1r1b")
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1118020692]
+volume_db = -20.0
+bus = &"SFX"
 
 [node name="Door" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=133346544]
 
 [node name="flashlight" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1094180360]
 
 [node name="CameraCutscene" type="Camera2D" parent="AnimationPlayer" unique_id=1780858052]
+position = Vector2(1324, 31)
 enabled = false
 limit_left = 692
 limit_right = 1440
-limit_smoothed = true
 editor_draw_limits = true
 
 [node name="LightsOnSound" type="AudioStreamPlayer" parent="." unique_id=2060577206]
@@ -2066,16 +2079,24 @@ position = Vector2(-419, 1139)
 [node name="WasdBlood" type="Sprite2D" parent="." unique_id=1975300886]
 z_index = -1
 material = SubResource("ShaderMaterial_ostoq")
-position = Vector2(570, 32)
+position = Vector2(569, -5)
 scale = Vector2(1.9531244, 2.21875)
 texture = ExtResource("35_apnvp")
+
+[node name="PointLight2D" type="PointLight2D" parent="WasdBlood" unique_id=362169541]
+energy = 0.5
+texture = SubResource("GradientTexture2D_bspbu")
 
 [node name="FlashlightBlood" type="Sprite2D" parent="." unique_id=1704467890]
 z_index = -1
 material = SubResource("ShaderMaterial_ajtct")
-position = Vector2(568, 127)
-scale = Vector2(1.71875, 2.15625)
+position = Vector2(568.00006, 112)
+scale = Vector2(2.578125, 3.234375)
 texture = ExtResource("36_ftq5m")
+
+[node name="PointLight2D" type="PointLight2D" parent="FlashlightBlood" unique_id=1879520651]
+energy = 0.5
+texture = SubResource("GradientTexture2D_bspbu")
 
 [node name="SpidersSound" type="AudioStreamPlayer" parent="." unique_id=2087567704]
 stream = ExtResource("39_5o4tr")
@@ -2087,7 +2108,6 @@ bus = &"SFX"
 
 [node name="AmbienceSound" type="AudioStreamPlayer" parent="." unique_id=1962491341]
 stream = ExtResource("45_vm8mv")
-autoplay = true
 bus = &"Music"
 
 [node name="CutscneAmbienceSound" type="AudioStreamPlayer" parent="." unique_id=1127947521]

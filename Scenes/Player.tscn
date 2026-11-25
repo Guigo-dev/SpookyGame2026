@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://cdh64a43btaer" path="res://Scripts/interaction_area.gd" id="3_gntrk"]
 [ext_resource type="AudioStream" uid="uid://cbn4vokjo3yp1" path="res://soundtrack/SFX/holloween_sfx_footsteps1.wav" id="4_nn08x"]
 [ext_resource type="AudioStream" uid="uid://ccflhagmwo78l" path="res://soundtrack/SFX/holloween_sfx_playerdmg.wav" id="5_5ixxa"]
-[ext_resource type="FontFile" uid="uid://j0ga7np2uahp" path="res://Fonts/GhoulFriAOE.ttf" id="5_nn08x"]
 [ext_resource type="AudioStream" uid="uid://bewmf6878woc5" path="res://soundtrack/SFX/holloween_sfx_footsteps2.wav" id="5_52ee3"]
+[ext_resource type="FontFile" uid="uid://j0ga7np2uahp" path="res://Fonts/GhoulFriAOE.ttf" id="5_nn08x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("1_rpqav")
@@ -50,6 +50,7 @@ size = Vector2(14, 12)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f6gh2"]
 playback_mode = 2
+random_pitch = 1.122462
 streams_count = 2
 stream_0/stream = ExtResource("4_nn08x")
 stream_1/stream = ExtResource("5_52ee3")
@@ -93,6 +94,7 @@ debug_color = Color(0, 0, 1, 1)
 
 [node name="PlayerSteps" type="AudioStreamPlayer" parent="." unique_id=585524915]
 stream = SubResource("AudioStreamRandomizer_f6gh2")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=37672605]

@@ -50,8 +50,8 @@ func _ready() -> void:
 	flashlight_blood.material = flashlight_blood.material.duplicate()
 
 	wasd_blood.material.set_shader_parameter("reveal", 0.0)
-	flashlight_blood.material.set_shader_parameter("reveal", 0.0)	
-
+	flashlight_blood.material.set_shader_parameter("reveal", 0.0)
+	await $AnimationPlayer.current_animation_length
 	animate_blood()
 
 func _process(delta: float) -> void:
@@ -177,12 +177,12 @@ func _on_attic_body_entered(body: Node2D) -> void:
 func _on_living_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		LivingRoom.get_node("LivingRoomLight").enabled = false
-		wasd_blood.visible = false
-		flashlight_blood.visible = false
 
 func _on_dining_room_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		DiningRoom.get_node("DiningRoomLight").enabled = false
+		wasd_blood.visible = false
+		flashlight_blood.visible = false
 
 func _on_kitchen_body_exited(body: Node2D) -> void:
 	if body.name == "Player":

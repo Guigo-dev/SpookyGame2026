@@ -10,7 +10,7 @@ func _ready() -> void:
 	get_tree().paused = true
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("options"):
+	if Input.is_action_just_pressed("options") and Global.onMainMenu == false:
 		get_tree().paused = false
 		queue_free()
 
